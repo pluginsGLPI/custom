@@ -1,5 +1,4 @@
 <?php
-
 $LANG['plugin_custom']['name']="Custom";
 
 $LANG['plugin_custom']['title'][0]="Onglets colorés";

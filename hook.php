@@ -1,6 +1,6 @@
 <?php
 
-function plugin_get_headings_custom($item,$withtemplate){
+function plugin_get_headings_custom($item,$withtemplate) {
    global $LANG;
 
    if (get_class($item) == 'Profile') {
@@ -13,7 +13,7 @@ function plugin_get_headings_custom($item,$withtemplate){
    return false;
 }
 
-function plugin_headings_actions_custom($item){
+function plugin_headings_actions_custom($item) {
    $type = get_Class($item);
 
    if (in_array(get_class($item),array('Profile'))) {

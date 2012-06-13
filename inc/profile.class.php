@@ -91,7 +91,7 @@ class PluginCustomProfile extends CommonDBTM {
 
       $target = $this->getFormURL();
       if (isset($options['target'])) {
-        $target = $options['target'];
+         $target = $options['target'];
       }
 
       if (!haveRight("profile","r")) {

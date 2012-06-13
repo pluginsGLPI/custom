@@ -1,5 +1,4 @@
 <?php
-
 class PluginCustomTab extends CommonDBTM
 {
    static function getTypeName() {
@@ -54,18 +53,19 @@ class PluginCustomTab extends CommonDBTM
 
    public function getColoredTabs() {
       return array(
-         "<div class='tabs-forms'><input type='radio' name='color' value='red' ".(($this->fields['color']=='red') ? "checked" : "")."/>"
-            .$this->getTab('red')."</div>",
-         "<div class='tabs-forms'><input type='radio' name='color' value='blue' ".(($this->fields['color']=='blue') ? "checked" : "")."/>"
-            .$this->getTab('blue')."</div>",
-         "<div class='tabs-forms'><input type='radio' name='color' value='black' ".(($this->fields['color']=='black') ? "checked" : "")."/>"
-            .$this->getTab('black')."</div>",
-         "<div class='tabs-forms'><input type='radio' name='color' value='green' ".(($this->fields['color']=='green') ? "checked" : "")."/>"
-            .$this->getTab('green')."</div>",
-         "<div class='tabs-forms'><input type='radio' name='color' value='white' ".(($this->fields['color']=='white') ? "checked" : "")."/>"
-            .$this->getTab('white')."</div>",
-         "<div class='tabs-forms'><input type='radio' name='color' value='deleted' ".(($this->fields['color']=='deleted') ? "checked" : "")."/>"
-            .$this->getTab('deleted')."</div>"
+         "<div class='tabs-forms'><input type='radio' name='color' value='red' ".
+            (($this->fields['color']=='red') ? "checked":"")."/>".$this->getTab('red')."</div>",
+         "<div class='tabs-forms'><input type='radio' name='color' value='blue' ".
+            (($this->fields['color']=='blue') ? "checked":"")."/>".$this->getTab('blue')."</div>",
+         "<div class='tabs-forms'><input type='radio' name='color' value='black' ".
+            (($this->fields['color']=='black') ? "checked":"")."/>".$this->getTab('black')."</div>",
+         "<div class='tabs-forms'><input type='radio' name='color' value='green' ".
+            (($this->fields['color']=='green') ? "checked":"")."/>".$this->getTab('green')."</div>",
+         "<div class='tabs-forms'><input type='radio' name='color' value='white' ".
+            (($this->fields['color']=='white') ? "checked":"")."/>".$this->getTab('white')."</div>",
+         "<div class='tabs-forms'><input type='radio' name='color' value='deleted' ".
+            (($this->fields['color']=='deleted') ? "checked":"")."/>".
+            $this->getTab('deleted')."</div>"
       );
    }
 
@@ -80,7 +80,8 @@ class PluginCustomTab extends CommonDBTM
             $out .= "<em class='x-tab-left left-colored-".$color."'>";
                $out .= "<span class='x-tab-strip-inner inner-colored-".$color."'>";
                   $out .= "<span class='x-tab-strip-text'>";
-                     $out .= "<span class='nm_headings'>".$LANG['plugin_custom']['form'][0]."</span>";
+                     $out .= "<span class='nm_headings'>".
+                        $LANG['plugin_custom']['form'][0]."</span>";
                   $out .= "</span>";
                $out .= "</span>";
             $out .= "</em>";

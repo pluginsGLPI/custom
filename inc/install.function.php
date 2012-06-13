@@ -31,7 +31,7 @@ function plugin_custom_install() {
       $DB->query($query);
    }
 
-  if (!TableExists('glpi_plugin_custom_profiles')) {
+   if (!TableExists('glpi_plugin_custom_profiles')) {
       $query = "CREATE TABLE `glpi_plugin_custom_profiles` (
          `id` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
          `profiles_id` VARCHAR(45) NOT NULL,
