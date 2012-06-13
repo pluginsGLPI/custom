@@ -14,19 +14,22 @@ $itemtype = $_POST['itemtype'];
 
 $obj = new $itemtype;
 $obj->fields['id'] = 1;
+if ($itemtype == "ticket") {
+   $obj->fields['status'] = "closed";
+}
 $tabs = $obj->defineTabs();
 $tmp_plug_tabs = Plugin::getTabs('', $obj, false);
 $plug_tabs = array();
 foreach($tmp_plug_tabs as $key => $tab) {
-$plug_tabs[$key] = $tab['title'];
+   $plug_tabs[$key] = $tab['title'];
 }
 $tabs += $plug_tabs;
 
 $tabs_used = -1;
 if ($_POST['id'] > 0) {
-$colortabs = new PluginCustomTab;
-$colortabs->getFromDB($_POST['id']);
-$tabs_used = $colortabs->getField('tab');
+   $colortabs = new PluginCustomTab;
+   $colortabs->getFromDB($_POST['id']);
+   $tabs_used = $colortabs->getField('tab');
 }
 
 // remove previously used tabs
