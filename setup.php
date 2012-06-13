@@ -1,0 +1,86 @@
+<?php
+
+include_once (GLPI_ROOT . "/plugins/custom/inc/install.function.php");
+
+// Init the hooks of the plugins -Needed
+function plugin_init_custom() {
+   global $PLUGIN_HOOKS, $LANG;
+
+
+   $menu_entry   = "front/tab.php";
+   if (!isset($_SESSION['glpiactiveprofile']['config']) 
+      || $_SESSION['glpiactiveprofile']['config'] != "w") $menu_entry  = false;
+   $PLUGIN_HOOKS['menu_entry']['custom'] = $menu_entry;
+
+   $PLUGIN_HOOKS['config_page']['custom'] = $menu_entry;
+
+   $PLUGIN_HOOKS['submenu_entry']['custom']['options']['tab']['title'] = $LANG['plugin_custom']['title'][0];
+   $PLUGIN_HOOKS['submenu_entry']['custom']['options']['tab']['page'] = '/plugins/custom/front/tab.php';
+   $PLUGIN_HOOKS['submenu_entry']['custom']['options']['tab']['links']['search'] = '/plugins/custom/front/tab.php';
+   $PLUGIN_HOOKS['submenu_entry']['custom']['options']['tab']['links']['add'] = '/plugins/custom/front/tab.form.php';
+
+   $PLUGIN_HOOKS['helpdesk_menu_entry']['custom'] = false;
+
+   $PLUGIN_HOOKS['add_javascript']['custom'] = 'selector.js.php';
+   $PLUGIN_HOOKS['add_css']['custom']        = 'style.css';
+
+   $PLUGIN_HOOKS['change_profile']['custom'] = array('PluginCustomProfile','changeProfile');
+
+   $PLUGIN_HOOKS['headings']['custom'] = 'plugin_get_headings_custom';
+   $PLUGIN_HOOKS['headings_action']['custom'] = 'plugin_headings_actions_custom';
+
+}
+
+
+// Get the name and the version of the plugin - Needed
+function plugin_version_custom() {
+   global $LANG;
+
+   return array('name'           => $LANG['plugin_custom']['name'],
+                'version'        => '1.0',
+                'author'         => '<a href=\'mailto:adelaunay@teclib.com\'>Alexandre DELAUNAY</a>',
+                'homepage'       => 'http://www.teclib.com/glpi/plugins/color',
+                'minGlpiVersion' => '0.83');
+}
+
+
+// Optional : check prerequisites before install : may print errors or add to message after redirect
+function plugin_custom_check_prerequisites() {
+
+   if (GLPI_VERSION >= 0.83) {
+      return true;
+   } else {
+      echo "GLPI version not compatible need 0.83";
+   }
+}
+
+
+// Check configuration process for plugin : need to return true if succeeded
+// Can display a message only if failure and $verbose is true
+function plugin_custom_check_config($verbose=false) {
+   global $LANG;
+
+   if (true) { // Your configuration check
+      return true;
+   }
+   if ($verbose) {
+      echo $LANG['plugins'][2];
+   }
+   return false;
+}
+
+
+function plugin_custom_haveRight($module,$right) {
+   $matches=array(""  => array("","r","w"), // ne doit pas arriver normalement
+                  "r" => array("r","w"),
+                  "w" => array("w"),
+                  "1" => array("1"),
+                  "0" => array("0","1")); // ne doit pas arriver non plus
+
+   if (isset($_SESSION["glpi_plugin_custom_profile"][$module])
+       && in_array($_SESSION["glpi_plugin_custom_profile"][$module],$matches[$right])) {
+      return true;
+   }
+   return false;
+}
+?>
