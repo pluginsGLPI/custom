@@ -18,7 +18,7 @@ if (isset($_POST['itemtype']) && isset($_POST['tab']) && isset($_POST['color'])
    $tmp_plug_tabs = Plugin::getTabs('', $obj, false);
    $plug_tabs = array();
    foreach($tmp_plug_tabs as $key => $tab) {
-   $plug_tabs[$key] = $tab['title'];
+      $plug_tabs[$key] = $tab['title'];
    }
    $tabs += $plug_tabs;
 

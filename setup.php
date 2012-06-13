@@ -7,17 +7,27 @@ function plugin_init_custom() {
    global $PLUGIN_HOOKS, $LANG;
 
 
-   $menu_entry   = "front/tab.php";
+   $menu_entry   = "front/config.php";
    if (!isset($_SESSION['glpiactiveprofile']['config']) 
       || $_SESSION['glpiactiveprofile']['config'] != "w") $menu_entry  = false;
    $PLUGIN_HOOKS['menu_entry']['custom'] = $menu_entry;
 
    $PLUGIN_HOOKS['config_page']['custom'] = $menu_entry;
 
-   $PLUGIN_HOOKS['submenu_entry']['custom']['options']['tab']['title'] = $LANG['plugin_custom']['title'][0];
-   $PLUGIN_HOOKS['submenu_entry']['custom']['options']['tab']['page'] = '/plugins/custom/front/tab.php';
-   $PLUGIN_HOOKS['submenu_entry']['custom']['options']['tab']['links']['search'] = '/plugins/custom/front/tab.php';
-   $PLUGIN_HOOKS['submenu_entry']['custom']['options']['tab']['links']['add'] = '/plugins/custom/front/tab.form.php';
+   $PLUGIN_HOOKS['submenu_entry']['custom']['options']['tab'] = array(
+      'title' => $LANG['plugin_custom']['title'][0],
+      'page' =>'/plugins/custom/front/tab.php',
+      'links' => array(
+         'search'=> '/plugins/custom/front/tab.php',
+         'add' =>'/plugins/custom/front/tab.form.php'
+   ));
+   $PLUGIN_HOOKS['submenu_entry']['custom']['options']['defaulttab'] = array(
+      'title' => $LANG['plugin_custom']['title'][1],
+      'page' =>'/plugins/custom/front/defaulttab.php',
+      'links' => array(
+         'search'=> '/plugins/custom/front/defaulttab.php',
+         'add' =>'/plugins/custom/front/defaulttab.form.php'
+   ));
 
    $PLUGIN_HOOKS['helpdesk_menu_entry']['custom'] = false;
 
@@ -37,10 +47,10 @@ function plugin_version_custom() {
    global $LANG;
 
    return array('name'           => $LANG['plugin_custom']['name'],
-                'version'        => '1.0',
-                'author'         => '<a href=\'mailto:adelaunay@teclib.com\'>Alexandre DELAUNAY</a>',
-                'homepage'       => 'http://www.teclib.com/glpi/plugins/color',
-                'minGlpiVersion' => '0.83');
+                'version'        => "1.0",
+                'author'         => "<a href='mailto:adelaunay@teclib.com'>Alexandre DELAUNAY</a>",
+                'homepage'       => "http://www.teclib.com/glpi/plugins/color",
+                'minGlpiVersion' => "0.83");
 }
 
 
