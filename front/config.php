@@ -12,6 +12,10 @@ echo "<table class='tab_cadrehov'>
 <td><a href='defaulttab.php'>".$LANG['plugin_custom']['config'][1]."</a></td>
 <td></td>
 </tr>
+<tr>
+<td><a href='style.php'>".$LANG['plugin_custom']['config'][2]."</a></td>
+<td></td>
+</tr>
 </table>";
 echo "</div>";
 
