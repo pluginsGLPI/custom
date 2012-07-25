@@ -13,7 +13,7 @@ echo "<table class='tab_cadrehov'>
 <td></td>
 </tr>
 <tr>
-<td><a href='style.php'>".$LANG['plugin_custom']['config'][2]."</a></td>
+<td><a href='style.form.php'>".$LANG['plugin_custom']['config'][2]."</a></td>
 <td></td>
 </tr>
 </table>";

@@ -1,11 +1,12 @@
 <?php
 $LANG['plugin_custom']['name']="Custom";
 
-$LANG['plugin_custom']['title'][0]="Onglets colorés";
-$LANG['plugin_custom']['title'][1]="Onglets par défaut";
+$LANG['plugin_custom']['title'][0] = "Onglets colorés";
+$LANG['plugin_custom']['title'][1] = "Onglets par défaut";
 
-$LANG['plugin_custom']['type'][0] ="onglet coloré";
-$LANG['plugin_custom']['type'][1] ="onglet par défaut";
+$LANG['plugin_custom']['type'][0] = "onglet coloré";
+$LANG['plugin_custom']['type'][1] = "onglet par défaut";
+$LANG['plugin_custom']['type'][2] = "style";
 
 $LANG['plugin_custom']['form'][0] = "Onglet";
 $LANG['plugin_custom']['form'][1] = "Couleur";

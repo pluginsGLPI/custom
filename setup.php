@@ -1,10 +1,11 @@
 <?php
 
 include_once (GLPI_ROOT . "/plugins/custom/inc/install.function.php");
+define("CUSTOM_FILES_DIR", GLPI_ROOT."/files/_plugins/custom/");
 
 // Init the hooks of the plugins -Needed
 function plugin_init_custom() {
-   global $PLUGIN_HOOKS, $LANG;
+   global $PLUGIN_HOOKS, $LANG, $CFG_GLPI;
 
 
    $menu_entry   = "front/config.php";
@@ -36,6 +37,7 @@ function plugin_init_custom() {
 
    $PLUGIN_HOOKS['add_css']['custom'][]        = 'style.css';
    $PLUGIN_HOOKS['add_css']['custom'][]        = 'lib/colortools/ext.ux.color3.css';
+   $PLUGIN_HOOKS['add_css']['custom'][]        = '../../files/_plugins/custom/glpi_style.css';
 
    $PLUGIN_HOOKS['change_profile']['custom'] = array('PluginCustomProfile','changeProfile');
 

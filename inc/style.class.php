@@ -1,56 +1,136 @@
 <?php
-class PluginCustomStyle {
-   static function getRegex() {
-      return array(
-         'link_color'       => '#^a, a:link.*color.*: (.*);#ismU',
-         'link_hover_color' => '#^a:hover.*color.*: (.*);#ismU'
-      );
-   }
+class PluginCustomStyle extends CommonDBTM {
 
-   static function getCurrentStyle() {
-      $regex_list = self::getRegex();
-      $css_file = file_get_contents(GLPI_ROOT."/css/styles.css");
-
-      $styles = array();
-      foreach($regex_list as $key => $regex) {
-         preg_match($regex, $css_file, $matches);
-         $styles[$key] = self::GetColor($matches[1]);
-      }
-
-      return $styles;
-   }
-
-   static function showForm() {
+   static function getTypeName() {
       global $LANG;
 
-      $current_style = self::getCurrentStyle();
+      return $LANG['plugin_custom']['type'][2];
+   }
 
-      echo "<form name='form' method='post' action=''>";
-      echo "<div class='spaced' id='tabsbody'>";
-      echo "<table class='tab_cadre_fixe'>";
+   function canCreate() {
+      return true;
+   }
+
+   function canView() {
+      return true;
+   }
+
+   function showForm($ID, $options=array()) {
+      global $LANG, $CFG_GLPI;
+
+      if ($ID <= 0) echo $ID = $this->add(array('id' => 0));
+
+      if ($ID > 0) {
+         $this->check($ID,'r');
+      } 
+      
+      //$colors = self::getColors($this->fields);
+
+      $options['colspan'] = 4;
+      $options['candel'] = false;
+      $this->showFormHeader($this->fields);
 
       echo "<tr><th colspan='4'>".$LANG['plugin_custom']['config'][2]."</th></tr>";
-      
+
+      echo "<tr>";
+      echo "<td>"."##BODY##"."</td>";
+      echo "<td>";
+      self::colorInput('body', $this->fields['body']);
+      echo "</td>";
+      echo "</tr>";
+
+      echo "<tr><th colspan='4'>Links</th></tr>";
 
       echo "<tr>";
       echo "<td>"."##LINK_COLOR##"."</td>";
       echo "<td>";
-      self::colorInput('link_color', $current_style['link_color']);
+      self::colorInput('link_color', $this->fields['link_color']);
       echo "</td>";
-
 
       echo "<td>"."##HOVER_LINK_COLOR##"."</td>";
       echo "<td>";
-      self::colorInput('link_hover_color', $current_style['link_hover_color']);
+      self::colorInput('link_hover_color', $this->fields['link_hover_color']);
+      echo "</td>";
+      echo "</tr>";
+
+      echo "<tr><th colspan='4'>Menu</th></tr>";
+
+      echo "<tr>";
+      echo "<td>"."##MENU_LINK##"."</td>";
+      echo "<td>";
+      self::colorInput('menu_link', $this->fields['menu_link']);
       echo "</td>";
       echo "</tr>";
 
       echo "<tr>";
-      echo "<td class='tab_bg_2 center'>\n";
-      echo "<input type='submit' name='update' value=\"".$LANG['buttons'][7]."\" class='submit'>";
-      echo "</td></tr>\n";
-      echo "</table></div>";
-      echo "</form>";
+      echo "<td>"."##SSMENU1_LINK##"."</td>";
+      echo "<td>";
+      self::colorInput('ssmenu1_link', $this->fields['ssmenu1_link']);
+      echo "</td>";
+
+      echo "<td>"."##SSMENU2_LINK##"."</td>";
+      echo "<td>";
+      self::colorInput('ssmenu2_link', $this->fields['ssmenu2_link']);
+      echo "</td>";
+      echo "</tr>";
+
+      echo "<tr><th colspan='4'>Tables</th></tr>";      
+
+      echo "<tr>";
+      echo "<td>"."##TH##"."</td>";
+      echo "<td>";
+      self::colorInput('th', $this->fields['th']);
+      echo "</td>";
+
+      echo "</tr>";
+
+      echo "<tr>";
+      echo "<td>"."##TAB_BG_1##"."</td>";
+      echo "<td>";
+      self::colorInput('tab_bg_1', $this->fields['tab_bg_1']);
+      echo "</td>";
+
+
+      echo "<td>"."##TAB_BG_2##"."</td>";
+      echo "<td>";
+      self::colorInput('tab_bg_2', $this->fields['tab_bg_2']);
+      echo "</td>";
+      echo "</tr>";
+
+      echo "<tr>";
+      echo "<td>"."##TAB_BG_1_2##"."</td>";
+      echo "<td>";
+      self::colorInput('tab_bg_1_2', $this->fields['tab_bg_1_2']);
+      echo "</td>";
+
+
+      echo "<td>"."##TAB_BG_2_2##"."</td>";
+      echo "<td>";
+      self::colorInput('tab_bg_2_2', $this->fields['tab_bg_2_2']);
+      echo "</td>";
+      echo "</tr>";
+
+      echo "<tr>";
+      echo "<td>"."##TAB_BG_3##"."</td>";
+      echo "<td>";
+      self::colorInput('tab_bg_3', $this->fields['tab_bg_3']);
+      echo "</td>";
+
+
+      echo "<td>"."##TAB_BG_4##"."</td>";
+      echo "<td>";
+      self::colorInput('tab_bg_4', $this->fields['tab_bg_4']);
+      echo "</td>";
+      echo "</tr>";
+
+      echo "<tr>";
+      echo "<td>"."##TAB_BG_5##"."</td>";
+      echo "<td>";
+      self::colorInput('tab_bg_5', $this->fields['tab_bg_5']);
+      echo "</td>";
+      echo "</tr>";
+
+      $this->showFormButtons($options);
    }
 
    static function colorInput($name, $value) {
@@ -67,7 +147,7 @@ class PluginCustomStyle {
                   xtype:'colorfield',
                   hideLabel:true,
                   value:'{$value}',
-                  name:'backcolor',
+                  name:'$name',
                   colorSelector:'mixer'
             }]
          });
@@ -79,153 +159,80 @@ JAVASCRIPT;
       echo "</script>";
    }
 
+   function post_updateItem($history=1) {
+      $CSS = "
+      body {
+         background: {$this->fields['body']} !important;
+      }
+      a, a:link {
+         color: {$this->fields['link_color']} !important;
+      }
 
- 
-   static function GetColor($Colorname) { 
-      $Colors  =  ARRAY( 
- 
-         //  Colors  as  they  are  defined  in  HTML  3.2 
-         "black"                => "#000000", 
-         "maroon"               => "#800000", 
-         "green"                => "#008000", 
-         "olive"                => "#808000", 
-         "navy"                 => "#000080", 
-         "purple"               => "#800080", 
-         "teal"                 => "#008080", 
-         "gray"                 => "#808080", 
-         "silver"               => "#C0C0C0", 
-         "red"                  => "#FF0000", 
-         "lime"                 => "#00FF00", 
-         "yellow"               => "#FFFF00", 
-         "blue"                 => "#0000FF", 
-         "fuchsia"              => "#FF00FF", 
-         "aqua"                 => "#00FFFF", 
-         "white"                => "#FFFFFF", 
-         
-         //  Additional  colors  as  they  are  used  by  Netscape  and  IE 
-         "aliceblue"            => "#F0F8FF", 
-         "antiquewhite"         => "#FAEBD7", 
-         "aquamarine"           => "#7FFFD4", 
-         "azure"                => "#F0FFFF", 
-         "beige"                => "#F5F5DC", 
-         "blueviolet"           => "#8A2BE2", 
-         "brown"                => "#A52A2A", 
-         "burlywood"            => "#DEB887", 
-         "cadetblue"            => "#5F9EA0", 
-         "chartreuse"           => "#7FFF00", 
-         "chocolate"            => "#D2691E", 
-         "coral"                => "#FF7F50", 
-         "cornflowerblue"       => "#6495ED", 
-         "cornsilk"             => "#FFF8DC", 
-         "crimson"              => "#DC143C", 
-         "darkblue"             => "#00008B", 
-         "darkcyan"             => "#008B8B", 
-         "darkgoldenrod"        => "#B8860B", 
-         "darkgray"             => "#A9A9A9", 
-         "darkgreen"            => "#006400", 
-         "darkkhaki"            => "#BDB76B", 
-         "darkmagenta"          => "#8B008B", 
-         "darkolivegreen"       => "#556B2F", 
-         "darkorange"           => "#FF8C00", 
-         "darkorchid"           => "#9932CC", 
-         "darkred"              => "#8B0000", 
-         "darksalmon"           => "#E9967A", 
-         "darkseagreen"         => "#8FBC8F", 
-         "darkslateblue"        => "#483D8B", 
-         "darkslategray"        => "#2F4F4F", 
-         "darkturquoise"        => "#00CED1", 
-         "darkviolet"           => "#9400D3", 
-         "deeppink"             => "#FF1493", 
-         "deepskyblue"          => "#00BFFF", 
-         "dimgray"              => "#696969", 
-         "dodgerblue"           => "#1E90FF", 
-         "firebrick"            => "#B22222", 
-         "floralwhite"          => "#FFFAF0", 
-         "forestgreen"          => "#228B22", 
-         "gainsboro"            => "#DCDCDC", 
-         "ghostwhite"           => "#F8F8FF", 
-         "gold"                 => "#FFD700", 
-         "goldenrod"            => "#DAA520", 
-         "greenyellow"          => "#ADFF2F", 
-         "honeydew"             => "#F0FFF0", 
-         "hotpink"              => "#FF69B4", 
-         "indianred"            => "#CD5C5C", 
-         "indigo"               => "#4B0082", 
-         "ivory"                => "#FFFFF0", 
-         "khaki"                => "#F0E68C", 
-         "lavender"             => "#E6E6FA", 
-         "lavenderblush"        => "#FFF0F5", 
-         "lawngreen"            => "#7CFC00", 
-         "lemonchiffon"         => "#FFFACD", 
-         "lightblue"            => "#ADD8E6", 
-         "lightcoral"           => "#F08080", 
-         "lightcyan"            => "#E0FFFF", 
-         "lightgoldenrodyellow" => "#FAFAD2", 
-         "lightgreen"           => "#90EE90", 
-         "lightgrey"            => "#D3D3D3", 
-         "lightpink"            => "#FFB6C1", 
-         "lightsalmon"          => "#FFA07A", 
-         "lightseagreen"        => "#20B2AA", 
-         "lightskyblue"         => "#87CEFA", 
-         "lightslategray"       => "#778899", 
-         "lightsteelblue"       => "#B0C4DE", 
-         "lightyellow"          => "#FFFFE0", 
-         "limegreen"            => "#32CD32", 
-         "linen"                => "#FAF0E6", 
-         "mediumaquamarine"     => "#66CDAA", 
-         "mediumblue"           => "#0000CD", 
-         "mediumorchid"         => "#BA55D3", 
-         "mediumpurple"         => "#9370D0", 
-         "mediumseagreen"       => "#3CB371", 
-         "mediumslateblue"      => "#7B68EE", 
-         "mediumspringgreen"    => "#00FA9A", 
-         "mediumturquoise"      => "#48D1CC", 
-         "mediumvioletred"      => "#C71585", 
-         "midnightblue"         => "#191970", 
-         "mintcream"            => "#F5FFFA", 
-         "mistyrose"            => "#FFE4E1", 
-         "moccasin"             => "#FFE4B5", 
-         "navajowhite"          => "#FFDEAD", 
-         "oldlace"              => "#FDF5E6", 
-         "olivedrab"            => "#6B8E23", 
-         "orange"               => "#FFA500", 
-         "orangered"            => "#FF4500", 
-         "orchid"               => "#DA70D6", 
-         "palegoldenrod"        => "#EEE8AA", 
-         "palegreen"            => "#98FB98", 
-         "paleturquoise"        => "#AFEEEE", 
-         "palevioletred"        => "#DB7093", 
-         "papayawhip"           => "#FFEFD5", 
-         "peachpuff"            => "#FFDAB9", 
-         "peru"                 => "#CD853F", 
-         "pink"                 => "#FFC0CB", 
-         "plum"                 => "#DDA0DD", 
-         "powderblue"           => "#B0E0E6", 
-         "rosybrown"            => "#BC8F8F", 
-         "royalblue"            => "#4169E1", 
-         "saddlebrown"          => "#8B4513", 
-         "salmon"               => "#FA8072", 
-         "sandybrown"           => "#F4A460", 
-         "seagreen"             => "#2E8B57", 
-         "seashell"             => "#FFF5EE", 
-         "sienna"               => "#A0522D", 
-         "skyblue"              => "#87CEEB", 
-         "slateblue"            => "#6A5ACD", 
-         "slategray"            => "#708090", 
-         "snow"                 => "#FFFAFA", 
-         "springgreen"          => "#00FF7F", 
-         "steelblue"            => "#4682B4", 
-         "tan"                  => "#D2B48C", 
-         "thistle"              => "#D8BFD8", 
-         "tomato"               => "#FF6347", 
-         "turquoise"            => "#40E0D0", 
-         "violet"               => "#EE82EE", 
-         "wheat"                => "#F5DEB3", 
-         "whitesmoke"           => "#F5F5F5", 
-         "yellowgreen"          => "#9ACD32"
-      );   
-      if (array_key_exists($Colorname, $Colors)) return $Colors[$Colorname]; 
-      else return $Colorname;
+      a:hover {
+        color: {$this->fields['link_hover_color']} !important;
+      }
+
+      ul#menu a.itemP, ul#menu a.itemP1 {
+         color: {$this->fields['menu_link']} !important;
+      }
+
+      div#c_ssmenu1 ul li a {
+         color:{$this->fields['ssmenu1_link']} !important;
+      }
+
+      div#c_ssmenu2 ul li a {
+         color:{$this->fields['ssmenu2_link']} !important;
+      }
+
+      .tab_cadre th, .tab_cadre_fixe th, .tab_cadre_fixehov th, 
+         .tab_cadrehov th, .tab_cadrehov_pointer th, .tab_cadre_report th {
+         background-color:{$this->fields['th']} !important;
+      }
+
+      .tab_bg_1 {
+         background-color: {$this->fields['tab_bg_1']} !important;
+      }
+
+      .tab_bg_1_2 {
+         background-color: {$this->fields['tab_bg_1_2']} !important;
+      }
+
+      .tab_bg_2 {
+         background-color: {$this->fields['tab_bg_2']} !important;
+      }
+
+      .tab_bg_2_2 {
+         background-color: {$this->fields['tab_bg_2_2']} !important;
+      }
+
+      .tab_bg_3 {
+         background-color: {$this->fields['tab_bg_3']} !important;
+      }
+
+      .tab_bg_4 {
+         background-color: {$this->fields['tab_bg_4']} !important;
+      }
+
+      .tab_bg_5 {
+         background-color: {$this->fields['tab_bg_5']} !important;
+      }
+
+      ";
+      return file_put_contents(CUSTOM_FILES_DIR."glpi_style.css", $CSS);
+   }
+
+   function post_addItem() {
+      $this->post_updateItem();
+   }
+
+   static function getSingle() {
+      $style = new self;
+      $tmp = $style->find();
+      $tmp = array_shift($tmp);
+      if (!empty($tmp)) {
+         return $tmp['id'];
+      }
+      return -1;
    }
 }
 ?>
