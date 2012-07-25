@@ -1,3 +1,37 @@
+.custom_center {
+   max-width: 950px;
+   width:95%;
+   margin: 0 auto;
+   padding: 4px;
+   border: 1px solid silver;
+   -moz-border-radius: 5px; 
+   -webkit-border-radius:5px;
+   border-radius: 5px;
+}
+ul.custom_config li {
+   cursor:pointer;
+   float:left;
+   width:20%;
+   -moz-border-radius: 5px; 
+   -webkit-border-radius:5px;
+   border-radius: 5px;
+   margin:0 1% 10px 1%;
+   padding:5px 1px;
+}
+ul.custom_config li:hover {
+   background-color:#E8E8E8;
+}
+ul.custom_config li p {
+   padding-top: 8px;
+}
+ul.custom_config li img {
+   float: left;
+   margin-right: 2px;
+}
+div.custom_clear {
+   clear: both;
+   width:100%;
+}
 
 
 .preview-tabs .tabs-forms {float:left; width:30%}

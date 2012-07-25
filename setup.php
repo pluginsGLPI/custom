@@ -28,6 +28,13 @@ function plugin_init_custom() {
       'links' => array(
          'search'=> '/plugins/custom/front/defaulttab.php',
          'add' =>'/plugins/custom/front/defaulttab.form.php'
+   ));   
+   $PLUGIN_HOOKS['submenu_entry']['custom']['options']['style'] = array(
+      'title' => $LANG['plugin_custom']['title'][2],
+      'page' =>'/plugins/custom/front/style.form.php',
+      'links' => array(
+         'search'=> '/plugins/custom/front/style.form.php',
+         'add' =>'/plugins/custom/front/style.form.php'
    ));
 
    $PLUGIN_HOOKS['helpdesk_menu_entry']['custom'] = false;
