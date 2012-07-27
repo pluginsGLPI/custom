@@ -285,7 +285,7 @@ JAVASCRIPT;
    function post_updateItem($history=1) {
       $CSS = "
       body {
-         background: {$this->fields['body']} !important;
+         background-color: {$this->fields['body']} !important;
       }
 
       div#header div#c_logo {
