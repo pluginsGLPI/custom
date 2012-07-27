@@ -40,6 +40,10 @@ function plugin_custom_install() {
          `menu_link` VARCHAR(7) NOT NULL DEFAULT '#000000',
          `ssmenu1_link` VARCHAR(7) NOT NULL DEFAULT '#666666',
          `ssmenu2_link` VARCHAR(7) NOT NULL DEFAULT '#000000',
+         `menu_item_bg` VARCHAR(7) NOT NULL DEFAULT '#f1e7c2',
+         `menu_item_link` VARCHAR(7) NOT NULL DEFAULT '#000000',
+         `menu_item_border` VARCHAR(7) NOT NULL DEFAULT '#CC9900',
+         `menu_item_bg_hover` VARCHAR(7) NOT NULL DEFAULT '#d0d99d',
          `th` VARCHAR(7) NOT NULL DEFAULT '#e1cc7b',
          `tab_bg_1` VARCHAR(7) NOT NULL DEFAULT '#f2f2f2',
          `tab_bg_1_2` VARCHAR(7) NOT NULL DEFAULT '#cf9b9b',
@@ -48,6 +52,19 @@ function plugin_custom_install() {
          `tab_bg_3` VARCHAR(7) NOT NULL DEFAULT '#e7e7e2',
          `tab_bg_4` VARCHAR(7) NOT NULL DEFAULT '#e4e4e2',
          `tab_bg_5` VARCHAR(7) NOT NULL DEFAULT '#f2f2f2',
+         `header_bg1` VARCHAR(7) NOT NULL DEFAULT '#FFFFFF',
+         `header_bg2` VARCHAR(7) NOT NULL DEFAULT '#f5efd6',
+         `header_bg3` VARCHAR(7) NOT NULL DEFAULT '#d6bc53',
+         `header_bg4` VARCHAR(7) NOT NULL DEFAULT '#c0cc7b',
+         `header_bg5` VARCHAR(7) NOT NULL DEFAULT '#d0d99d',
+         `header_bg6` VARCHAR(7) NOT NULL DEFAULT '#f1f4e3',
+         `header_shadow_color` VARCHAR(7) NOT NULL DEFAULT '#011E3A',
+         `page_shadow_color` VARCHAR(7) NOT NULL DEFAULT '#011E3A',
+         `footer_shadow_color` VARCHAR(7) NOT NULL DEFAULT '#011E3A',
+         `footer_bg1` VARCHAR(7) NOT NULL DEFAULT '#FFFFFF',
+         `footer_bg2` VARCHAR(7) NOT NULL DEFAULT '#e2cf83',
+         `cadre_central_bg1` VARCHAR(7) NOT NULL DEFAULT '#f2eaca',
+         `cadre_central_bg2` VARCHAR(7) NOT NULL DEFAULT '#FFFFFF',
          PRIMARY KEY (`id`)
       ) ENGINE = MYISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;";
       $DB->query($query);
@@ -74,6 +91,11 @@ function plugin_custom_install() {
 
    touch(CUSTOM_FILES_DIR."glpi_style.css");
 
+
+   //create config style
+   require_once "style.class.php";
+   $style = new PluginCustomStyle;
+   $style->add(array('id' => 0));
 
    return true;
 }

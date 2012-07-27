@@ -9,9 +9,11 @@ $style = new PluginCustomStyle;
 
 if (isset($_POST['add'])) {
    $style->add($_POST);
+   Html::back();
 
 } elseif(isset($_POST['update'])) {
    $style->update($_POST);
+   Html::back();
 
 }
 

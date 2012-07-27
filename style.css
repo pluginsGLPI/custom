@@ -53,22 +53,22 @@ div.custom_clear {
 .nm_headings-white, .inner-colored-white .nm_headings {color:black !important}
 
 .x-tab-strip-top  .x-tab-right {
-background-color:transparent !important;
-background-repeat:no-repeat !important;
+/*background-color:transparent !important;
+background-repeat:no-repeat !important;*/
 background-position:0 -51px !important;
 background-attachment:scroll !important;
 }
 
 .x-tab-strip-top  .x-tab-left {
-background-color:transparent !important;
-background-repeat:no-repeat !important;
+/*background-color:transparent !important;
+background-repeat:no-repeat !important;*/
 background-position:100% -351px !important;
 background-attachment:scroll !important;
 }
 
 .x-tab-strip-top .x-tab-strip-inner {
-background-color:transparent !important;
-background-repeat:repeat-x !important;
+/*background-color:transparent !important;
+background-repeat:repeat-x !important;*/
 background-position:0 -201px !important;
 background-attachment:scroll !important;
 }

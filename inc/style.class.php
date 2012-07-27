@@ -18,11 +18,8 @@ class PluginCustomStyle extends CommonDBTM {
    function showForm($ID, $options=array()) {
       global $LANG, $CFG_GLPI;
 
-      if ($ID <= 0) echo $ID = $this->add(array('id' => 0));
-
-      if ($ID > 0) {
-         $this->check($ID,'r');
-      } 
+      if ($ID <= 0) $ID = $this->add(array('id' => 0));
+      $this->check($ID,'r');
       
       //$colors = self::getColors($this->fields);
 
@@ -56,9 +53,33 @@ class PluginCustomStyle extends CommonDBTM {
       echo "<tr><th colspan='4'>Menu</th></tr>";
 
       echo "<tr>";
+      echo "<td>"."##MENU_ITEM_BG##"."</td>";
+      echo "<td>";
+      self::colorInput('menu_item_bg', $this->fields['menu_item_bg']);
+      echo "</td>";
+      echo "</tr>";
+
+      echo "<tr>";
+      echo "<td>"."##MENU_ITEM_BORDER##"."</td>";
+      echo "<td>";
+      self::colorInput('menu_item_border', $this->fields['menu_item_border']);
+      echo "</td>";
+
+      echo "<td>"."##MENU_ITEM_BG_HOVER##"."</td>";
+      echo "<td>";
+      self::colorInput('menu_item_bg_hover', $this->fields['menu_item_bg_hover']);
+      echo "</td>";
+      echo "</tr>";
+
+      echo "<tr>";
       echo "<td>"."##MENU_LINK##"."</td>";
       echo "<td>";
       self::colorInput('menu_link', $this->fields['menu_link']);
+      echo "</td>";
+      
+      echo "<td>"."##MENU_ITEM_LINK##"."</td>";
+      echo "<td>";
+      self::colorInput('menu_item_link', $this->fields['menu_item_link']);
       echo "</td>";
       echo "</tr>";
 
@@ -74,7 +95,7 @@ class PluginCustomStyle extends CommonDBTM {
       echo "</td>";
       echo "</tr>";
 
-      echo "<tr><th colspan='4'>Tables</th></tr>";      
+      echo "<tr><th colspan='4'>Tables</th></tr>";
 
       echo "<tr>";
       echo "<td>"."##TH##"."</td>";
@@ -116,7 +137,6 @@ class PluginCustomStyle extends CommonDBTM {
       self::colorInput('tab_bg_3', $this->fields['tab_bg_3']);
       echo "</td>";
 
-
       echo "<td>"."##TAB_BG_4##"."</td>";
       echo "<td>";
       self::colorInput('tab_bg_4', $this->fields['tab_bg_4']);
@@ -127,6 +147,109 @@ class PluginCustomStyle extends CommonDBTM {
       echo "<td>"."##TAB_BG_5##"."</td>";
       echo "<td>";
       self::colorInput('tab_bg_5', $this->fields['tab_bg_5']);
+      echo "</td>";
+      echo "</tr>";
+
+      echo "<tr><th colspan='4'>Cadres</th></tr>";
+
+      echo "<tr>";
+      echo "<td>"."##CADRE_CENTRAL_BG1##"."</td>";
+      echo "<td>";
+      self::colorInput('cadre_central_bg1', $this->fields['cadre_central_bg1']);
+      echo "</td>";   
+
+      echo "<td>"."##CADRE_CENTRAL_BG1##"."</td>";
+      echo "<td>";
+      self::colorInput('cadre_central_bg2', $this->fields['cadre_central_bg2']);
+      echo "</td>";  
+      echo "</tr>";    
+
+
+      echo "<tr><th colspan='4'>Header</th></tr>";
+
+      echo "<tr>";
+      echo "<td>"."##HEADER_BG1##"."</td>";
+      echo "<td>";
+      self::colorInput('header_bg1', $this->fields['header_bg1']);
+      echo "</td>";       
+
+      echo "<td>"."##HEADER_BG2##"."</td>";
+      echo "<td>";
+      self::colorInput('header_bg2', $this->fields['header_bg2']);
+      echo "</td>";  
+      echo "</tr>";         
+
+      echo "<tr>";
+      echo "<td>"."##HEADER_BG3##"."</td>";
+      echo "<td>";
+      self::colorInput('header_bg3', $this->fields['header_bg3']);
+      echo "</td>";       
+
+      echo "<td>"."##HEADER_BG4##"."</td>";
+      echo "<td>";
+      self::colorInput('header_bg4', $this->fields['header_bg4']);
+      echo "</td>";  
+      echo "</tr>";
+
+      echo "<tr>";
+      echo "<td>"."##HEADER_BG5##"."</td>";
+      echo "<td>";
+      self::colorInput('header_bg5', $this->fields['header_bg5']);
+      echo "</td>";       
+
+      echo "<td>"."##HEADER_BG6##"."</td>";
+      echo "<td>";
+      self::colorInput('header_bg6', $this->fields['header_bg6']);
+      echo "</td>";  
+      echo "</tr>";    
+
+      echo "<tr><th colspan='4'>Ombres</th></tr>";
+
+      echo "<tr>";
+      echo "<td>"."##HEADER_SHADOW_COLOR##"."</td>";
+      echo "<td>";
+      self::colorInput('header_shadow_color', $this->fields['header_shadow_color']);
+      echo "</td>";
+
+      echo "<td>"."##HEADER_SHADOW_SIZE##"."</td>";
+      echo "<td>";
+      ##size input
+      echo "</td>";
+      echo "</tr>";      
+
+      echo "<tr>";
+      echo "<td>"."##PAGE_SHADOW_COLOR##"."</td>";
+      echo "<td>";
+      self::colorInput('page_shadow_color', $this->fields['page_shadow_color']);
+      echo "</td>";
+
+      echo "<td>"."##PAGE_SHADOW_SIZE##"."</td>";
+      echo "<td>";
+      ##size input
+      echo "</td>";
+      echo "</tr>";
+
+      echo "<tr>";
+      echo "<td>"."##FOOTER_SHADOW_COLOR##"."</td>";
+      echo "<td>";
+      self::colorInput('footer_shadow_color', $this->fields['footer_shadow_color']);
+      echo "</td>";
+
+      echo "<td>"."##FOOTER_SHADOW_SIZE##"."</td>";
+      echo "<td>";
+      ##size input
+      echo "</td>";
+      echo "</tr>";
+
+      echo "<tr>";
+      echo "<td>"."##FOOTER_BG1##"."</td>";
+      echo "<td>";
+      self::colorInput('footer_bg1', $this->fields['footer_bg1']);
+      echo "</td>";
+
+      echo "<td>"."##FOOTER_BG2##"."</td>";
+      echo "<td>";
+      self::colorInput('footer_bg2', $this->fields['footer_bg2']);
       echo "</td>";
       echo "</tr>";
 
@@ -164,6 +287,11 @@ JAVASCRIPT;
       body {
          background: {$this->fields['body']} !important;
       }
+
+      div#header div#c_logo {
+         background: url('".GLPI_ROOT."/plugins/custom/pics/fd_logo.png') 0 0 repeat-x;
+      }
+
       a, a:link {
          color: {$this->fields['link_color']} !important;
       }
@@ -174,10 +302,38 @@ JAVASCRIPT;
 
       ul#menu a.itemP, ul#menu a.itemP1 {
          color: {$this->fields['menu_link']} !important;
+         border-right: 1px solid {$this->fields['menu_item_border']} !important;
+      }
+
+      ul#menu ul.ssmenu {
+         background-image:none !important;
+         background-color:{$this->fields['menu_item_bg']} !important;
+         border: 1px solid {$this->fields['menu_item_border']} !important;
+      }
+
+      ul#menu ul li {
+         border-bottom: 1px solid {$this->fields['menu_item_border']} !important;
+      }
+
+      ul#menu ul li a {
+         color: {$this->fields['menu_item_link']} !important;
+      }
+
+      ul#menu ul li a:hover {
+         background-image:none !important;
+         background-color:{$this->fields['menu_item_bg_hover']} !important;
+      }
+
+      div#c_ssmenu1 {
+         background-image:none !important;
       }
 
       div#c_ssmenu1 ul li a {
          color:{$this->fields['ssmenu1_link']} !important;
+      }
+
+      div#c_ssmenu2 {
+         background-image:none !important;
       }
 
       div#c_ssmenu2 ul li a {
@@ -217,12 +373,151 @@ JAVASCRIPT;
          background-color: {$this->fields['tab_bg_5']} !important;
       }
 
+      .tab_cadre_central {
+         background:-webkit-linear-gradient(top, 
+            {$this->fields['cadre_central_bg1']}, {$this->fields['cadre_central_bg2']});
+         background:-moz-linear-gradient(top, 
+            {$this->fields['cadre_central_bg1']}, {$this->fields['cadre_central_bg2']});
+         background:-o-linear-gradient(top, 
+            {$this->fields['cadre_central_bg1']}, {$this->fields['cadre_central_bg2']});
+         background:linear-gradient(top, 
+            {$this->fields['cadre_central_bg1']}, {$this->fields['cadre_central_bg2']});
+      }
+
+      div#header {
+         -moz-box-shadow: 0px 7px 10px {$this->fields['header_shadow_color']};
+         -webkit-box-shadow: 0px 7px 10px {$this->fields['header_shadow_color']};
+         box-shadow: 0px 7px 10px {$this->fields['header_shadow_color']};
+         background: #ffffff; /* Old browsers */
+         background: -moz-linear-gradient(top,  
+            {$this->fields['header_bg1']} 0%, 
+            {$this->fields['header_bg2']} 6%, {$this->fields['header_bg3']} 20%, 
+            {$this->fields['header_bg4']} 21%, {$this->fields['header_bg4']} 41%, 
+            #ffffff 41%, #ffffff 42%, 
+            {$this->fields['header_bg5']} 42%, {$this->fields['header_bg5']} 63%, 
+            {$this->fields['header_bg6']} 64%, {$this->fields['header_bg6']} 100%
+            ); /* FF3.6+ */
+         background: -webkit-gradient(linear, left top, left bottom, 
+            color-stop(0%,{$this->fields['header_bg1']}),
+            color-stop(2%,{$this->fields['header_bg2']}), color-stop(20%,{$this->fields['header_bg3']}), 
+            color-stop(21%,{$this->fields['header_bg4']}), color-stop(41%,{$this->fields['header_bg4']}), 
+            color-stop(41%,#ffffff), color-stop(42%,#ffffff), 
+            color-stop(42%,{$this->fields['header_bg5']}), color-stop(63%,{$this->fields['header_bg5']}), 
+            color-stop(64%,{$this->fields['header_bg6']}), color-stop(100%,{$this->fields['header_bg6']})
+            ); /* Chrome,Safari4+ */
+         background: -webkit-linear-gradient(top,  
+            {$this->fields['header_bg1']} 0%,
+            {$this->fields['header_bg2']} 6%,{$this->fields['header_bg3']} 20%,
+            {$this->fields['header_bg4']} 21%,{$this->fields['header_bg4']} 41%,
+            #ffffff 41%,#ffffff 42%,
+            {$this->fields['header_bg5']} 42%,{$this->fields['header_bg5']} 63%,
+            {$this->fields['header_bg6']} 64%,{$this->fields['header_bg6']} 100%
+            ); /* Chrome10+,Safari5.1+ */
+         background: -o-linear-gradient(top,  
+            {$this->fields['header_bg1']} 0%,
+            {$this->fields['header_bg2']} 6%,{$this->fields['header_bg3']} 20%,
+            {$this->fields['header_bg4']} 21%,{$this->fields['header_bg4']} 41%,
+            #ffffff 41%,#ffffff 42%,
+            {$this->fields['header_bg5']} 42%,{$this->fields['header_bg5']} 63%,
+            {$this->fields['header_bg6']} 64%,{$this->fields['header_bg6']} 100%
+            ); /* Opera 11.10+ */
+         background: -ms-linear-gradient(top,  
+            {$this->fields['header_bg1']} 0%,
+            {$this->fields['header_bg2']} 6%,{$this->fields['header_bg3']} 20%,
+            {$this->fields['header_bg4']} 21%,{$this->fields['header_bg4']} 41%,
+            #ffffff 41%,#ffffff 42%,
+            {$this->fields['header_bg5']} 42%,{$this->fields['header_bg5']} 63%,
+            {$this->fields['header_bg6']} 64%,{$this->fields['header_bg6']} 100%
+            ); /* IE10+ */
+
+         background: linear-gradient(to bottom,  
+            #ffffff 0%,
+            {$this->fields['header_bg2']} 6%,{$this->fields['header_bg3']} 20%,
+            {$this->fields['header_bg4']} 21%,{$this->fields['header_bg4']} 41%,
+            #ffffff 41%,#ffffff 42%,
+            {$this->fields['header_bg5']} 42%, {$this->fields['header_bg5']} 63%,
+            {$this->fields['header_bg6']} 64%,{$this->fields['header_bg6']} 100%
+            ); /* W3C */
+         filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', 
+            endColorstr='{$this->fields['header_bg6']}',GradientType=0 ); /* IE6-9 */
+
+
+
+
+      }
+
+      #page {
+         -moz-box-shadow: 0px 7px 10px {$this->fields['page_shadow_color']};
+         -webkit-box-shadow: 0px 7px 10px {$this->fields['page_shadow_color']};
+         box-shadow: 0px 7px 10px {$this->fields['page_shadow_color']};
+      }      
+
+      #footer {
+         -moz-box-shadow: 0px 7px 10px {$this->fields['footer_shadow_color']};
+         -webkit-box-shadow: 0px 7px 10px {$this->fields['footer_shadow_color']};
+         box-shadow: 0px 7px 10px {$this->fields['footer_shadow_color']};
+         background:-webkit-linear-gradient(top, 
+            {$this->fields['footer_bg1']}, {$this->fields['footer_bg2']});
+         background:-moz-linear-gradient(top, 
+            {$this->fields['footer_bg1']}, {$this->fields['footer_bg2']});
+         background:-o-linear-gradient(top, 
+            {$this->fields['footer_bg1']}, {$this->fields['footer_bg2']});
+         background:linear-gradient(top, 
+            {$this->fields['footer_bg1']}, {$this->fields['footer_bg2']});
+      }  
+
+      #debug h2, #debugajax h2 {
+         border-left: 4px solid {$this->fields['menu_item_border']} !important;
+         border-bottom: 2px solid {$this->fields['menu_item_border']} !important;
+      }    
+
+      /*** TABS ***/
+      .x-tab-left {
+         background-image:none !important;
+         background-color:{$this->fields['th']} !important;
+         border-top-right-radius: 5px;
+         /*border-color:black;
+         border-width:1px 0 0 0;
+         border-style:solid
+         margin-top: -1px;*/
+      }
+
+      .x-tab-right {
+         background-image:none !important;
+         background-color:{$this->fields['th']} !important;
+         border-top-left-radius: 5px;
+         border-top-right-radius: 5px;
+         border-color:black;
+         border-width:1px 1px 0 1px;
+         border-style:solid
+      }
+
+      .x-tab-strip-inner {
+         background-image:none !important;
+         background-color:{$this->fields['th']} !important;
+      }
+
+
+      .x-tab-strip-inner {
+background: {$this->fields['th']};
+background: -moz-linear-gradient(top, {$this->fields['th']} 0%, #ffffff 100%) !important;
+background: -webkit-linear-gradient(top, {$this->fields['th']} 0%, #ffffff 100%) !important;
+background: -o-linear-gradient(top, {$this->fields['th']} 0%, #ffffff 100%) !important;
+background: -ms-linear-gradient(top, {$this->fields['th']} 0%, #ffffff 100%) !important;
+background: linear-gradient(to bottom, {$this->fields['th']} 0%, #ffffff 100%) !important;
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='{$this->fields['th']}', endColorstr='#ffffff',GradientType=0 ) !important;
+      }
+
+      .x-tab-strip-active .x-tab-right, 
+      .x-tab-strip-active .x-tab-left,
+      .x-tab-strip-active .x-tab-strip-inner {
+         background:-webkit-linear-gradient(top, #FFF, {$this->fields['th']}) !important;
+         background:-moz-linear-gradient(top, #FFF, {$this->fields['th']}) !important;
+         background:-o-linear-gradient(top, #FFF, {$this->fields['th']}) !important;
+         background:linear-gradient(top, #FFF, {$this->fields['th']}) !important;
+      }
       ";
       return file_put_contents(CUSTOM_FILES_DIR."glpi_style.css", $CSS);
-   }
-
-   function post_addItem() {
-      $this->post_updateItem();
    }
 
    static function getSingle() {
