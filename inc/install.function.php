@@ -40,6 +40,7 @@ function plugin_custom_install() {
          `menu_link` VARCHAR(7) NOT NULL DEFAULT '#000000',
          `ssmenu1_link` VARCHAR(7) NOT NULL DEFAULT '#666666',
          `ssmenu2_link` VARCHAR(7) NOT NULL DEFAULT '#000000',
+         `menu_border` VARCHAR(7) NOT NULL DEFAULT '#9BA563',
          `menu_item_bg` VARCHAR(7) NOT NULL DEFAULT '#f1e7c2',
          `menu_item_link` VARCHAR(7) NOT NULL DEFAULT '#000000',
          `menu_item_border` VARCHAR(7) NOT NULL DEFAULT '#CC9900',
@@ -63,8 +64,12 @@ function plugin_custom_install() {
          `footer_shadow_color` VARCHAR(7) NOT NULL DEFAULT '#011E3A',
          `footer_bg1` VARCHAR(7) NOT NULL DEFAULT '#FFFFFF',
          `footer_bg2` VARCHAR(7) NOT NULL DEFAULT '#e2cf83',
-         `cadre_central_bg1` VARCHAR(7) NOT NULL DEFAULT '#f2eaca',
+         `cadre_central_bg1` VARCHAR(7) NOT NULL DEFAULT '#e8dab0',
          `cadre_central_bg2` VARCHAR(7) NOT NULL DEFAULT '#FFFFFF',
+         `tabs_bg1` VARCHAR(7) NOT NULL DEFAULT '#fcfcfa',
+         `tabs_bg2` VARCHAR(7) NOT NULL DEFAULT '#ddddc8',
+         `tabs_border` VARCHAR(7) NOT NULL DEFAULT '#909058',
+         `tabs_title_color` VARCHAR(7) NOT NULL DEFAULT '#659900',
          PRIMARY KEY (`id`)
       ) ENGINE = MYISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;";
       $DB->query($query);

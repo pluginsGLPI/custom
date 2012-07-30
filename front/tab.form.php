@@ -10,7 +10,7 @@ if (isset($_POST['itemtype']) && isset($_POST['tab']) && isset($_POST['color'])
    && (isset($_POST["add"]) || isset($_POST["update"]))) {
    $obj = new $_POST['itemtype'];
    $obj->fields['id'] = 1;
-   if ($itemtype == "ticket") {
+   if ($_POST['itemtype'] == "ticket") {
       $obj->fields['status'] = "closed";
    }
 

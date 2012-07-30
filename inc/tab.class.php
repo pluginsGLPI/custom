@@ -74,13 +74,13 @@ class PluginCustomTab extends CommonDBTM
 
       if ($color != "deleted") {
          $out = "<ul class='x-tab-strip x-tab-strip-top'>";
-         $out .= "<li class=''>";
+         $out .= "<li class='custom_heading'>";
             $out .= "<a class='x-tab-strip-close'></a>";
-            $out .= "<a class='x-tab-right right-colored-".$color."' href='#'>";
-            $out .= "<em class='x-tab-left left-colored-".$color."'>";
-               $out .= "<span class='x-tab-strip-inner inner-colored-".$color."'>";
+            $out .= "<a class='x-tab-right right-colored-$color' href='#'>";
+            $out .= "<em class='x-tab-left left-colored-$color'>";
+               $out .= "<span class='x-tab-strip-inner inner-colored-$color'>";
                   $out .= "<span class='x-tab-strip-text'>";
-                     $out .= "<span class='nm_headings'>".
+                     $out .= "<span class='nm_headings custom_headings-$color'>".
                         $LANG['plugin_custom']['form'][0]."</span>";
                   $out .= "</span>";
                $out .= "</span>";

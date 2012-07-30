@@ -8,6 +8,7 @@ if (!plugin_custom_haveRight('view_color', 1)) exit();
 if ($plugin->isInstalled("custom") && $plugin->isActivated("custom")) {
    echo "Ext.onReady(function() {\n
       if (typeof tabpanel !== 'undefined' ) {
+         Ext.select('.x-tab-strip > li').toggleClass('custom_heading_none');
       ";
 
       $itemtype = PluginCustomTab::getItemtype();
@@ -25,10 +26,12 @@ if ($plugin->isInstalled("custom") && $plugin->isActivated("custom")) {
                var extcomp = tabpanel.id;
 
                Ext.select('#'+extcomp+'__".$tab."').toggleClass('$color');
+               Ext.select('#'+extcomp+'__".$tab."').toggleClass('custom_heading');
+               Ext.select('#'+extcomp+'__".$tab."').toggleClass('custom_heading_none');
                Ext.select('#'+extcomp+'__".$tab." .x-tab-right').addClass('right-colored-$color');
                Ext.select('#'+extcomp+'__".$tab." .x-tab-left').addClass('left-colored-$color');
                Ext.select('#'+extcomp+'__".$tab." .x-tab-strip-inner').addClass('inner-colored-$color');
-               Ext.select('#'+extcomp+'__".$tab." .x-tab-strip-text').addClass('nm_headings-$color');
+               Ext.select('#'+extcomp+'__".$tab." .x-tab-strip-text').addClass('custom_headings-$color');
             ";
          } else {
             echo "Ext.select('#'+tabpanel.id+'__".$tab."').remove();";

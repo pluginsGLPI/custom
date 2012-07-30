@@ -45,52 +45,52 @@ div.custom_clear {
 .preview-tabs .clear {clear:both;}
 .preview-tabs .picto_del {margin-left:10px;}
 
-.nm_headings,
-.nm_headings-red,
-.nm_headings-green,
-.nm_headings-blue,
-.nm_headings-black {color:white !important}
-.nm_headings-white, .inner-colored-white .nm_headings {color:black !important}
+.custom_headings,
+.custom_headings-red,
+.custom_headings-green,
+.custom_headings-blue,
+.custom_headings-black {color:white !important}
+.custom_headings-white, .inner-colored-white .custom_headings {color:black !important}
 
-.x-tab-strip-top  .x-tab-right {
-/*background-color:transparent !important;
-background-repeat:no-repeat !important;*/
+.custom_headings .x-tab-strip-top  .x-tab-right {
+background-color:transparent !important;
+background-repeat:no-repeat !important;
 background-position:0 -51px !important;
 background-attachment:scroll !important;
 }
 
-.x-tab-strip-top  .x-tab-left {
-/*background-color:transparent !important;
-background-repeat:no-repeat !important;*/
+.custom_headings .x-tab-strip-top  .x-tab-left {
+background-color:transparent !important;
+background-repeat:no-repeat !important;
 background-position:100% -351px !important;
 background-attachment:scroll !important;
 }
 
-.x-tab-strip-top .x-tab-strip-inner {
-/*background-color:transparent !important;
-background-repeat:repeat-x !important;*/
+.custom_headings .x-tab-strip-top .x-tab-strip-inner {
+background-color:transparent !important;
+background-repeat:repeat-x !important;
 background-position:0 -201px !important;
 background-attachment:scroll !important;
 }
 
 .right-colored-red,
 .left-colored-red ,
-.inner-colored-red {background: url("pics/red.gif") !important;}
+.inner-colored-red {background-image: url("pics/red.gif") !important;}
 
 .right-colored-green,
 .left-colored-green ,
-.inner-colored-green {background: url("pics/green.gif") !important;}
+.inner-colored-green {background-image: url("pics/green.gif") !important;}
 
 .right-colored-blue,
 .left-colored-blue,
-.inner-colored-blue {background: url("pics/blue.gif") !important;}
+.inner-colored-blue {background-image: url("pics/blue.gif") !important;}
 
 .right-colored-white,
 .left-colored-white,
-.inner-colored-white {background: url("pics/white.gif") !important;}
+.inner-colored-white {background-image: url("pics/white.gif") !important;}
 
 .right-colored-black,
 .left-colored-black,
-.inner-colored-black {background: url("pics/black.gif") !important;}
+.inner-colored-black {background-image: url("pics/black.gif") !important;}
 
 

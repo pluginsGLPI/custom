@@ -53,6 +53,10 @@ class PluginCustomStyle extends CommonDBTM {
       echo "<tr><th colspan='4'>Menu</th></tr>";
 
       echo "<tr>";
+      echo "<td>"."##MENU_BORDER##"."</td>";
+      echo "<td>";
+      self::colorInput('menu_border', $this->fields['menu_border']);
+      echo "</td>";
       echo "<td>"."##MENU_ITEM_BG##"."</td>";
       echo "<td>";
       self::colorInput('menu_item_bg', $this->fields['menu_item_bg']);
@@ -161,6 +165,32 @@ class PluginCustomStyle extends CommonDBTM {
       echo "<td>"."##CADRE_CENTRAL_BG1##"."</td>";
       echo "<td>";
       self::colorInput('cadre_central_bg2', $this->fields['cadre_central_bg2']);
+      echo "</td>";  
+      echo "</tr>";    
+
+      echo "<tr><th colspan='4'>Onglets</th></tr>";
+
+      echo "<tr>";
+      echo "<td>"."##TABS_BG1##"."</td>";
+      echo "<td>";
+      self::colorInput('tabs_bg1', $this->fields['tabs_bg1']);
+      echo "</td>";   
+
+      echo "<td>"."##TABS_BG2##"."</td>";
+      echo "<td>";
+      self::colorInput('tabs_bg2', $this->fields['tabs_bg2']);
+      echo "</td>";  
+      echo "</tr>";  
+
+      echo "<tr>";
+      echo "<td>"."##TABS_BORDER##"."</td>";
+      echo "<td>";
+      self::colorInput('tabs_border', $this->fields['tabs_border']);
+      echo "</td>";  
+
+      echo "<td>"."##TABS_TITLE_COLOR##"."</td>";
+      echo "<td>";
+      self::colorInput('tabs_title_color', $this->fields['tabs_title_color']);
       echo "</td>";  
       echo "</tr>";    
 
@@ -302,7 +332,7 @@ JAVASCRIPT;
 
       ul#menu a.itemP, ul#menu a.itemP1 {
          color: {$this->fields['menu_link']} !important;
-         border-right: 1px solid {$this->fields['menu_item_border']} !important;
+         border-right: 1px solid {$this->fields['menu_border']} !important;
       }
 
       ul#menu ul.ssmenu {
@@ -472,49 +502,52 @@ JAVASCRIPT;
       }    
 
       /*** TABS ***/
-      .x-tab-left {
-         background-image:none !important;
-         background-color:{$this->fields['th']} !important;
-         border-top-right-radius: 5px;
-         /*border-color:black;
-         border-width:1px 0 0 0;
-         border-style:solid
-         margin-top: -1px;*/
+
+      .custom_heading_none .x-tab-strip span.x-tab-strip-text {
+         color:{$this->fields['tabs_title_color']}
       }
 
-      .x-tab-right {
+      .custom_heading_none .x-tab-left {
          background-image:none !important;
-         background-color:{$this->fields['th']} !important;
-         border-top-left-radius: 5px;
-         border-top-right-radius: 5px;
-         border-color:black;
+         border-top-right-radius: 4px;
+      }
+
+      .custom_heading_none .x-tab-right {
+         background-image:none !important;
+         border-top-left-radius: 4px;
+         border-top-right-radius: 4px;
+         border-color:{$this->fields['tabs_border']};
          border-width:1px 1px 0 1px;
-         border-style:solid
+         border-style:solid;
       }
 
-      .x-tab-strip-inner {
+      .custom_heading_none .x-tab-strip-active .x-tab-right {
+         border-style:solid;
+         border-width:1px 1px 0 1px;
+      }
+
+
+      .custom_heading_none .x-tab-strip-inner, 
+      .custom_heading_none .x-tab-right, 
+      .custom_heading_none .x-tab-left {
          background-image:none !important;
-         background-color:{$this->fields['th']} !important;
+         background-position:top !important;
+         background-color: {$this->fields['tabs_bg2']} !important;
+         background: -moz-linear-gradient(top, {$this->fields['tabs_bg2']}   0%, {$this->fields['tabs_bg1']} 100%) !important;
+         background: -webkit-linear-gradient(top, {$this->fields['tabs_bg2']} 0%, {$this->fields['tabs_bg1']} 100%) !important;
+         background: -o-linear-gradient(top, {$this->fields['tabs_bg2']} 0%, {$this->fields['tabs_bg1']} 100%) !important;
+         background: -ms-linear-gradient(top, {$this->fields['tabs_bg2']} 0%, {$this->fields['tabs_bg1']} 100%) !important;
+         background: linear-gradient(to bottom, {$this->fields['tabs_bg2']} 0%, {$this->fields['tabs_bg1']} 100%) !important;
+         filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='{$this->fields['tabs_bg2']}', endColorstr='{$this->fields['tabs_bg1']}',GradientType=0 ) !important;
       }
 
-
-      .x-tab-strip-inner {
-background: {$this->fields['th']};
-background: -moz-linear-gradient(top, {$this->fields['th']} 0%, #ffffff 100%) !important;
-background: -webkit-linear-gradient(top, {$this->fields['th']} 0%, #ffffff 100%) !important;
-background: -o-linear-gradient(top, {$this->fields['th']} 0%, #ffffff 100%) !important;
-background: -ms-linear-gradient(top, {$this->fields['th']} 0%, #ffffff 100%) !important;
-background: linear-gradient(to bottom, {$this->fields['th']} 0%, #ffffff 100%) !important;
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='{$this->fields['th']}', endColorstr='#ffffff',GradientType=0 ) !important;
-      }
-
-      .x-tab-strip-active .x-tab-right, 
-      .x-tab-strip-active .x-tab-left,
-      .x-tab-strip-active .x-tab-strip-inner {
-         background:-webkit-linear-gradient(top, #FFF, {$this->fields['th']}) !important;
-         background:-moz-linear-gradient(top, #FFF, {$this->fields['th']}) !important;
-         background:-o-linear-gradient(top, #FFF, {$this->fields['th']}) !important;
-         background:linear-gradient(top, #FFF, {$this->fields['th']}) !important;
+      .custom_heading_none.x-tab-strip-active .x-tab-right, 
+      .custom_heading_none.x-tab-strip-active .x-tab-left,
+      .custom_heading_none.x-tab-strip-active .x-tab-strip-inner {
+         background:-webkit-linear-gradient(top, {$this->fields['tabs_bg1']}, {$this->fields['tabs_bg2']}) !important;
+         background:-moz-linear-gradient(top, {$this->fields['tabs_bg1']}, {$this->fields['tabs_bg2']}) !important;
+         background:-o-linear-gradient(top, {$this->fields['tabs_bg1']}, {$this->fields['tabs_bg2']}) !important;
+         background:linear-gradient(top, {$this->fields['tabs_bg1']}, {$this->fields['tabs_bg2']}) !important;
       }
       ";
       return file_put_contents(CUSTOM_FILES_DIR."glpi_style.css", $CSS);
