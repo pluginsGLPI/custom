@@ -180,6 +180,13 @@ class PluginCustomStyle extends CommonDBTM {
       echo "<td>";
       self::colorInput('tabs_bg2', $this->fields['tabs_bg2']);
       echo "</td>";  
+      echo "</tr>";
+
+      echo "<tr>";
+      echo "<td>"."##TABS_BG3##"."</td>";
+      echo "<td>";
+      self::colorInput('tabs_bg3', $this->fields['tabs_bg3']);
+      echo "</td>";    
       echo "</tr>";  
 
       echo "<tr>";
@@ -421,54 +428,49 @@ JAVASCRIPT;
          background: #ffffff; /* Old browsers */
          background: -moz-linear-gradient(top,  
             {$this->fields['header_bg1']} 0%, 
-            {$this->fields['header_bg2']} 6%, {$this->fields['header_bg3']} 20%, 
-            {$this->fields['header_bg4']} 21%, {$this->fields['header_bg4']} 41%, 
-            #ffffff 41%, #ffffff 42%, 
-            {$this->fields['header_bg5']} 42%, {$this->fields['header_bg5']} 63%, 
-            {$this->fields['header_bg6']} 64%, {$this->fields['header_bg6']} 100%
+            {$this->fields['header_bg2']} 2%, {$this->fields['header_bg3']} 20%, 
+            {$this->fields['header_bg4']} 21%, {$this->fields['header_bg4']} 40%, 
+            {$this->fields['header_bg5']} 40%, {$this->fields['header_bg5']} 63%, 
+            {$this->fields['header_bg6']} 65%, {$this->fields['header_bg6']} 99%
             ); /* FF3.6+ */
          background: -webkit-gradient(linear, left top, left bottom, 
             color-stop(0%,{$this->fields['header_bg1']}),
-            color-stop(2%,{$this->fields['header_bg2']}), color-stop(20%,{$this->fields['header_bg3']}), 
-            color-stop(21%,{$this->fields['header_bg4']}), color-stop(41%,{$this->fields['header_bg4']}), 
-            color-stop(41%,#ffffff), color-stop(42%,#ffffff), 
-            color-stop(42%,{$this->fields['header_bg5']}), color-stop(63%,{$this->fields['header_bg5']}), 
-            color-stop(64%,{$this->fields['header_bg6']}), color-stop(100%,{$this->fields['header_bg6']})
+            color-stop(1%,{$this->fields['header_bg2']}), color-stop(20%,{$this->fields['header_bg3']}), 
+            color-stop(21%,{$this->fields['header_bg4']}), color-stop(40%,{$this->fields['header_bg4']}), 
+            color-stop(40%,{$this->fields['header_bg5']}), color-stop(63%,{$this->fields['header_bg5']}), 
+            color-stop(65%,{$this->fields['header_bg6']}), color-stop(99%,{$this->fields['header_bg6']})
             ); /* Chrome,Safari4+ */
          background: -webkit-linear-gradient(top,  
             {$this->fields['header_bg1']} 0%,
-            {$this->fields['header_bg2']} 6%,{$this->fields['header_bg3']} 20%,
-            {$this->fields['header_bg4']} 21%,{$this->fields['header_bg4']} 41%,
-            #ffffff 41%,#ffffff 42%,
-            {$this->fields['header_bg5']} 42%,{$this->fields['header_bg5']} 63%,
-            {$this->fields['header_bg6']} 64%,{$this->fields['header_bg6']} 100%
+            {$this->fields['header_bg2']} 2%,{$this->fields['header_bg3']} 20%,
+            {$this->fields['header_bg4']} 21%,{$this->fields['header_bg4']} 40%,
+            {$this->fields['header_bg5']} 40%,{$this->fields['header_bg5']} 63%,
+            {$this->fields['header_bg6']} 65%,{$this->fields['header_bg6']} 99%
             ); /* Chrome10+,Safari5.1+ */
          background: -o-linear-gradient(top,  
             {$this->fields['header_bg1']} 0%,
-            {$this->fields['header_bg2']} 6%,{$this->fields['header_bg3']} 20%,
-            {$this->fields['header_bg4']} 21%,{$this->fields['header_bg4']} 41%,
-            #ffffff 41%,#ffffff 42%,
-            {$this->fields['header_bg5']} 42%,{$this->fields['header_bg5']} 63%,
-            {$this->fields['header_bg6']} 64%,{$this->fields['header_bg6']} 100%
+            {$this->fields['header_bg2']} 2%,{$this->fields['header_bg3']} 20%,
+            {$this->fields['header_bg4']} 21%,{$this->fields['header_bg4']} 40%,
+            {$this->fields['header_bg5']} 40%,{$this->fields['header_bg5']} 63%,
+            {$this->fields['header_bg6']} 65%,{$this->fields['header_bg6']} 99%
             ); /* Opera 11.10+ */
          background: -ms-linear-gradient(top,  
             {$this->fields['header_bg1']} 0%,
-            {$this->fields['header_bg2']} 6%,{$this->fields['header_bg3']} 20%,
-            {$this->fields['header_bg4']} 21%,{$this->fields['header_bg4']} 41%,
-            #ffffff 41%,#ffffff 42%,
-            {$this->fields['header_bg5']} 42%,{$this->fields['header_bg5']} 63%,
-            {$this->fields['header_bg6']} 64%,{$this->fields['header_bg6']} 100%
+            {$this->fields['header_bg2']} 2%,{$this->fields['header_bg3']} 20%,
+            {$this->fields['header_bg4']} 21%,{$this->fields['header_bg4']} 40%,
+            {$this->fields['header_bg5']} 40%,{$this->fields['header_bg5']} 63%,
+            {$this->fields['header_bg6']} 65%,{$this->fields['header_bg6']} 99%
             ); /* IE10+ */
 
          background: linear-gradient(to bottom,  
             #ffffff 0%,
-            {$this->fields['header_bg2']} 6%,{$this->fields['header_bg3']} 20%,
-            {$this->fields['header_bg4']} 21%,{$this->fields['header_bg4']} 41%,
-            #ffffff 41%,#ffffff 42%,
-            {$this->fields['header_bg5']} 42%, {$this->fields['header_bg5']} 63%,
-            {$this->fields['header_bg6']} 64%,{$this->fields['header_bg6']} 100%
+            {$this->fields['header_bg2']} 2%,{$this->fields['header_bg3']} 20%,
+            {$this->fields['header_bg4']} 21%,{$this->fields['header_bg4']} 40%,
+            {$this->fields['header_bg5']} 40%, {$this->fields['header_bg5']} 63%,
+            {$this->fields['header_bg6']} 65%,{$this->fields['header_bg6']} 99%
             ); /* W3C */
-         filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', 
+         filter: progid:DXImageTransform.Microsoft.gradient( 
+            startColorstr='$this->fields['header_bg2']', 
             endColorstr='{$this->fields['header_bg6']}',GradientType=0 ); /* IE6-9 */
 
 
@@ -519,6 +521,10 @@ JAVASCRIPT;
          border-color:{$this->fields['tabs_border']};
          border-width:1px 1px 0 1px;
          border-style:solid;
+         border-top: 1px solid white;
+         box-shadow: 0 -1px 0 {$this->fields['tabs_border']};
+         margin-top: 1px;
+         border-top: 1px solid {$this->fields['tabs_border']}\9; /* IE HACK */
       }
 
       .custom_heading_none .x-tab-strip-active .x-tab-right {
@@ -533,11 +539,21 @@ JAVASCRIPT;
          background-image:none !important;
          background-position:top !important;
          background-color: {$this->fields['tabs_bg2']} !important;
-         background: -moz-linear-gradient(top, {$this->fields['tabs_bg2']}   0%, {$this->fields['tabs_bg1']} 100%) !important;
-         background: -webkit-linear-gradient(top, {$this->fields['tabs_bg2']} 0%, {$this->fields['tabs_bg1']} 100%) !important;
-         background: -o-linear-gradient(top, {$this->fields['tabs_bg2']} 0%, {$this->fields['tabs_bg1']} 100%) !important;
-         background: -ms-linear-gradient(top, {$this->fields['tabs_bg2']} 0%, {$this->fields['tabs_bg1']} 100%) !important;
-         background: linear-gradient(to bottom, {$this->fields['tabs_bg2']} 0%, {$this->fields['tabs_bg1']} 100%) !important;
+         background: -moz-linear-gradient(top, {$this->fields['tabs_bg3']} 0%, {$this->fields['tabs_bg2']} 100%) !important;
+         background: -webkit-linear-gradient(top, {$this->fields['tabs_bg3']} 0%, {$this->fields['tabs_bg2']} 100%) !important;
+         background: -o-linear-gradient(top, {$this->fields['tabs_bg3']} 0%, {$this->fields['tabs_bg2']} 100%) !important;
+         background: -ms-linear-gradient(top, {$this->fields['tabs_bg3']} 0%, {$this->fields['tabs_bg2']} 100%) !important;
+         background: linear-gradient(top bottom, {$this->fields['tabs_bg3']} 0%, {$this->fields['tabs_bg2']} 100%) !important;
+         filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='{$this->fields['tabs_bg3']}', endColorstr='{$this->fields['tabs_bg2']}',GradientType=0 ) !important;
+      }
+
+      .custom_heading_none.x-tab-strip-over .x-tab-right, 
+      .custom_heading_none.x-tab-strip-over .x-tab-left,
+      .custom_heading_none.x-tab-strip-over .x-tab-strip-inner {
+         background:-webkit-linear-gradient(top, {$this->fields['tabs_bg2']}, {$this->fields['tabs_bg1']}) !important;
+         background:-moz-linear-gradient(top, {$this->fields['tabs_bg2']}, {$this->fields['tabs_bg1']}) !important;
+         background:-o-linear-gradient(top, {$this->fields['tabs_bg2']}, {$this->fields['tabs_bg1']}) !important;
+         background:linear-gradient(top, {$this->fields['tabs_bg2']}, {$this->fields['tabs_bg1']}) !important;
          filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='{$this->fields['tabs_bg2']}', endColorstr='{$this->fields['tabs_bg1']}',GradientType=0 ) !important;
       }
 
@@ -548,6 +564,7 @@ JAVASCRIPT;
          background:-moz-linear-gradient(top, {$this->fields['tabs_bg1']}, {$this->fields['tabs_bg2']}) !important;
          background:-o-linear-gradient(top, {$this->fields['tabs_bg1']}, {$this->fields['tabs_bg2']}) !important;
          background:linear-gradient(top, {$this->fields['tabs_bg1']}, {$this->fields['tabs_bg2']}) !important;
+         filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='{$this->fields['tabs_bg1']}', endColorstr='{$this->fields['tabs_bg2']}',GradientType=0 ) !important;
       }
       ";
       return file_put_contents(CUSTOM_FILES_DIR."glpi_style.css", $CSS);

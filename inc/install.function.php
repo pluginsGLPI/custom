@@ -68,6 +68,7 @@ function plugin_custom_install() {
          `cadre_central_bg2` VARCHAR(7) NOT NULL DEFAULT '#FFFFFF',
          `tabs_bg1` VARCHAR(7) NOT NULL DEFAULT '#fcfcfa',
          `tabs_bg2` VARCHAR(7) NOT NULL DEFAULT '#ddddc8',
+         `tabs_bg3` VARCHAR(7) NOT NULL DEFAULT '#cfcfb2',
          `tabs_border` VARCHAR(7) NOT NULL DEFAULT '#909058',
          `tabs_title_color` VARCHAR(7) NOT NULL DEFAULT '#659900',
          PRIMARY KEY (`id`)
