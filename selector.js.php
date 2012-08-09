@@ -3,10 +3,7 @@
 define('GLPI_ROOT', '../..');
 include (GLPI_ROOT."/inc/includes.php");
 
-header("Expires: Mon, 26 Nov 1962 00:00:00 GMT");
-header('Pragma: private'); /// IE BUG + SSL
-header('Cache-control: private, must-revalidate'); /// IE BUG + SSL
-header("Content-disposition: filename='selector.js.php'");
+//change mimetype
 header("Content-type: application/javascript");
 
 if (!plugin_custom_haveRight('view_color', 1)) exit();
