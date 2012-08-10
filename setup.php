@@ -11,46 +11,48 @@ function plugin_init_custom() {
    $menu_entry   = "front/config.php";
    if (!isset($_SESSION['glpiactiveprofile']['config']) 
       || $_SESSION['glpiactiveprofile']['config'] != "w") $menu_entry  = false;
-   $PLUGIN_HOOKS['menu_entry']['custom'] = $menu_entry;
-
+   $PLUGIN_HOOKS['menu_entry']['custom']  = $menu_entry;
+   
    $PLUGIN_HOOKS['config_page']['custom'] = $menu_entry;
 
    $PLUGIN_HOOKS['submenu_entry']['custom']['options']['tab'] = array(
       'title' => $LANG['plugin_custom']['title'][0],
-      'page' =>'/plugins/custom/front/tab.php',
+      'page'  =>'/plugins/custom/front/tab.php',
       'links' => array(
-         'search'=> '/plugins/custom/front/tab.php',
-         'add' =>'/plugins/custom/front/tab.form.php'
+         'search' => '/plugins/custom/front/tab.php',
+         'add'    =>'/plugins/custom/front/tab.form.php'
    ));
    $PLUGIN_HOOKS['submenu_entry']['custom']['options']['defaulttab'] = array(
       'title' => $LANG['plugin_custom']['title'][1],
-      'page' =>'/plugins/custom/front/defaulttab.php',
+      'page'  =>'/plugins/custom/front/defaulttab.php',
       'links' => array(
-         'search'=> '/plugins/custom/front/defaulttab.php',
-         'add' =>'/plugins/custom/front/defaulttab.form.php'
+         'search' => '/plugins/custom/front/defaulttab.php',
+         'add'    =>'/plugins/custom/front/defaulttab.form.php'
    ));   
    $PLUGIN_HOOKS['submenu_entry']['custom']['options']['style'] = array(
       'title' => $LANG['plugin_custom']['title'][2],
-      'page' =>'/plugins/custom/front/style.form.php',
+      'page'  =>'/plugins/custom/front/style.form.php',
       'links' => array(
-         'search'=> '/plugins/custom/front/style.form.php',
-         'add' =>'/plugins/custom/front/style.form.php'
+         'search' => '/plugins/custom/front/style.form.php',
+         'add'    =>'/plugins/custom/front/style.form.php'
    ));
-
-   $PLUGIN_HOOKS['helpdesk_menu_entry']['custom'] = false;
-
-   $PLUGIN_HOOKS['add_javascript']['custom'][] = 'selector.js.php';
-   $PLUGIN_HOOKS['add_javascript']['custom'][] = 'lib/colortools/ext.ux.color3.js';
-
-   $PLUGIN_HOOKS['add_css']['custom'][]        = 'lib/colortools/ext.ux.color3.css';
-   $PLUGIN_HOOKS['add_css']['custom'][]        = '../../files/_plugins/custom/glpi_style.css';
-   $PLUGIN_HOOKS['add_css']['custom'][]        = 'style.css';
    
-
-   $PLUGIN_HOOKS['change_profile']['custom'] = array('PluginCustomProfile','changeProfile');
-
-   $PLUGIN_HOOKS['headings']['custom'] = 'plugin_get_headings_custom';
-   $PLUGIN_HOOKS['headings_action']['custom'] = 'plugin_headings_actions_custom';
+   $PLUGIN_HOOKS['helpdesk_menu_entry']['custom'] = false;
+   
+   $PLUGIN_HOOKS['add_javascript']['custom'][]    = 'selector.js.php';
+   $PLUGIN_HOOKS['add_javascript']['custom'][]    = 'lib/colortools/ext.ux.color3.js';
+   
+   $PLUGIN_HOOKS['add_css']['custom'][]           = 'lib/colortools/ext.ux.color3.css';
+   $PLUGIN_HOOKS['add_css']['custom'][]           = '../../files/_plugins/custom/glpi_style.css';
+   $PLUGIN_HOOKS['add_css']['custom'][]           = 'style.css';
+   
+   
+   $PLUGIN_HOOKS['change_profile']['custom']      = array('PluginCustomProfile','changeProfile');
+   
+   $PLUGIN_HOOKS['headings']['custom']            = 'plugin_get_headings_custom';
+   $PLUGIN_HOOKS['headings_action']['custom']     = 'plugin_headings_actions_custom';
+   
+   $PLUGIN_HOOKS['csrf_compliant']['custom']      = true;
 
 }
 
