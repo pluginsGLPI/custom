@@ -442,10 +442,14 @@ JAVASCRIPT;
             ); /* FF3.6+ */
          background: -webkit-gradient(linear, left top, left bottom, 
             color-stop(0%,{$this->fields['header_bg1']}),
-            color-stop(1%,{$this->fields['header_bg2']}), color-stop(20%,{$this->fields['header_bg3']}), 
-            color-stop(21%,{$this->fields['header_bg4']}), color-stop(40%,{$this->fields['header_bg4']}), 
-            color-stop(40%,{$this->fields['header_bg5']}), color-stop(63%,{$this->fields['header_bg5']}), 
-            color-stop(65%,{$this->fields['header_bg6']}), color-stop(99%,{$this->fields['header_bg6']})
+            color-stop(
+               1%,{$this->fields['header_bg2']}), color-stop(20%,{$this->fields['header_bg3']}), 
+            color-stop(
+               21%,{$this->fields['header_bg4']}), color-stop(40%,{$this->fields['header_bg4']}), 
+            color-stop(
+               40%,{$this->fields['header_bg5']}), color-stop(63%,{$this->fields['header_bg5']}), 
+            color-stop(
+               65%,{$this->fields['header_bg6']}), color-stop(99%,{$this->fields['header_bg6']})
             ); /* Chrome,Safari4+ */
          background: -webkit-linear-gradient(top,  
             {$this->fields['header_bg1']} 0%,
@@ -477,12 +481,8 @@ JAVASCRIPT;
             {$this->fields['header_bg6']} 65%,{$this->fields['header_bg6']} 99%
             ); /* W3C */
          filter: progid:DXImageTransform.Microsoft.gradient( 
-            startColorstr='$this->fields['header_bg2']', 
+            startColorstr='{$this->fields['header_bg2']}', 
             endColorstr='{$this->fields['header_bg6']}',GradientType=0 ); /* IE6-9 */
-
-
-
-
       }
 
       #page {
@@ -546,32 +546,51 @@ JAVASCRIPT;
          background-image:none !important;
          background-position:top !important;
          background-color: {$this->fields['tabs_bg2']} !important;
-         background: -moz-linear-gradient(top, {$this->fields['tabs_bg3']} 0%, {$this->fields['tabs_bg2']} 100%) !important;
-         background: -webkit-linear-gradient(top, {$this->fields['tabs_bg3']} 0%, {$this->fields['tabs_bg2']} 100%) !important;
-         background: -o-linear-gradient(top, {$this->fields['tabs_bg3']} 0%, {$this->fields['tabs_bg2']} 100%) !important;
-         background: -ms-linear-gradient(top, {$this->fields['tabs_bg3']} 0%, {$this->fields['tabs_bg2']} 100%) !important;
-         background: linear-gradient(top bottom, {$this->fields['tabs_bg3']} 0%, {$this->fields['tabs_bg2']} 100%) !important;
-         filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='{$this->fields['tabs_bg3']}', endColorstr='{$this->fields['tabs_bg2']}',GradientType=0 ) !important;
+         background: -moz-linear-gradient(
+            top, {$this->fields['tabs_bg3']} 0%, {$this->fields['tabs_bg2']} 100%) !important;
+         background: -webkit-linear-gradient(
+            top, {$this->fields['tabs_bg3']} 0%, {$this->fields['tabs_bg2']} 100%) !important;
+         background: -o-linear-gradient(
+            top, {$this->fields['tabs_bg3']} 0%, {$this->fields['tabs_bg2']} 100%) !important;
+         background: -ms-linear-gradient(
+            top, {$this->fields['tabs_bg3']} 0%, {$this->fields['tabs_bg2']} 100%) !important;
+         background: linear-gradient(
+            top bottom,{$this->fields['tabs_bg3']} 0%, {$this->fields['tabs_bg2']} 100%) !important;
+         filter: progid:DXImageTransform.Microsoft.gradient(
+            startColorstr='{$this->fields['tabs_bg3']}', 
+            endColorstr='{$this->fields['tabs_bg2']}',GradientType=0 ) !important;
       }
 
       .custom_heading_none.x-tab-strip-over .x-tab-right, 
       .custom_heading_none.x-tab-strip-over .x-tab-left,
       .custom_heading_none.x-tab-strip-over .x-tab-strip-inner {
-         background:-webkit-linear-gradient(top, {$this->fields['tabs_bg2']}, {$this->fields['tabs_bg1']}) !important;
-         background:-moz-linear-gradient(top, {$this->fields['tabs_bg2']}, {$this->fields['tabs_bg1']}) !important;
-         background:-o-linear-gradient(top, {$this->fields['tabs_bg2']}, {$this->fields['tabs_bg1']}) !important;
-         background:linear-gradient(top, {$this->fields['tabs_bg2']}, {$this->fields['tabs_bg1']}) !important;
-         filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='{$this->fields['tabs_bg2']}', endColorstr='{$this->fields['tabs_bg1']}',GradientType=0 ) !important;
+         background:-webkit-linear-gradient(
+            top, {$this->fields['tabs_bg2']}, {$this->fields['tabs_bg1']}) !important;
+         background:-moz-linear-gradient(
+            top, {$this->fields['tabs_bg2']}, {$this->fields['tabs_bg1']}) !important;
+         background:-o-linear-gradient(
+            top, {$this->fields['tabs_bg2']}, {$this->fields['tabs_bg1']}) !important;
+         background:linear-gradient(
+            top, {$this->fields['tabs_bg2']}, {$this->fields['tabs_bg1']}) !important;
+         filter: progid:DXImageTransform.Microsoft.gradient(
+            startColorstr='{$this->fields['tabs_bg2']}', 
+            endColorstr='{$this->fields['tabs_bg1']}',GradientType=0 ) !important;
       }
 
       .custom_heading_none.x-tab-strip-active .x-tab-right, 
       .custom_heading_none.x-tab-strip-active .x-tab-left,
       .custom_heading_none.x-tab-strip-active .x-tab-strip-inner {
-         background:-webkit-linear-gradient(top, {$this->fields['tabs_bg1']}, {$this->fields['tabs_bg2']}) !important;
-         background:-moz-linear-gradient(top, {$this->fields['tabs_bg1']}, {$this->fields['tabs_bg2']}) !important;
-         background:-o-linear-gradient(top, {$this->fields['tabs_bg1']}, {$this->fields['tabs_bg2']}) !important;
-         background:linear-gradient(top, {$this->fields['tabs_bg1']}, {$this->fields['tabs_bg2']}) !important;
-         filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='{$this->fields['tabs_bg1']}', endColorstr='{$this->fields['tabs_bg2']}',GradientType=0 ) !important;
+         background:-webkit-linear-gradient(
+            top, {$this->fields['tabs_bg1']}, {$this->fields['tabs_bg2']}) !important;
+         background:-moz-linear-gradient(
+            top, {$this->fields['tabs_bg1']}, {$this->fields['tabs_bg2']}) !important;
+         background:-o-linear-gradient(
+            top, {$this->fields['tabs_bg1']}, {$this->fields['tabs_bg2']}) !important;
+         background:linear-gradient(
+            top, {$this->fields['tabs_bg1']}, {$this->fields['tabs_bg2']}) !important;
+         filter: progid:DXImageTransform.Microsoft.gradient(
+            startColorstr='{$this->fields['tabs_bg1']}', 
+            endColorstr='{$this->fields['tabs_bg2']}',GradientType=0 ) !important;
       }
       ";
       return file_put_contents(CUSTOM_FILES_DIR."glpi_style.css", $CSS);
