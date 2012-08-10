@@ -63,7 +63,8 @@ function plugin_version_custom() {
 
    return array('name'           => $LANG['plugin_custom']['name'],
                 'version'        => "1.0",
-                'author'         => "<a href='mailto:adelaunay@teclib.com'>Alexandre DELAUNAY</a>",
+                'author'         => "<a href='mailto:adelaunay@teclib.com'>Alexandre DELAUNAY</a> ".
+                  "- <a href='http://www.teclib.com'>Teclib'</a>",
                 'homepage'       => "http://www.teclib.com/glpi/plugins/color",
                 'minGlpiVersion' => "0.83");
 }
