@@ -376,6 +376,14 @@ JAVASCRIPT;
          color:{$this->fields['ssmenu2_link']} !important;
       }
 
+      div#c_preference a {
+         color: {$this->fields['menu_link']} !important;
+      }
+
+      #debug-float a {
+         color:red !important;
+      }
+
       .tab_cadre th, .tab_cadre_fixe th, .tab_cadre_fixehov th, 
          .tab_cadrehov th, .tab_cadrehov_pointer th, .tab_cadre_report th {
          background-color:{$this->fields['th']} !important;
