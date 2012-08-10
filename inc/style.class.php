@@ -318,6 +318,19 @@ JAVASCRIPT;
    }
 
    function post_updateItem($history=1) {
+      //generate header gradient img for internet explorer
+      $gradient = new PluginCustomGradientgd;
+      $image = $gradient->generate_gradient(1, 60, array(
+         0  => $this->fields['header_bg2'], 
+         31 => $this->fields['header_bg3'], 
+         32 => $this->fields['header_bg4'], 
+         66 => $this->fields['header_bg4'], 
+         67 => $this->fields['header_bg5'], 
+         100 => $this->fields['header_bg5']
+      ), 'vertical');
+      $gradient->save_image($image, GLPI_ROOT."/files/_plugins/custom/fn_nav.png", "png");
+
+      //generate css
       $CSS = "
       body {
          background-color: {$this->fields['body']} !important;
@@ -479,9 +492,7 @@ JAVASCRIPT;
             {$this->fields['header_bg5']} 40%, {$this->fields['header_bg5']} 63%,
             {$this->fields['header_bg6']} 65%,{$this->fields['header_bg6']} 99%
             ); /* W3C */
-         filter: progid:DXImageTransform.Microsoft.gradient( 
-            startColorstr='{$this->fields['header_bg2']}', 
-            endColorstr='{$this->fields['header_bg6']}',GradientType=0 ); /* IE6-9 */
+         background:{$this->fields['header_bg6']} url(\"fn_nav.png\") 0 0 repeat-x\9; /* IE6-9 */
       }
 
       #page {
