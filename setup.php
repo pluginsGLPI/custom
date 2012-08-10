@@ -74,6 +74,8 @@ function plugin_custom_check_prerequisites() {
 
    if (GLPI_VERSION >= 0.83) {
       return true;
+   } else if (!extension_loaded("gd")) {
+      echo "php-gd required";
    } else {
       echo "GLPI version not compatible need 0.83";
    }
