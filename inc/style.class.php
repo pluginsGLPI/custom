@@ -20,8 +20,6 @@ class PluginCustomStyle extends CommonDBTM {
 
       if ($ID <= 0) $ID = $this->add(array('id' => 0));
       $this->check($ID,'r');
-      
-      //$colors = self::getColors($this->fields);
 
       $options['colspan'] = 4;
       $this->showFormHeader($this->fields);
@@ -297,6 +295,7 @@ class PluginCustomStyle extends CommonDBTM {
 
       $JS = <<<JAVASCRIPT
       Ext.onReady(function() {
+         //extjs color picker
          new Ext.Panel({
             renderTo:document.getElementById('$name'),
             plain:false,
@@ -538,7 +537,6 @@ JAVASCRIPT;
          border-style:solid;
          border-width:1px 1px 0 1px;
       }
-
 
       .custom_heading_none .x-tab-strip-inner, 
       .custom_heading_none .x-tab-right, 
