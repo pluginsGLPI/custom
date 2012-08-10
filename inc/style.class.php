@@ -492,7 +492,10 @@ JAVASCRIPT;
             {$this->fields['header_bg5']} 40%, {$this->fields['header_bg5']} 63%,
             {$this->fields['header_bg6']} 65%,{$this->fields['header_bg6']} 99%
             ); /* W3C */
-         background:{$this->fields['header_bg6']} url(\"fn_nav.png\") 0 0 repeat-x\9; /* IE6-9 */
+      }
+
+      .ext-ie div#header {
+         background:{$this->fields['header_bg6']} url(\"fn_nav.png\") 0 0 repeat-x; /* IE6-9 */
       }
 
       #page {
@@ -541,7 +544,12 @@ JAVASCRIPT;
          border-top: 1px solid white;
          box-shadow: 0 -1px 0 {$this->fields['tabs_border']};
          margin-top: 1px;
-         border-top: 1px solid {$this->fields['tabs_border']}\9; /* IE HACK */
+      }
+
+      .ext-ie .custom_heading_none .x-tab-right {
+         margin-top: 0;
+         box-shadow: 0 0 0;
+         border-top: 1px solid {$this->fields['tabs_border']};
       }
 
       .custom_heading_none .x-tab-strip-active .x-tab-right {
