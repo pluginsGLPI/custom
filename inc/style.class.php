@@ -24,7 +24,6 @@ class PluginCustomStyle extends CommonDBTM {
       //$colors = self::getColors($this->fields);
 
       $options['colspan'] = 4;
-      $options['candel'] = false;
       $this->showFormHeader($this->fields);
 
       echo "<tr><th colspan='4'>".$LANG['plugin_custom']['config'][2]."</th></tr>";

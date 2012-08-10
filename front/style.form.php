@@ -15,6 +15,11 @@ if (isset($_POST['add'])) {
    $style->update($_POST);
    Html::back();
 
+} elseif(isset($_POST['delete'])) {
+   $style->delete($_POST);
+   unlink(GLPI_ROOT."/files/_plugins/custom/glpi_style.css");
+   Html::back();
+
 }
 
 
