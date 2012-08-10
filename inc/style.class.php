@@ -388,6 +388,12 @@ JAVASCRIPT;
          color:{$this->fields['ssmenu2_link']} !important;
       }
 
+      div#show_all_menu {
+         border: 1px solid {$this->fields['menu_item_border']} !important;
+         background-image:none !important;
+         background-color:{$this->fields['menu_item_bg']} !important;
+      }
+
       div#c_preference a {
          color: {$this->fields['menu_link']} !important;
       }
