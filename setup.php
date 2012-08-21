@@ -43,7 +43,9 @@ function plugin_init_custom() {
    $PLUGIN_HOOKS['add_javascript']['custom'][]    = 'lib/colortools/ext.ux.color3.js';
    
    $PLUGIN_HOOKS['add_css']['custom'][]           = 'lib/colortools/ext.ux.color3.css';
-   $PLUGIN_HOOKS['add_css']['custom'][]           = '../../files/_plugins/custom/glpi_style.css';
+   if (file_exists('../../files/_plugins/custom/glpi_style.css')) {
+      $PLUGIN_HOOKS['add_css']['custom'][]        = '../../files/_plugins/custom/glpi_style.css';
+   }
    $PLUGIN_HOOKS['add_css']['custom'][]           = 'style.css';
    
    

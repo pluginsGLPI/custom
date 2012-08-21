@@ -71,21 +71,29 @@ if ($plugin->isInstalled("custom") && $plugin->isActivated("custom")) {
       Ext.select('#debug h2').each(function(el){
          el.insertHtml(
             'afterBegin',
-            "<a href='#' class='toggle_debug'><img alt='' class='toggle_debug_img' src='/glpi/0.84-bugfixes/pics/deplier_down.png'></a>&nbsp;"
+            "<a class='toggle_debug pointer'>"
+               +"<img alt='' class='toggle_debug_img'"
+               +" src='{$CFG_GLPI['url_base']}/pics/deplier_down.png'></a>&nbsp;"
          );
       }).on('click', function() {
          //toggle element under h2 clicked
          Ext.select('#'+this.id+' + table').toggle();
          Ext.select('#'+this.id+' + p').toggle();
 
+         //scroll to element clicked
+         y = Ext.get(this.id).getY();
+         window.scroll(0, y);
+
          //toggle img
          var sel_img = Ext.select('#'+this.id+' .toggle_debug_img');
          var src_img = sel_img.elements[0].src;
          if (src_img.indexOf('down') > 0) {
-            sel_img.elements[0].src = '/glpi/0.84-bugfixes/pics/deplier_up.png';
+            sel_img.elements[0].src = '{$CFG_GLPI['url_base']}/pics/deplier_up.png';
          } else {
-            sel_img.elements[0].src = '/glpi/0.84-bugfixes/pics/deplier_down.png';
+            sel_img.elements[0].src = '{$CFG_GLPI['url_base']}/pics/deplier_down.png';
          }
+         
+         return false;
       });
 
       //set toggle function to add "display:none" instead "visibility:hidden"
