@@ -49,10 +49,10 @@ function plugin_init_custom() {
    $PLUGIN_HOOKS['add_css']['custom'][]           = 'style.css';
    
    
-   $PLUGIN_HOOKS['change_profile']['custom']      = array('PluginCustomProfile','changeProfile');
+   /*$PLUGIN_HOOKS['change_profile']['custom']      = array('PluginCustomProfile','changeProfile');
    
    $PLUGIN_HOOKS['headings']['custom']            = 'plugin_get_headings_custom';
-   $PLUGIN_HOOKS['headings_action']['custom']     = 'plugin_headings_actions_custom';
+   $PLUGIN_HOOKS['headings_action']['custom']     = 'plugin_headings_actions_custom';*/
    
    $PLUGIN_HOOKS['csrf_compliant']['custom']      = true;
 

@@ -15,7 +15,7 @@ if ($plugin->isInstalled("custom") && $plugin->isActivated("custom")) {
       $itemtype = PluginCustomTab::getItemtype();
 
       /*** Color Tabs ***/
-      if (plugin_custom_haveRight('view_color', 1)) {
+      //if (plugin_custom_haveRight('view_color', 1)) {
          $query = "SELECT * FROM glpi_plugin_custom_tabs WHERE itemtype = '$itemtype'";
          $res = $DB->query($query);
          while($data = $DB->fetch_array($res)) {
@@ -39,7 +39,7 @@ if ($plugin->isInstalled("custom") && $plugin->isActivated("custom")) {
                echo "Ext.select('#'+tabpanel.id+'__".$tab."').remove();";
             }
          }
-      }     
+      //}     
 
 
       /*** Default Tabs ***/
