@@ -8,7 +8,7 @@ class PluginCustomProfile extends CommonDBTM {
    static function getTypeName() {
       global $LANG;
 
-      return $LANG['plugin_custom']['profile'][0];
+      return $LANG['plugin_custom']['name'];
    }
 
    function canCreate() {
@@ -60,9 +60,10 @@ class PluginCustomProfile extends CommonDBTM {
       if (!$myProf->getFromDBByProfile($ID)) {
 
          $myProf->add(array(
-            'profiles_id' => $ID,
-            'view_color' => '1',
-            'add_tabs' => 'w'
+            'profiles_id'     => $ID,
+            'add_tabs'        => '1',
+            'add_defaulttabs' => '1',
+            'edit_style'      => '1'
          ));
 
       }
@@ -105,17 +106,28 @@ class PluginCustomProfile extends CommonDBTM {
       $this->showFormHeader($options);
 
       echo "<tr class='tab_bg_2'>";
-      echo "<td>".$LANG['plugin_custom']['profile'][0] ." : </td><td>";
+
+      echo "<td>".$LANG['plugin_custom']['profile'][1] ." : </td><td>";
       if ($prof->fields['interface'] != 'helpdesk') {
-         Dropdown::showYesNo("view_color",$this->fields["view_color"]);
+         Dropdown::showYesNo("add_tabs",$this->fields["add_tabs"]);
+      } else {
+         echo $LANG['profiles'][12]; // No access;
+      }
+      echo "</td>";
+      echo "</tr>";
+
+      echo "<tr class='tab_bg_2'>";
+      echo "<td>".$LANG['plugin_custom']['profile'][2] ." : </td><td>";
+      if ($prof->fields['interface'] != 'helpdesk') {
+         Dropdown::showYesNo("add_defaulttabs",$this->fields["add_defaulttabs"]);
       } else {
          echo $LANG['profiles'][12]; // No access;
       }
       echo "</td>";
 
-      echo "<td>".$LANG['plugin_custom']['profile'][1] ." : </td><td>";
+      echo "<td>".$LANG['plugin_custom']['profile'][3] ." : </td><td>";
       if ($prof->fields['interface'] != 'helpdesk') {
-         Profile::dropdownNoneReadWrite("add_tabs",$this->fields["add_tabs"],1,0,1);
+         Dropdown::showYesNo("edit_style",$this->fields["edit_style"]);
       } else {
          echo $LANG['profiles'][12]; // No access;
       }

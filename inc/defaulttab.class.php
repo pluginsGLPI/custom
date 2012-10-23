@@ -9,11 +9,11 @@ class PluginCustomDefaulttab extends CommonDBTM
    }
 
    public function canCreate() {
-      return true;
+      return plugin_custom_haveRight("add_defaulttabs", 1);
    }
 
    public function canView() {
-      return true;
+      return plugin_custom_haveRight("add_defaulttabs", 1);
    }
 
    public function showForm($ID, $options=array()) {

@@ -80,8 +80,9 @@ function plugin_custom_install() {
       $query = "CREATE TABLE `glpi_plugin_custom_profiles` (
          `id` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
          `profiles_id` VARCHAR(45) NOT NULL,
-         `view_color` CHAR(1),
          `add_tabs` CHAR(1),
+         `add_defaulttabs` CHAR(1),
+         `edit_style` CHAR(1),
          PRIMARY KEY (`id`)
       )
       ENGINE = MYISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;";

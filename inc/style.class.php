@@ -8,11 +8,11 @@ class PluginCustomStyle extends CommonDBTM {
    }
 
    function canCreate() {
-      return true;
+      return plugin_custom_haveRight("edit_style", 1);
    }
 
    function canView() {
-      return true;
+      return plugin_custom_haveRight("edit_style", 1);
    }
 
    function showForm($ID, $options=array()) {

@@ -7,12 +7,15 @@ define("CUSTOM_FILES_DIR", GLPI_ROOT."/files/_plugins/custom/");
 function plugin_init_custom() {
    global $PLUGIN_HOOKS, $LANG, $CFG_GLPI;
 
-
    $menu_entry   = "front/config.php";
-   if (!isset($_SESSION['glpiactiveprofile']['config']) 
-      || $_SESSION['glpiactiveprofile']['config'] != "w") $menu_entry  = false;
+   if ((!isset($_SESSION['glpiactiveprofile']['config']) 
+      || $_SESSION['glpiactiveprofile']['config'] != "w")
+      || !plugin_custom_haveRight("add_tabs", "w")
+      && !plugin_custom_haveRight("add_defaulttabs", 1)
+      && !plugin_custom_haveRight("edit_style", 1)
+   ) $menu_entry  = false;
+
    $PLUGIN_HOOKS['menu_entry']['custom']  = $menu_entry;
-   
    $PLUGIN_HOOKS['config_page']['custom'] = $menu_entry;
 
    $PLUGIN_HOOKS['submenu_entry']['custom']['options']['tab'] = array(
@@ -36,8 +39,6 @@ function plugin_init_custom() {
          'search' => '/plugins/custom/front/style.form.php',
          'add'    =>'/plugins/custom/front/style.form.php'
    ));
-   
-   $PLUGIN_HOOKS['helpdesk_menu_entry']['custom'] = false;
    
    $PLUGIN_HOOKS['add_javascript']['custom'][]    = 'selector.js.php';
    $PLUGIN_HOOKS['add_javascript']['custom'][]    = 'lib/colortools/ext.ux.color3.js';
@@ -101,7 +102,6 @@ function plugin_custom_check_config($verbose=false) {
 
 
 function plugin_custom_haveRight($module,$right) {
-   return true;
    $matches=array(""  => array("","r","w"), // ne doit pas arriver normalement
                   "r" => array("r","w"),
                   "w" => array("w"),

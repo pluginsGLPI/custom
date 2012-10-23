@@ -14,10 +14,11 @@ $LANG['plugin_custom']['form'][1] = "Couleur";
 
 $LANG['plugin_custom']['config'][0] = "Colorer/supprimer des onglets";
 $LANG['plugin_custom']['config'][1] = "Onglets par défaut";
-$LANG['plugin_custom']['config'][2] = "Modifier le style de Glpi";
+$LANG['plugin_custom']['config'][2] = "Modifier le style de GLPI";
 
-$LANG['plugin_custom']['profile'][0] = "Afficher les couleurs des onglets";
 $LANG['plugin_custom']['profile'][1] = "Editer les couleurs aux onglets";
+$LANG['plugin_custom']['profile'][2] = "Définir les onglets par défaut";
+$LANG['plugin_custom']['profile'][3] = "Modifier le style de GLPI";
 
 $LANG['plugin_custom']['color']['deleted'] = "supprimé";
 $LANG['plugin_custom']['color']['red']     = "rouge";

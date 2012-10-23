@@ -8,11 +8,11 @@ class PluginCustomTab extends CommonDBTM
    }
 
    public function canCreate() {
-      return plugin_custom_haveRight('add_tabs', 'w');
+      return plugin_custom_haveRight('add_tabs', 1);
    }
 
    public function canView() {
-      return plugin_custom_haveRight('view_color', 1);
+      return plugin_custom_haveRight('add_tabs', 1);
    }
 
    public function showForm($ID, $options=array()) {

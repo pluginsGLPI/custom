@@ -10,6 +10,7 @@ $prof = new PluginCustomProfile();
 //Save profile
 if (isset ($_POST['update'])) {
    $prof->update($_POST);
+   PluginCustomProfile::changeProfile();
    Html::redirect($_SERVER['HTTP_REFERER']);
 }
 

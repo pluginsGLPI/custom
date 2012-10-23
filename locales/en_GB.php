@@ -14,8 +14,9 @@ $LANG['plugin_custom']['config'][0] = "Color or delete tabs";
 $LANG['plugin_custom']['config'][1] = "Default Tabs";
 $LANG['plugin_custom']['config'][2] = "Customise GLPI style";
 
-$LANG['plugin_custom']['profile'][0] = "Display tab's color";
 $LANG['plugin_custom']['profile'][1] = "Edit colors of tabs";
+$LANG['plugin_custom']['profile'][2] = "Define default tabs";
+$LANG['plugin_custom']['profile'][3] = "Customise GLPI";
 
 $LANG['plugin_custom']['color']['deleted'] = "deleted";
 $LANG['plugin_custom']['color']['red'] = "red";
