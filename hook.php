@@ -5,7 +5,7 @@ function plugin_get_headings_custom($item,$withtemplate) {
 
    if (get_class($item) == 'Profile') {
       if ($item->getField('id') && $item->getField('interface')!='helpdesk') {
-         return array(1 => $LANG['plugin_extjscolortabs']['name']);
+         return array(1 => $LANG['plugin_custom']['name']);
       }
 
    }

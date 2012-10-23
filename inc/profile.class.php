@@ -1,6 +1,4 @@
 <?php
-
-
 if (!defined('GLPI_ROOT')) {
    die("Sorry. You can't access directly to this file");
 }
@@ -14,11 +12,11 @@ class PluginCustomProfile extends CommonDBTM {
    }
 
    function canCreate() {
-      return haveRight('profile', 'w');
+      return Session::haveRight('profile', 'w');
    }
 
    function canView() {
-      return haveRight('profile', 'r');
+      return Session::haveRight('profile', 'r');
    }
 
    //if profile deleted
@@ -94,7 +92,7 @@ class PluginCustomProfile extends CommonDBTM {
          $target = $options['target'];
       }
 
-      if (!haveRight("profile","r")) {
+      if (!Session::haveRight("profile","r")) {
          return false;
       }
 
