@@ -1,5 +1,5 @@
 <?php
-
+//
 include_once (GLPI_ROOT . "/plugins/custom/inc/install.function.php");
 define("CUSTOM_FILES_DIR", GLPI_ROOT."/files/_plugins/custom/");
 
