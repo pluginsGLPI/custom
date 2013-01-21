@@ -65,6 +65,22 @@ if ($plugin->isInstalled("custom") && $plugin->isActivated("custom")) {
             );
          }
       });
+      //add a star to user group vip (after ajax request)
+      Ext.Ajax.on('requestcomplete', function(conn, response, option) {
+         //delay the execution (ajax requestcomplete event fired before dom loading)
+         setTimeout( function () {
+            Ext.select('span.x-hidden').each(function(el){
+               if (el.dom.innerHTML.indexOf('VIP') > 0
+                  &&  el.dom.parentNode.innerHTML.indexOf('vip.png') == -1) {
+                     
+                  el.insertHtml(
+                     'beforeBegin',
+                     "<img src='../plugins/custom/pics/vip.png' alt='VIP' title='VIP' />"
+                  );
+               }
+            });
+         }, 300);      
+      });
 
 
       //add a toggle button on debug h2 elements
