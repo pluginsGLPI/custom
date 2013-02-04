@@ -89,7 +89,7 @@ if ($plugin->isInstalled("custom") && $plugin->isActivated("custom")) {
             'afterBegin',
             "<a class='toggle_debug pointer'>"
                +"<img alt='' class='toggle_debug_img'"
-               +" src='{$CFG_GLPI['url_base']}/pics/deplier_down.png'></a>&nbsp;"
+               +" src='../pics/deplier_down.png'></a>&nbsp;"
          );
       }).on('click', function() {
          //toggle element under h2 clicked
@@ -104,9 +104,9 @@ if ($plugin->isInstalled("custom") && $plugin->isActivated("custom")) {
          var sel_img = Ext.select('#'+this.id+' .toggle_debug_img');
          var src_img = sel_img.elements[0].src;
          if (src_img.indexOf('down') > 0) {
-            sel_img.elements[0].src = '{$CFG_GLPI['url_base']}/pics/deplier_up.png';
+            sel_img.elements[0].src = '../pics/deplier_up.png';
          } else {
-            sel_img.elements[0].src = '{$CFG_GLPI['url_base']}/pics/deplier_down.png';
+            sel_img.elements[0].src = '../pics/deplier_down.png';
          }
          
          return false;
