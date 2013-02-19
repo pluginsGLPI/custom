@@ -97,7 +97,9 @@ background-attachment:scroll !important;
 
 
 /* fix for table */
-.tab_cadre_fixe tr > td:nth-child(3), 
-.tab_cadre_fixe tr > td:first-child {
+.tab_cadre_fixe   tr > td:nth-child(3), 
+.tab_cadrehov     tr > td:nth-child(3), 
+.tab_cadre_fixe   tr > td:first-child ,
+.tab_cadrehov     tr > td:first-child {
    text-align: right !important;
 }
