@@ -94,3 +94,10 @@ background-attachment:scroll !important;
 .inner-colored-black {background-image: url("pics/black.gif") !important;}
 
 
+
+
+/* fix for table */
+.tab_cadre_fixe tr > td:nth-child(3), 
+.tab_cadre_fixe tr > td:first-child {
+   text-align: right !important;
+}
