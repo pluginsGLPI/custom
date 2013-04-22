@@ -15,6 +15,15 @@ class PluginCustomTab extends CommonDBTM
       return plugin_custom_haveRight('add_tabs', 1);
    }
 
+   function defineTabs($options=array()) {
+      global $LANG, $CFG_GLPI;
+
+      $ong = array();
+      $this->addStandardTab('PluginCustomTabProfile', $ong, $options); 
+
+      return $ong;
+   }
+
    public function showForm($ID, $options=array()) {
       global $LANG;
 
@@ -25,6 +34,7 @@ class PluginCustomTab extends CommonDBTM
          $this->check(-1,'w');
       }
 
+      $this->showTabs($options);
       $this->showFormHeader($options);
 
       echo "<tr class='tab_bg_1'>";
@@ -47,6 +57,7 @@ class PluginCustomTab extends CommonDBTM
       echo "</td></tr>\n";
 
       $this->showFormButtons($options);
+      $this->addDivForTabs();
 
       return true;
    }

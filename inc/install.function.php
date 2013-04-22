@@ -8,6 +8,7 @@ include_once (GLPI_ROOT . "/inc/includes.php");
 function plugin_custom_install() {
    global $DB;
 
+   // VERSION 1.0
    if (!TableExists('glpi_plugin_custom_tabs')) {
       $query = "CREATE TABLE `glpi_plugin_custom_tabs` (
          `id` INT(11) NOT NULL AUTO_INCREMENT,
@@ -104,6 +105,20 @@ function plugin_custom_install() {
    $style = new PluginCustomStyle;
    $style->add(array('id' => 0));
 
+
+   //Version 1.1
+   if (!TableExists('glpi_plugin_custom_tabprofiles')) {
+      $query = "CREATE TABLE     `glpi_plugin_custom_tabprofiles` (
+         `id`                    INT(11) NOT NULL AUTO_INCREMENT,
+         `plugin_custom_tabs_id` INT(11),
+         `profiles_id`           INT(11),
+         PRIMARY KEY             (`id`),
+         KEY                     (`plugin_custom_tabs_id`),
+         KEY                     (`profiles_id`)
+      ) ENGINE = MYISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;";
+      $DB->query($query);
+   }
+
    return true;
 }
 
@@ -115,7 +130,8 @@ function plugin_custom_uninstall() {
       'glpi_plugin_custom_tabs',
       'glpi_plugin_custom_defaulttabs',
       'glpi_plugin_custom_styles',
-      'glpi_plugin_custom_profiles'
+      'glpi_plugin_custom_profiles',
+      'glpi_plugin_custom_tabprofiles'
    );
    foreach ($tables as $table)
       $DB->query("DROP TABLE IF EXISTS `$table`");
