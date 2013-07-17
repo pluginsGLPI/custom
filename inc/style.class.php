@@ -31,6 +31,11 @@ class PluginCustomStyle extends CommonDBTM {
       echo "<td>";
       self::colorInput('body', $this->fields['body']);
       echo "</td>";
+
+      echo "<td>"."##TEXT_COLOR##"."</td>";
+      echo "<td>";
+      self::colorInput('text_color', $this->fields['text_color']);
+      echo "</td>";
       echo "</tr>";
 
       echo "<tr><th colspan='4'>Links</th></tr>";
@@ -334,6 +339,7 @@ JAVASCRIPT;
       $CSS = "
       body {
          background-color: {$this->fields['body']} !important;
+         color: {$this->fields['text_color']}
       }
 
       div#header div#c_logo {

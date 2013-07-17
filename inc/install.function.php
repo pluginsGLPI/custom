@@ -8,6 +8,8 @@ include_once (GLPI_ROOT . "/inc/includes.php");
 function plugin_custom_install() {
    global $DB;
 
+   $migration = new Migration;
+
    // VERSION 1.0
    if (!TableExists('glpi_plugin_custom_tabs')) {
       $query = "CREATE TABLE `glpi_plugin_custom_tabs` (
@@ -36,6 +38,7 @@ function plugin_custom_install() {
       $query = "CREATE TABLE `glpi_plugin_custom_styles` (
          `id` INT(11) NOT NULL AUTO_INCREMENT,
          `body` VARCHAR(7) NOT NULL DEFAULT '#dfdfdf',
+         `text_color` VARCHAR(7) NOT NULL DEFAULT '#000000',
          `link_color` VARCHAR(7) NOT NULL DEFAULT '#659900',
          `link_hover_color` VARCHAR(7) NOT NULL DEFAULT '#000000',
          `menu_link` VARCHAR(7) NOT NULL DEFAULT '#000000',
@@ -117,6 +120,14 @@ function plugin_custom_install() {
          KEY                     (`profiles_id`)
       ) ENGINE = MYISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;";
       $DB->query($query);
+   }
+
+   //Version 1.2
+   if (!FieldExists('glpi_plugin_custom_styles', 'text_color')) {
+      $migration->addField('glpi_plugin_custom_styles', 'text_color',  
+                           "VARCHAR(7) NOT NULL DEFAULT '#000000'", 
+                           array('after' => 'body'));
+      $migration->migrationOneTable('glpi_plugin_custom_styles');
    }
 
    return true;
