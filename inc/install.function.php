@@ -122,7 +122,6 @@ function plugin_custom_install() {
       $DB->query($query);
    }
 
-   //Version 1.2
    if (!FieldExists('glpi_plugin_custom_styles', 'text_color')) {
       $migration->addField('glpi_plugin_custom_styles', 'text_color',  
                            "VARCHAR(7) NOT NULL DEFAULT '#000000'", 

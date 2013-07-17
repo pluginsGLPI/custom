@@ -66,7 +66,7 @@ function plugin_version_custom() {
    global $LANG;
 
    return array('name'           => $LANG['plugin_custom']['name'],
-                'version'        => "1.2.0",
+                'version'        => "1.1.0",
                 'author'         => "<a href='mailto:adelaunay@teclib.com'>Alexandre DELAUNAY</a> ".
                   "- <a href='http://www.teclib.com'>Teclib'</a>",
                 'homepage'       => "http://www.teclib.com/glpi/plugins/color",
