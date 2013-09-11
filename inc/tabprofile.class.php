@@ -16,6 +16,8 @@ class PluginCustomTabProfile extends CommonDBTM
    }
 
    function getTabNameForItem(CommonGLPI $item, $withtemplate=0) {
+      return;
+
       if ($item->getType() == 'PluginCustomTab' && $item->canView()) {
          return Toolbox::ucfirst(_n("Profile", "Profiles", 1));
       }
@@ -23,6 +25,8 @@ class PluginCustomTabProfile extends CommonDBTM
    }
 
    static function displayTabContentForItem(CommonGLPI $item, $tabnum=1, $withtemplate=0) {
+      return;
+
       $profile = new Profile;
       $found_profiles = $profile->find("`interface` = 'central'");
 
