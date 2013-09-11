@@ -1,6 +1,5 @@
 <?php
-define('GLPI_ROOT', '../../..');
-include (GLPI_ROOT . "/inc/includes.php");
+include ("../../../inc/includes.php");
 
 if (empty($_GET["id"])) {
    $_GET["id"] = "";
@@ -9,6 +8,7 @@ if (empty($_GET["id"])) {
 
 if (isset($_POST['itemtype']) && isset($_POST['tab'])
    && (isset($_POST["add"]) || isset($_POST["update"]))) {
+   $itemtype = $_POST['itemtype'];
    $obj = new $_POST['itemtype'];
    $obj->fields['id'] = 1;
    if ($itemtype == "ticket") {
@@ -18,13 +18,13 @@ if (isset($_POST['itemtype']) && isset($_POST['tab'])
    //get object tabs
    $tabs = $obj->defineTabs();
 
-   //get object plugins tabs
+   /*//get object plugins tabs
    $tmp_plug_tabs = Plugin::getTabs('', $obj, false);
    $plug_tabs = array();
    foreach($tmp_plug_tabs as $key => $tab) {
       $plug_tabs[$key] = $tab['title'];
    }
-   $tabs += $plug_tabs;
+   $tabs += $plug_tabs;*/
 
    //construct name field
    $tabs = $tabs[$_POST['tab']];

@@ -1,5 +1,5 @@
 <?php
-define('GLPI_ROOT','../../..');
+include ("../../../inc/includes.php");
 include (GLPI_ROOT."/inc/includes.php");
 
 header("Content-Type: text/html; charset=UTF-8");
@@ -18,12 +18,12 @@ if ($itemtype == "ticket") {
    $obj->fields['status'] = "closed";
 }
 $tabs = $obj->defineTabs();
-$tmp_plug_tabs = Plugin::getTabs('', $obj, false);
+/*$tmp_plug_tabs = Plugin::getTabs('', $obj, false);
 $plug_tabs = array();
 foreach($tmp_plug_tabs as $key => $tab) {
    $plug_tabs[$key] = $tab['title'];
 }
-$tabs += $plug_tabs;
+$tabs += $plug_tabs;*/
 
 $tabs_used = -1;
 if ($_POST['id'] > 0) {

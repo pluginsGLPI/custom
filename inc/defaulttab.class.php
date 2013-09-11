@@ -2,17 +2,17 @@
 
 class PluginCustomDefaulttab extends CommonDBTM
 {
-   static function getTypeName() {
+   static function getTypeName($nb=0) {
       global $LANG;
 
       return $LANG['plugin_custom']['type'][1];
    }
 
-   public function canCreate() {
+   static function canCreate() {
       return plugin_custom_haveRight("add_defaulttabs", 1);
    }
 
-   public function canView() {
+   static function canView() {
       return plugin_custom_haveRight("add_defaulttabs", 1);
    }
 
@@ -29,7 +29,7 @@ class PluginCustomDefaulttab extends CommonDBTM
       $this->showFormHeader($options);
       
       echo "<tr class='tab_bg_1'>";
-      echo "<td>".$LANG['common'][90]."&nbsp;:</td>";
+      echo "<td>"._n("Item", "Items", 2)."&nbsp;:</td>";
       echo "<td>";
       $this->itemtypeDropdown();
       echo "</td>";

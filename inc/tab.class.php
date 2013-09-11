@@ -1,22 +1,22 @@
 <?php
 class PluginCustomTab extends CommonDBTM
 {
-   static function getTypeName() {
+   static function getTypeName($nb=0) {
       global $LANG;
 
       return $LANG['plugin_custom']['type'][0];
    }
 
-   public function canCreate() {
+   static function canCreate() {
       return plugin_custom_haveRight('add_tabs', 1);
    }
 
-   public function canView() {
+   static function canView() {
       return plugin_custom_haveRight('add_tabs', 1);
    }
 
    function defineTabs($options=array()) {
-      global $LANG, $CFG_GLPI;
+      global $CFG_GLPI;
 
       $ong = array();
       $this->addStandardTab('PluginCustomTabProfile', $ong, $options); 
@@ -38,7 +38,7 @@ class PluginCustomTab extends CommonDBTM
       $this->showFormHeader($options);
 
       echo "<tr class='tab_bg_1'>";
-      echo "<td>".$LANG['common'][90]."&nbsp;:</td>";
+      echo "<td>"._n("Item", "Items", 2)."&nbsp;:</td>";
       echo "<td>";
       $this->itemtypeDropdown();
       echo "</td>";
@@ -108,29 +108,30 @@ class PluginCustomTab extends CommonDBTM
    }
 
    public static function getTypes() {
-      global $LANG;
-
-      return array(
-         'central'           => $LANG['central'][5],
-         'computer'           => $LANG['Menu'][0],
-         'networkequipment'   => $LANG['Menu'][1],
-         'printer'            => $LANG['Menu'][2],
-         'monitor'            => $LANG['Menu'][3],
-         'software'           => $LANG['Menu'][4],
-         'ticket'             => $LANG['Menu'][5],
-         'user'               => $LANG['Menu'][14],
-         'cartridgeitem'      => $LANG['Menu'][21],
-         'contact'            => $LANG['Menu'][22],
-         'supplier'           => $LANG['Menu'][23],
-         'contract'           => $LANG['Menu'][25],
-         'document'           => $LANG['Menu'][27],
-         'state'              => $LANG['Menu'][28],
-         'consumableitem'     => $LANG['Menu'][32],
-         'phone'              => $LANG['Menu'][34],
-         'profile'            => $LANG['Menu'][35],
-         'group'              => $LANG['Menu'][36],
-         'entity'             => $LANG['Menu'][37]
+      $types = array(
+         'central'            => __("Home"),
+         'computer'           => __("Computer"),
+         'networkequipment'   => __("Network"),
+         'printer'            => __("Printer"),
+         'monitor'            => __("Monitor"),
+         'software'           => __("Software"),
+         'ticket'             => __("Ticket"),
+         'user'               => __("User"),
+         'cartridgeitem'      => __("Cartridge"),
+         'contact'            => __("Contact"),
+         'supplier'           => __("Supplier"),
+         'contract'           => __("Contract"),
+         'document'           => __("Document"),
+         'state'              => __("State"),
+         'consumableitem'     => __("Consumable"),
+         'phone'              => __("Phone"),
+         'profile'            => __("Profile"),
+         'group'              => __("Group"),
+         'entity'             => __("Entity")
       );
+
+      asort($types);
+      return $types;
    }
 
    public function itemtypeDropdown() {

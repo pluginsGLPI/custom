@@ -1,17 +1,17 @@
 <?php
 class PluginCustomStyle extends CommonDBTM {
 
-   static function getTypeName() {
+   static function getTypeName($nb=0) {
       global $LANG;
 
       return $LANG['plugin_custom']['type'][2];
    }
 
-   function canCreate() {
+   static function canCreate() {
       return plugin_custom_haveRight("edit_style", 1);
    }
 
-   function canView() {
+   static function canView() {
       return plugin_custom_haveRight("edit_style", 1);
    }
 

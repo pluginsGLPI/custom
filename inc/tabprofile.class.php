@@ -1,31 +1,28 @@
 <?php
 class PluginCustomTabProfile extends CommonDBTM
 {
-   static function getTypeName() {
+   static function getTypeName($nb=0) {
       global $LANG;
 
       return $LANG['plugin_custom']['type'][0];
    }
 
-   public function canCreate() {
+   static function canCreate() {
       return plugin_custom_haveRight('add_tabs', 1);
    }
 
-   public function canView() {
+   static function canView() {
       return plugin_custom_haveRight('add_tabs', 1);
    }
 
    function getTabNameForItem(CommonGLPI $item, $withtemplate=0) {
-      global $LANG;
-
       if ($item->getType() == 'PluginCustomTab' && $item->canView()) {
-         return Toolbox::ucfirst($LANG['Menu'][35]);
+         return Toolbox::ucfirst(_n("Profile", "Profiles", 1));
       }
       return '';
    }
 
    static function displayTabContentForItem(CommonGLPI $item, $tabnum=1, $withtemplate=0) {
-      global $LANG;
       $profile = new Profile;
       $found_profiles = $profile->find("`interface` = 'central'");
 
@@ -34,7 +31,7 @@ class PluginCustomTabProfile extends CommonDBTM
 
       echo "<form method='POST' action='tabprofile.form.php' />";
       echo "<table class='tab_cadre_fixe'>";
-      echo "<tr><th colspan='4'>".$LANG['common'][113]."</th></tr>";
+      echo "<tr><th colspan='4'>".__("Visibility")."</th></tr>";
       $odd = 0;
       foreach ($found_profiles as $profiles_id => $profile_fields) {
          if (($odd % 2) === 0) echo "<tr>";
@@ -48,7 +45,7 @@ class PluginCustomTabProfile extends CommonDBTM
       }
       if (($odd % 2) === 0) echo "</tr>";
       echo "<tr><td colspan='4'><div class='center'>";
-      echo "<input type='submit' name='update' value=\"".$LANG['buttons'][7]."\" class='submit'>";
+      echo "<input type='submit' name='update' value=\""._sx('button','Post')."\" class='submit'>";
       echo "</div></td></tr>";
       echo "</table>";
       

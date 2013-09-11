@@ -63,26 +63,23 @@ function plugin_init_custom() {
 
 // Get the name and the version of the plugin - Needed
 function plugin_version_custom() {
-   global $LANG;
-
-   return array('name'           => $LANG['plugin_custom']['name'],
-                'version'        => "1.1.0",
+   return array('name'           => "Custom",
+                'version'        => "1.2.0",
                 'author'         => "<a href='mailto:adelaunay@teclib.com'>Alexandre DELAUNAY</a> ".
                   "- <a href='http://www.teclib.com'>Teclib'</a>",
                 'homepage'       => "http://www.teclib.com/glpi/plugins/color",
-                'minGlpiVersion' => "0.83");
+                'minGlpiVersion' => "0.84");
 }
 
 
 // Optional : check prerequisites before install : may print errors or add to message after redirect
 function plugin_custom_check_prerequisites() {
-
-   if (GLPI_VERSION >= 0.83) {
+   if (GLPI_VERSION >= 0.84) {
       return true;
    } else if (!extension_loaded("gd")) {
       echo "php-gd required";
    } else {
-      echo "GLPI version not compatible need 0.83";
+      echo "GLPI version not compatible need 0.84";
    }
 }
 
@@ -90,13 +87,11 @@ function plugin_custom_check_prerequisites() {
 // Check configuration process for plugin : need to return true if succeeded
 // Can display a message only if failure and $verbose is true
 function plugin_custom_check_config($verbose=false) {
-   global $LANG;
-
    if (true) { // Your configuration check
       return true;
    }
    if ($verbose) {
-      echo $LANG['plugins'][2];
+      echo __('Installed / not configured');
    }
    return false;
 }
