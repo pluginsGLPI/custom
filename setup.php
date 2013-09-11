@@ -64,7 +64,7 @@ function plugin_init_custom() {
 // Get the name and the version of the plugin - Needed
 function plugin_version_custom() {
    return array('name'           => "Custom",
-                'version'        => "1.2.0",
+                'version'        => "0.84+1.0",
                 'author'         => "<a href='mailto:adelaunay@teclib.com'>Alexandre DELAUNAY</a> ".
                   "- <a href='http://www.teclib.com'>Teclib'</a>",
                 'homepage'       => "http://www.teclib.com/glpi/plugins/color",
