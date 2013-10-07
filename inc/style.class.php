@@ -412,8 +412,9 @@ JAVASCRIPT;
          background-color:{$this->fields['menu_item_bg']} !important;
       }
 
+      div#c_preference ,
       div#c_preference a {
-         color: {$this->fields['menu_link']} !important;
+         color: {$this->fields['link_topright']} !important;
       }
 
       #debug-float a {
@@ -423,6 +424,7 @@ JAVASCRIPT;
       .tab_cadre th, .tab_cadre_fixe th, .tab_cadre_fixehov th, 
          .tab_cadrehov th, .tab_cadrehov_pointer th, .tab_cadre_report th {
          background-color:{$this->fields['th']} !important;
+         color:{$this->fields['th_text_color']} !important;
       }
 
       .tab_bg_1 {
