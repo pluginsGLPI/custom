@@ -44,12 +44,14 @@ function plugin_custom_install() {
          `menu_link` VARCHAR(7) NOT NULL DEFAULT '#000000',
          `ssmenu1_link` VARCHAR(7) NOT NULL DEFAULT '#666666',
          `ssmenu2_link` VARCHAR(7) NOT NULL DEFAULT '#000000',
+         `link_topright` VARCHAR(7) NOT NULL DEFAULT '#000000',
          `menu_border` VARCHAR(7) NOT NULL DEFAULT '#9BA563',
          `menu_item_bg` VARCHAR(7) NOT NULL DEFAULT '#f1e7c2',
          `menu_item_link` VARCHAR(7) NOT NULL DEFAULT '#000000',
          `menu_item_border` VARCHAR(7) NOT NULL DEFAULT '#CC9900',
          `menu_item_bg_hover` VARCHAR(7) NOT NULL DEFAULT '#d0d99d',
          `th` VARCHAR(7) NOT NULL DEFAULT '#e1cc7b',
+         `th_text_color` VARCHAR(7) NOT NULL DEFAULT '#000000',
          `tab_bg_1` VARCHAR(7) NOT NULL DEFAULT '#f2f2f2',
          `tab_bg_1_2` VARCHAR(7) NOT NULL DEFAULT '#cf9b9b',
          `tab_bg_2` VARCHAR(7) NOT NULL DEFAULT '#f2f2f2',
@@ -93,6 +95,21 @@ function plugin_custom_install() {
       $DB->query($query);
    }
 
+   if (!FieldExists('glpi_plugin_custom_styles', 'text_color')) {
+      $query = "ALTER TABLE `glpi_plugin_custom_styles` ADD COLUMN `text_color` VARCHAR(7) NOT NULL DEFAULT '#000000'";
+      $DB->query($query);
+   }
+   
+   if (!FieldExists('glpi_plugin_custom_styles', 'th_text_color')) {
+      $query = "ALTER TABLE `glpi_plugin_custom_styles` ADD COLUMN `th_text_color` VARCHAR(7) NOT NULL DEFAULT '#000000'";
+      $DB->query($query);
+   }
+   
+   if (!FieldExists('glpi_plugin_custom_styles', 'link_topright')) {
+      $query = "ALTER TABLE `glpi_plugin_custom_styles` ADD COLUMN `link_topright` VARCHAR(7) NOT NULL DEFAULT '#000000'";
+      $DB->query($query);
+   }
+
    include_once (GLPI_ROOT."/plugins/custom/inc/profile.class.php");
    PluginCustomProfile::createFirstAccess($_SESSION['glpiactiveprofile']['id']);
 
@@ -106,7 +123,8 @@ function plugin_custom_install() {
    //create config style
    require_once "style.class.php";
    $style = new PluginCustomStyle;
-   $style->add(array('id' => 0));
+   $found = $style->find();
+   if (empty($found)) $style->add(array('id' => 0));
 
 
    //Version 1.1

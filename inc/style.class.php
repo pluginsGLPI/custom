@@ -101,12 +101,24 @@ class PluginCustomStyle extends CommonDBTM {
       echo "</td>";
       echo "</tr>";
 
+      echo "<tr>";
+      echo "<td>"."##LINK_TOPRIGHT##"."</td>";
+      echo "<td>";
+      self::colorInput('link_topright', $this->fields['link_topright']);
+      echo "</td>";
+      echo "</tr>";
+
       echo "<tr><th colspan='4'>Tables</th></tr>";
 
       echo "<tr>";
       echo "<td>"."##TH##"."</td>";
       echo "<td>";
       self::colorInput('th', $this->fields['th']);
+      echo "</td>";
+
+      echo "<td>"."##TH_TEXT_COLOR##"."</td>";
+      echo "<td>";
+      self::colorInput('th_text_color', $this->fields['th_text_color']);
       echo "</td>";
 
       echo "</tr>";
