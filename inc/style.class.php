@@ -38,6 +38,45 @@ class PluginCustomStyle extends CommonDBTM {
       echo "</td>";
       echo "</tr>";
 
+      echo "<tr><th colspan='4'>Button</th></tr>";
+
+      echo "<tr>";
+      echo "<td>"."##BUTTON_BG_COLOR##"."</td>";
+      echo "<td>";
+      self::colorInput('button_bg_color', $this->fields['button_bg_color']);
+      echo "</td>";
+
+      echo "<td>"."##BUTTON_BG_COLOR_HOVER##"."</td>";
+      echo "<td>";
+      self::colorInput('button_bg_color_hover', $this->fields['button_bg_color_hover']);
+      echo "</td>";
+      echo "</tr>";
+
+      echo "<tr>";
+      echo "<td>"."##BUTTON_BORDER##"."</td>";
+      echo "<td>";
+      self::colorInput('button_border', $this->fields['button_border']);
+      echo "</td>";
+
+      echo "<td>"."##BUTTON_BORDER_HOVER##"."</td>";
+      echo "<td>";
+      self::colorInput('button_border_hover', $this->fields['button_border_hover']);
+      echo "</td>";
+      echo "</tr>";
+
+      echo "<tr>";
+      echo "<td>"."##BUTTON_COLOR##"."</td>";
+      echo "<td>";
+      self::colorInput('button_color', $this->fields['button_color']);
+      echo "</td>";
+
+      echo "<td>"."##BUTTON_COLOR_HOVER##"."</td>";
+      echo "<td>";
+      self::colorInput('button_color_hover', $this->fields['button_color_hover']);
+      echo "</td>";
+      echo "</tr>";
+
+
       echo "<tr><th colspan='4'>Links</th></tr>";
 
       echo "<tr>";
@@ -101,12 +140,24 @@ class PluginCustomStyle extends CommonDBTM {
       echo "</td>";
       echo "</tr>";
 
+      echo "<tr>";
+      echo "<td>"."##LINK_TOPRIGHT##"."</td>";
+      echo "<td>";
+      self::colorInput('link_topright', $this->fields['link_topright']);
+      echo "</td>";
+      echo "</tr>";
+
       echo "<tr><th colspan='4'>Tables</th></tr>";
 
       echo "<tr>";
       echo "<td>"."##TH##"."</td>";
       echo "<td>";
       self::colorInput('th', $this->fields['th']);
+      echo "</td>";      
+
+      echo "<td>"."##TH_TEXT_COLOR##"."</td>";
+      echo "<td>";
+      self::colorInput('th_text_color', $this->fields['th_text_color']);
       echo "</td>";
 
       echo "</tr>";
@@ -342,6 +393,21 @@ JAVASCRIPT;
          color: {$this->fields['text_color']}
       }
 
+      .submit {
+         background: none !important;
+         background-color: {$this->fields['button_bg_color']} !important;
+         color: {$this->fields['button_color']} !important;
+         border: 1px solid {$this->fields['button_border']} !important;
+         padding: 3px 15px !important;
+      }
+
+      .submit:hover {
+         background:none !important;
+         background-color: {$this->fields['button_bg_color_hover']} !important;
+         color: {$this->fields['button_color_hover']} !important;
+          border: 1px solid {$this->fields['button_border_hover']} !important;
+      }
+
       div#header div#c_logo {
          background: url('".GLPI_ROOT."/plugins/custom/pics/fd_logo.png') 0 0 repeat-x;
       }
@@ -400,8 +466,9 @@ JAVASCRIPT;
          background-color:{$this->fields['menu_item_bg']} !important;
       }
 
+      div#c_preference ,
       div#c_preference a {
-         color: {$this->fields['menu_link']} !important;
+         color: {$this->fields['link_topright']} !important;
       }
 
       #debug-float a {
@@ -411,6 +478,7 @@ JAVASCRIPT;
       .tab_cadre th, .tab_cadre_fixe th, .tab_cadre_fixehov th, 
          .tab_cadrehov th, .tab_cadrehov_pointer th, .tab_cadre_report th {
          background-color:{$this->fields['th']} !important;
+         color:{$this->fields['th_text_color']} !important;
       }
 
       .tab_bg_1 {
@@ -537,8 +605,8 @@ JAVASCRIPT;
 
       /*** TABS ***/
 
-      .custom_heading_none .x-tab-strip span.x-tab-strip-text {
-         color:{$this->fields['tabs_title_color']}
+      .custom_heading_none .x-tab-strip-text {
+         color:{$this->fields['tabs_title_color']} !important;
       }
 
       .custom_heading_none .x-tab-left {
