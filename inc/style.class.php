@@ -163,6 +163,13 @@ class PluginCustomStyle extends CommonDBTM {
       echo "</tr>";
 
       echo "<tr>";
+      echo "<td>"."##TABLE_BG_COLOR##"."</td>";
+      echo "<td>";
+      self::colorInput('table_bg_color', $this->fields['table_bg_color']);
+      echo "</td>";
+      echo "</tr>";
+
+      echo "<tr>";
       echo "<td>"."##TAB_BG_1##"."</td>";
       echo "<td>";
       self::colorInput('tab_bg_1', $this->fields['tab_bg_1']);
@@ -475,8 +482,12 @@ JAVASCRIPT;
          color:red !important;
       }
 
+      .tab_cadre_fixe, .tab_cadre_fixehov {
+         background: {$this->fields['table_bg_color']} !important;
+      }
+
       .tab_cadre th, .tab_cadre_fixe th, .tab_cadre_fixehov th, 
-         .tab_cadrehov th, .tab_cadrehov_pointer th, .tab_cadre_report th {
+      .tab_cadrehov th, .tab_cadrehov_pointer th, .tab_cadre_report th {
          background-color:{$this->fields['th']} !important;
          color:{$this->fields['th_text_color']} !important;
       }
