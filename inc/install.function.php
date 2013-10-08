@@ -56,6 +56,7 @@ function plugin_custom_install() {
          `menu_item_link` VARCHAR(7) NOT NULL DEFAULT '#000000',
          `menu_item_border` VARCHAR(7) NOT NULL DEFAULT '#CC9900',
          `menu_item_bg_hover` VARCHAR(7) NOT NULL DEFAULT '#d0d99d',
+         `table_bg_color` VARCHAR(7) NOT NULL DEFAULT '#F2F2F2', 
          `th` VARCHAR(7) NOT NULL DEFAULT '#e1cc7b',
          `th_text_color` VARCHAR(7) NOT NULL DEFAULT '#000000',
          `tab_bg_1` VARCHAR(7) NOT NULL DEFAULT '#f2f2f2',
@@ -103,6 +104,9 @@ function plugin_custom_install() {
 
    if (!FieldExists('glpi_plugin_custom_styles', 'th_text_color')) {
       $query = "ALTER TABLE `glpi_plugin_custom_styles` ADD COLUMN `th_text_color` VARCHAR(7) NOT NULL DEFAULT '#000000'";
+      $DB->query($query);
+
+      $query = "ALTER TABLE `glpi_plugin_custom_styles` ADD COLUMN `table_bg_color` VARCHAR(7) NOT NULL DEFAULT '#F2F2F2'";
       $DB->query($query);
    }
    
