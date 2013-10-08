@@ -32,6 +32,45 @@ class PluginCustomStyle extends CommonDBTM {
       self::colorInput('body', $this->fields['body']);
       echo "</td>";
 
+      echo "<tr><th colspan='4'>Button</th></tr>";
+
+      echo "<tr>";
+      echo "<td>"."##BUTTON_BG_COLOR##"."</td>";
+      echo "<td>";
+      self::colorInput('button_bg_color', $this->fields['button_bg_color']);
+      echo "</td>";
+
+      echo "<td>"."##BUTTON_BG_COLOR_HOVER##"."</td>";
+      echo "<td>";
+      self::colorInput('button_bg_color_hover', $this->fields['button_bg_color_hover']);
+      echo "</td>";
+      echo "</tr>";
+
+      echo "<tr>";
+      echo "<td>"."##BUTTON_BORDER##"."</td>";
+      echo "<td>";
+      self::colorInput('button_border', $this->fields['button_border']);
+      echo "</td>";
+
+      echo "<td>"."##BUTTON_BORDER_HOVER##"."</td>";
+      echo "<td>";
+      self::colorInput('button_border_hover', $this->fields['button_border_hover']);
+      echo "</td>";
+      echo "</tr>";
+
+      echo "<tr>";
+      echo "<td>"."##BUTTON_COLOR##"."</td>";
+      echo "<td>";
+      self::colorInput('button_color', $this->fields['button_color']);
+      echo "</td>";
+
+      echo "<td>"."##BUTTON_COLOR_HOVER##"."</td>";
+      echo "<td>";
+      self::colorInput('button_color_hover', $this->fields['button_color_hover']);
+      echo "</td>";
+      echo "</tr>";
+
+
       echo "<td>"."##TEXT_COLOR##"."</td>";
       echo "<td>";
       self::colorInput('text_color', $this->fields['text_color']);
@@ -352,6 +391,21 @@ JAVASCRIPT;
       body {
          background-color: {$this->fields['body']} !important;
          color: {$this->fields['text_color']}
+      }
+
+      .submit {
+         background: none !important;
+         background-color: {$this->fields['button_bg_color']} !important;
+         color: {$this->fields['button_color']} !important;
+         border: 1px solid {$this->fields['button_border']} !important;
+         padding: 3px 15px !important;
+      }
+
+      .submit:hover {
+         background:none !important;
+         background-color: {$this->fields['button_bg_color_hover']} !important;
+         color: {$this->fields['button_color_hover']} !important;
+          border: 1px solid {$this->fields['button_border_hover']} !important;
       }
 
       div#header div#c_logo {

@@ -38,6 +38,12 @@ function plugin_custom_install() {
       $query = "CREATE TABLE `glpi_plugin_custom_styles` (
          `id` INT(11) NOT NULL AUTO_INCREMENT,
          `body` VARCHAR(7) NOT NULL DEFAULT '#dfdfdf',
+         `button_bg_color` VARCHAR(7) NOT NULL DEFAULT '#e1cc7b',
+         `button_border` VARCHAR(7) NOT NULL DEFAULT '#8B8468',
+         `button_color` VARCHAR(7) NOT NULL DEFAULT '#000000',
+         `button_bg_color_hover` VARCHAR(7) NOT NULL DEFAULT '#ffffff',
+         `button_border_hover` VARCHAR(7) NOT NULL DEFAULT '#8B8468',
+         `button_color_hover` VARCHAR(7) NOT NULL DEFAULT '#000000',
          `text_color` VARCHAR(7) NOT NULL DEFAULT '#000000',
          `link_color` VARCHAR(7) NOT NULL DEFAULT '#659900',
          `link_hover_color` VARCHAR(7) NOT NULL DEFAULT '#000000',
@@ -107,6 +113,27 @@ function plugin_custom_install() {
    
    if (!FieldExists('glpi_plugin_custom_styles', 'link_topright')) {
       $query = "ALTER TABLE `glpi_plugin_custom_styles` ADD COLUMN `link_topright` VARCHAR(7) NOT NULL DEFAULT '#000000'";
+      $DB->query($query);
+   }
+
+
+   if (!FieldExists('glpi_plugin_custom_styles', 'button_bg_color')) {
+      $query = "ALTER TABLE `glpi_plugin_custom_styles` ADD COLUMN `button_bg_color` VARCHAR(7) NOT NULL DEFAULT '#e1cc7b'";
+      $DB->query($query);
+
+      $query = "ALTER TABLE `glpi_plugin_custom_styles` ADD COLUMN `button_border` VARCHAR(7) NOT NULL DEFAULT '#8B8468'";
+      $DB->query($query);
+
+      $query = "ALTER TABLE `glpi_plugin_custom_styles` ADD COLUMN `button_color` VARCHAR(7) NOT NULL DEFAULT '#000000'";
+      $DB->query($query);
+
+      $query = "ALTER TABLE `glpi_plugin_custom_styles` ADD COLUMN `button_bg_color_hover` VARCHAR(7) NOT NULL DEFAULT '#FFFFFF'";
+      $DB->query($query);
+  
+      $query = "ALTER TABLE `glpi_plugin_custom_styles` ADD COLUMN `button_border_hover` VARCHAR(7) NOT NULL DEFAULT '#8B8468'";
+      $DB->query($query);
+  
+      $query = "ALTER TABLE `glpi_plugin_custom_styles` ADD COLUMN `button_color_hover` VARCHAR(7) NOT NULL DEFAULT '#000000'";
       $DB->query($query);
    }
 
