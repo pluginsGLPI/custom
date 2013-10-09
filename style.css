@@ -73,22 +73,37 @@ background-position:0 -201px !important;
 background-attachment:scroll !important;
 }
 
-.right-colored-red,
-.left-colored-red ,
-.inner-colored-red {background-image: url("pics/red.gif") !important;}
+.red .x-tab-left                             {background: url("pics/red.gif") no-repeat scroll right -351px transparent !important;}
+.red .x-tab-right                            {background: url("pics/red.gif") no-repeat scroll 0 -51px transparent !important;}
+.red .x-tab-strip-inner                      {background: url("pics/red.gif") repeat-x scroll 0 -201px transparent !important;}
+.red.x-tab-strip-active .x-tab-left          {background: url("pics/red.gif") no-repeat scroll right -301px transparent !important;}
+.red.x-tab-strip-active .x-tab-right         {background: url("pics/red.gif") no-repeat scroll 0 0 transparent !important;}
+.red.x-tab-strip-active .x-tab-strip-inner   {background: url("pics/red.gif") repeat-x scroll 0 -151px transparent !important;}
 
-.right-colored-green,
-.left-colored-green ,
-.inner-colored-green {background-image: url("pics/green.gif") !important;}
+.blue .x-tab-left                            {background: url("pics/blue.gif") no-repeat scroll right -351px transparent !important;}
+.blue .x-tab-right                           {background: url("pics/blue.gif") no-repeat scroll 0 -51px transparent !important;}
+.blue .x-tab-strip-inner                     {background: url("pics/blue.gif") repeat-x scroll 0 -201px transparent !important;}
+.blue.x-tab-strip-active .x-tab-left         {background: url("pics/blue.gif") no-repeat scroll right -301px transparent !important;}
+.blue.x-tab-strip-active .x-tab-right        {background: url("pics/blue.gif") no-repeat scroll 0 0 transparent !important;}
+.blue.x-tab-strip-active .x-tab-strip-inner  {background: url("pics/blue.gif") repeat-x scroll 0 -151px transparent !important;}
 
-.right-colored-blue,
-.left-colored-blue,
-.inner-colored-blue {background-image: url("pics/blue.gif") !important;}
+.green .x-tab-left                           {background: url("pics/green.gif") no-repeat scroll right -351px transparent !important;}
+.green .x-tab-right                          {background: url("pics/green.gif") no-repeat scroll 0 -51px transparent !important;}
+.green .x-tab-strip-inner                    {background: url("pics/green.gif") repeat-x scroll 0 -201px transparent !important;}
+.green.x-tab-strip-active .x-tab-left        {background: url("pics/green.gif") no-repeat scroll right -301px transparent !important;}
+.green.x-tab-strip-active .x-tab-right       {background: url("pics/green.gif") no-repeat scroll 0 0 transparent !important;}
+.green.x-tab-strip-active .x-tab-strip-inner {background: url("pics/green.gif") repeat-x scroll 0 -151px transparent !important;}
 
-.right-colored-white,
-.left-colored-white,
-.inner-colored-white {background-image: url("pics/white.gif") !important;}
+.white .x-tab-left                           {background: url("pics/white.gif") no-repeat scroll right -351px transparent !important;}
+.white .x-tab-right                          {background: url("pics/white.gif") no-repeat scroll 0 -51px transparent !important;}
+.white .x-tab-strip-inner                    {background: url("pics/white.gif") repeat-x scroll 0 -201px transparent !important;}
+.white.x-tab-strip-active .x-tab-left        {background: url("pics/white.gif") no-repeat scroll right -301px transparent !important;}
+.white.x-tab-strip-active .x-tab-right       {background: url("pics/white.gif") no-repeat scroll 0 0 transparent !important;}
+.white.x-tab-strip-active .x-tab-strip-inner {background: url("pics/white.gif") repeat-x scroll 0 -151px transparent !important;}
 
-.right-colored-black,
-.left-colored-black,
-.inner-colored-black {background-image: url("pics/black.gif") !important;}
+.black .x-tab-left                           {background: url("pics/black.gif") no-repeat scroll right -351px transparent !important;}
+.black .x-tab-right                          {background: url("pics/black.gif") no-repeat scroll 0 -51px transparent !important;}
+.black .x-tab-strip-inner                    {background: url("pics/black.gif") repeat-x scroll 0 -201px transparent !important;}
+.black.x-tab-strip-active .x-tab-left        {background: url("pics/black.gif") no-repeat scroll right -301px transparent !important;}
+.black.x-tab-strip-active .x-tab-right       {background: url("pics/black.gif") no-repeat scroll 0 0 transparent !important;}
+.black.x-tab-strip-active .x-tab-strip-inner {background: url("pics/black.gif") repeat-x scroll 0 -151px transparent !important;}
