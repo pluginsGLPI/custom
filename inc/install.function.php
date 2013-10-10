@@ -8,7 +8,8 @@ include_once (GLPI_ROOT . "/inc/includes.php");
 function plugin_custom_install() {
    global $DB;
 
-   $migration = new Migration;
+   $version = plugin_version_custom();
+   $migration = new Migration($version['version']);
 
    // VERSION 1.0
    if (!TableExists('glpi_plugin_custom_tabs')) {
