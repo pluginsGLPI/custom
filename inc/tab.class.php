@@ -85,7 +85,7 @@ class PluginCustomTab extends CommonDBTM
 
       if ($color != "deleted") {
          $out = "<ul class='x-tab-strip x-tab-strip-top'>";
-         $out .= "<li class='custom_heading'>";
+         $out .= "<li class='custom_heading $color'>";
             $out .= "<a class='x-tab-strip-close'></a>";
             $out .= "<a class='x-tab-right right-colored-$color' href='#'>";
             $out .= "<em class='x-tab-left left-colored-$color'>";
