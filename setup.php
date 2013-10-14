@@ -8,7 +8,7 @@ function plugin_init_custom() {
    global $PLUGIN_HOOKS, $LANG, $CFG_GLPI;
 
    $menu_entry   = "front/config.php";
-   if ((!isset($_SESSION['glpiactiveprofile']['config']) 
+   if ((!isset($_SESSION['glpiactiveprofile']['config'])
       || $_SESSION['glpiactiveprofile']['config'] != "w")
       || !plugin_custom_haveRight("add_tabs", "w")
       && !plugin_custom_haveRight("add_defaulttabs", 1)
@@ -31,7 +31,7 @@ function plugin_init_custom() {
       'links' => array(
          'search' => '/plugins/custom/front/defaulttab.php',
          'add'    =>'/plugins/custom/front/defaulttab.form.php'
-   ));   
+   ));
    $PLUGIN_HOOKS['submenu_entry']['custom']['options']['style'] = array(
       'title' => $LANG['plugin_custom']['title'][2],
       'page'  =>'/plugins/custom/front/style.form.php',
@@ -39,23 +39,23 @@ function plugin_init_custom() {
          'search' => '/plugins/custom/front/style.form.php',
          'add'    =>'/plugins/custom/front/style.form.php'
    ));
-   
+
    $PLUGIN_HOOKS['add_javascript']['custom'][]    = 'selector.js.php';
    $PLUGIN_HOOKS['add_javascript']['custom'][]    = 'lib/colortools/ext.ux.color3.js';
-   
+
    $PLUGIN_HOOKS['add_css']['custom'][]           = 'lib/colortools/ext.ux.color3.css';
    if (file_exists(CUSTOM_FILES_DIR."glpi_style.css")
       || file_exists(GLPI_DOC_DIR."/_plugins/custom/glpi_style.css")) {
       $PLUGIN_HOOKS['add_css']['custom'][]        = '../../files/_plugins/custom/glpi_style.css';
    }
    $PLUGIN_HOOKS['add_css']['custom'][]           = 'style.css';
-   
-   
+
+
    $PLUGIN_HOOKS['change_profile']['custom']      = array('PluginCustomProfile','changeProfile');
-   
+
    $PLUGIN_HOOKS['headings']['custom']            = 'plugin_get_headings_custom';
    $PLUGIN_HOOKS['headings_action']['custom']     = 'plugin_headings_actions_custom';
-   
+
    $PLUGIN_HOOKS['csrf_compliant']['custom']      = true;
 
 }
@@ -66,7 +66,7 @@ function plugin_version_custom() {
    global $LANG;
 
    return array('name'           => $LANG['plugin_custom']['name'],
-                'version'        => "1.2.0",
+                'version'        => "1.2.1",
                 'author'         => "<a href='mailto:adelaunay@teclib.com'>Alexandre DELAUNAY</a> ".
                   "- <a href='http://www.teclib.com'>Teclib'</a>",
                 'homepage'       => "http://www.teclib.com/glpi/plugins/color",
