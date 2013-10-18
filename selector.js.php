@@ -1,7 +1,6 @@
 <?php
 
-define('GLPI_ROOT', '../..');
-include (GLPI_ROOT."/inc/includes.php");
+include (GLPI_ROOT."../../inc/includes.php");
 
 //change mimetype
 header("Content-type: application/javascript");
@@ -55,13 +54,16 @@ if ($plugin->isInstalled("custom") && $plugin->isActivated("custom")) {
 
       echo "}";
 
+      
+      $path = dirname(dirname(dirname($_SERVER['REQUEST_URI'])));
+      
       $JS = <<<JAVASCRIPT
       //add a star to user group vip
       Ext.select('span.x-hidden').each(function(el){
          if (el.dom.innerHTML.indexOf('VIP') > 0) {
             el.insertHtml(
                'beforeBegin',
-               "<img src='../plugins/custom/pics/vip.png' alt='VIP' title='VIP' />"
+               "<img src='$path/plugins/custom/pics/vip.png' alt='VIP' title='VIP' />"
             );
          }
       });
@@ -75,7 +77,7 @@ if ($plugin->isInstalled("custom") && $plugin->isActivated("custom")) {
                      
                   el.insertHtml(
                      'beforeBegin',
-                     "<img src='../plugins/custom/pics/vip.png' alt='VIP' title='VIP' />"
+                     "<img src='$path/plugins/custom/pics/vip.png' alt='VIP' title='VIP' />"
                   );
                }
             });
@@ -89,7 +91,7 @@ if ($plugin->isInstalled("custom") && $plugin->isActivated("custom")) {
             'afterBegin',
             "<a class='toggle_debug pointer'>"
                +"<img alt='' class='toggle_debug_img'"
-               +" src='../pics/deplier_down.png'></a>&nbsp;"
+               +" src='$path/pics/deplier_down.png'></a>&nbsp;"
          );
       }).on('click', function() {
          //toggle element under h2 clicked
@@ -104,9 +106,9 @@ if ($plugin->isInstalled("custom") && $plugin->isActivated("custom")) {
          var sel_img = Ext.select('#'+this.id+' .toggle_debug_img');
          var src_img = sel_img.elements[0].src;
          if (src_img.indexOf('down') > 0) {
-            sel_img.elements[0].src = '../pics/deplier_up.png';
+            sel_img.elements[0].src = '$path/pics/deplier_up.png';
          } else {
-            sel_img.elements[0].src = '../pics/deplier_down.png';
+            sel_img.elements[0].src = '$path/pics/deplier_down.png';
          }
          
          return false;
