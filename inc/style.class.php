@@ -381,6 +381,8 @@ JAVASCRIPT;
    }
 
    function post_updateItem($history=1) {
+      global $CFG_GLPI;
+      
       //generate header gradient img for internet explorer
       $gradient = new PluginCustomGradientgd;
       $image = $gradient->generate_gradient(1, 60, array(
@@ -416,7 +418,7 @@ JAVASCRIPT;
       }
 
       div#header div#c_logo {
-         background: url('".GLPI_ROOT."/plugins/custom/pics/fd_logo.png') 0 0 repeat-x;
+         background: url('".$CFG_GLPI['root_doc']."/plugins/custom/pics/fd_logo.png') 0 0 repeat-x;
       }
 
       a, a:link {
