@@ -601,6 +601,7 @@ JAVASCRIPT;
          -moz-box-shadow: 0px 7px 10px {$this->fields['footer_shadow_color']};
          -webkit-box-shadow: 0px 7px 10px {$this->fields['footer_shadow_color']};
          box-shadow: 0px 7px 10px {$this->fields['footer_shadow_color']};
+         background: $this->fields['footer_bg1'];
          background:-webkit-linear-gradient(top, 
             {$this->fields['footer_bg1']}, {$this->fields['footer_bg2']});
          background:-moz-linear-gradient(top, 
@@ -609,6 +610,9 @@ JAVASCRIPT;
             {$this->fields['footer_bg1']}, {$this->fields['footer_bg2']});
          background:linear-gradient(top, 
             {$this->fields['footer_bg1']}, {$this->fields['footer_bg2']});
+         filter: progid:DXImageTransform.Microsoft.gradient(
+            startColorstr='{$this->fields['footer_bg1']}', 
+            endColorstr='{$this->fields['footer_bg2']}',GradientType=0 ) !important;
       }  
 
       #debug h2, #debugajax h2 {
