@@ -56,11 +56,12 @@ if ($plugin->isInstalled("custom") && $plugin->isActivated("custom")) {
 
       
       $path = dirname(dirname(dirname($_SERVER['REQUEST_URI'])));
+      $login_locale = __("Login");
       
       $JS = <<<JAVASCRIPT
       //add a star to user group vip
       Ext.select('span.x-hidden').each(function(el){
-         if (el.dom.innerHTML.indexOf('VIP') > 0) {
+         if (el.dom.innerHTML.indexOf('VIP') > 0 && el.dom.innerHTML.indexOf('$login_locale') > 0) {
             el.insertHtml(
                'beforeBegin',
                "<img src='$path/plugins/custom/pics/vip.png' alt='VIP' title='VIP' />"
@@ -73,7 +74,8 @@ if ($plugin->isInstalled("custom") && $plugin->isActivated("custom")) {
          setTimeout( function () {
             Ext.select('span.x-hidden').each(function(el){
                if (el.dom.innerHTML.indexOf('VIP') > 0
-                  &&  el.dom.parentNode.innerHTML.indexOf('vip.png') == -1) {
+                  && el.dom.innerHTML.indexOf('$login_locale') > 0
+                  && el.dom.parentNode.innerHTML.indexOf('vip.png') == -1) {
                      
                   el.insertHtml(
                      'beforeBegin',
