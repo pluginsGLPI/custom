@@ -5,7 +5,7 @@ define("CUSTOM_FILES_DIR", GLPI_ROOT."/files/_plugins/custom/");
 
 // Init the hooks of the plugins -Needed
 function plugin_init_custom() {
-   global $PLUGIN_HOOKS, $LANG, $CFG_GLPI;
+   global $PLUGIN_HOOKS, $CFG_GLPI;
 
    $menu_entry   = "front/config.php";
    if ((!isset($_SESSION['glpiactiveprofile']['config'])
@@ -19,21 +19,21 @@ function plugin_init_custom() {
    $PLUGIN_HOOKS['config_page']['custom'] = $menu_entry;
 
    $PLUGIN_HOOKS['submenu_entry']['custom']['options']['tab'] = array(
-      'title' => $LANG['plugin_custom']['title'][0],
+      'title' => __('Colored Tabs', 'custom'),
       'page'  =>'/plugins/custom/front/tab.php',
       'links' => array(
          'search' => '/plugins/custom/front/tab.php',
          'add'    =>'/plugins/custom/front/tab.form.php'
    ));
    $PLUGIN_HOOKS['submenu_entry']['custom']['options']['defaulttab'] = array(
-      'title' => $LANG['plugin_custom']['title'][1],
+      'title' => __('Default Tabs', 'custom'),
       'page'  =>'/plugins/custom/front/defaulttab.php',
       'links' => array(
          'search' => '/plugins/custom/front/defaulttab.php',
          'add'    =>'/plugins/custom/front/defaulttab.form.php'
    ));
    $PLUGIN_HOOKS['submenu_entry']['custom']['options']['style'] = array(
-      'title' => $LANG['plugin_custom']['title'][2],
+      'title' => __('GLPI Style', 'custom'),
       'page'  =>'/plugins/custom/front/style.form.php',
       'links' => array(
          'search' => '/plugins/custom/front/style.form.php',
@@ -64,23 +64,27 @@ function plugin_init_custom() {
 // Get the name and the version of the plugin - Needed
 function plugin_version_custom() {
    return array('name'           => "Custom",
-                'version'        => "0.84-1.1",
+                'version'        => "0.85-1.0",
                 'author'         => "<a href='mailto:adelaunay@teclib.com'>Alexandre DELAUNAY</a> ".
                   "- <a href='http://www.teclib.com'>Teclib'</a>",
                 'homepage'       => "http://www.teclib.com/glpi/plugins/color",
-                'minGlpiVersion' => "0.84");
+                'minGlpiVersion' => "0.85");
 }
-
 
 // Optional : check prerequisites before install : may print errors or add to message after redirect
 function plugin_custom_check_prerequisites() {
-   if (GLPI_VERSION >= 0.84) {
-      return true;
-   } else if (!extension_loaded("gd")) {
-      echo "php-gd required";
-   } else {
-      echo "GLPI version not compatible need 0.84";
+   if (version_compare(GLPI_VERSION,'0.85','lt') || version_compare(GLPI_VERSION,'0.86','ge')) {
+      echo "This plugin requires GLPI 0.85";
+      return false;
+   } elseif (!extension_loaded("gd")) {
+      echo "php-gd is required";
    }
+   if (version_compare(PHP_VERSION, '5.3.0', 'lt')) {
+      echo "PHP 5.3.0 or higher is required";
+      return false;
+   }
+
+   return true;
 }
 
 
@@ -110,4 +114,3 @@ function plugin_custom_haveRight($module,$right) {
    }
    return false;
 }
-?>

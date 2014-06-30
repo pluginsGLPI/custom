@@ -12,5 +12,3 @@ if (isset ($_POST['update'])) {
    PluginCustomProfile::changeProfile();
    Html::redirect($_SERVER['HTTP_REFERER']);
 }
-
-?>

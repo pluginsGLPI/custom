@@ -2,9 +2,7 @@
 class PluginCustomTab extends CommonDBTM
 {
    static function getTypeName($nb=0) {
-      global $LANG;
-
-      return $LANG['plugin_custom']['type'][0];
+      return __('colored tab', 'custom');
    }
 
    static function canCreate() {
@@ -19,14 +17,12 @@ class PluginCustomTab extends CommonDBTM
       global $CFG_GLPI;
 
       $ong = array();
-      $this->addStandardTab('PluginCustomTabProfile', $ong, $options); 
+      $this->addStandardTab('PluginCustomTabProfile', $ong, $options);
 
       return $ong;
    }
 
    public function showForm($ID, $options=array()) {
-      global $LANG;
-
       if ($ID > 0) {
          $this->check($ID,'r');
       } else {
@@ -42,13 +38,13 @@ class PluginCustomTab extends CommonDBTM
       echo "<td>";
       $this->itemtypeDropdown();
       echo "</td>";
-      echo "<td>".$LANG['plugin_custom']['form'][0]."&nbsp;:</td>";
+      echo "<td>".__('Tab', 'custom')."&nbsp;:</td>";
       echo "<td>";
       $this->tabDropdown();
       echo "</td></tr>\n";
 
       echo "<tr class='tab_bg_1'>";
-      echo "<td>".$LANG['plugin_custom']['form'][1]."&nbsp;:</td>";
+      echo "<td>".__('Color', 'custom')."&nbsp;:</td>";
       echo "<td colspan='3' class='preview-tabs'>";
       foreach($this->getColoredTabs() as $tab) {
          //echo $tab."<br class='clear' />";
@@ -64,25 +60,22 @@ class PluginCustomTab extends CommonDBTM
 
    public function getColoredTabs() {
       return array(
-         "<div class='tabs-forms'><input type='radio' name='color' value='red' ".
-            (($this->fields['color']=='red') ? "checked":"")."/>".$this->getTab('red')."</div>",
-         "<div class='tabs-forms'><input type='radio' name='color' value='blue' ".
-            (($this->fields['color']=='blue') ? "checked":"")."/>".$this->getTab('blue')."</div>",
-         "<div class='tabs-forms'><input type='radio' name='color' value='black' ".
-            (($this->fields['color']=='black') ? "checked":"")."/>".$this->getTab('black')."</div>",
-         "<div class='tabs-forms'><input type='radio' name='color' value='green' ".
-            (($this->fields['color']=='green') ? "checked":"")."/>".$this->getTab('green')."</div>",
-         "<div class='tabs-forms'><input type='radio' name='color' value='white' ".
-            (($this->fields['color']=='white') ? "checked":"")."/>".$this->getTab('white')."</div>",
-         "<div class='tabs-forms'><input type='radio' name='color' value='deleted' ".
-            (($this->fields['color']=='deleted') ? "checked":"")."/>".
-            $this->getTab('deleted')."</div>"
+         "<div class='tabs-forms'><input type='radio' name='color' value='red' "
+            . (($this->fields['color'] == 'red') ? "checked":"") . "/>" . $this->getTab('red') . "</div>",
+         "<div class='tabs-forms'><input type='radio' name='color' value='blue' "
+            . (($this->fields['color'] == 'blue') ? "checked":"") . "/>" . $this->getTab('blue') . "</div>",
+         "<div class='tabs-forms'><input type='radio' name='color' value='black' "
+            . (($this->fields['color'] == 'black') ? "checked":"") . "/>" . $this->getTab('black') . "</div>",
+         "<div class='tabs-forms'><input type='radio' name='color' value='green' "
+            . (($this->fields['color'] == 'green') ? "checked":"") . "/>" . $this->getTab('green') . "</div>",
+         "<div class='tabs-forms'><input type='radio' name='color' value='white' "
+            . (($this->fields['color'] == 'white') ? "checked":"") . "/>" . $this->getTab('white') . "</div>",
+         "<div class='tabs-forms'><input type='radio' name='color' value='deleted' "
+            . (($this->fields['color'] == 'deleted') ? "checked":"") . "/>" . $this->getTab('deleted') . "</div>"
       );
    }
 
    public function getTab($color) {
-      global $LANG;
-
       if ($color != "deleted") {
          $out = "<ul class='x-tab-strip x-tab-strip-top'>";
          $out .= "<li class='custom_heading $color'>";
@@ -92,7 +85,7 @@ class PluginCustomTab extends CommonDBTM
                $out .= "<span class='x-tab-strip-inner inner-colored-$color'>";
                   $out .= "<span class='x-tab-strip-text'>";
                      $out .= "<span class='nm_headings custom_headings-$color'>".
-                        $LANG['plugin_custom']['form'][0]."</span>";
+                        __('Tab', 'custom')."</span>";
                   $out .= "</span>";
                $out .= "</span>";
             $out .= "</em>";
@@ -100,34 +93,34 @@ class PluginCustomTab extends CommonDBTM
          $out .= "</li>";
          $out .= "</ul>";
       } else {
-         $out = "<img src='../pics/deleted.png' alt='".$LANG['plugin_custom']['color']['deleted']
-            ."' title='".$LANG['plugin_custom']['color']['deleted']."' class='picto_del' />&nbsp;";
-         $out.= $LANG['plugin_custom']['color']['deleted'];
+         $out = "<img src='../pics/deleted.png' alt='".__('deleted', 'custom')
+            ."' title='".__('deleted', 'custom')."' class='picto_del' />&nbsp;";
+         $out.= __('deleted', 'custom');
       }
       return $out;
    }
 
    public static function getTypes() {
       $types = array(
-         'central'            => __("Home"),
-         'computer'           => __("Computer"),
-         'networkequipment'   => __("Network"),
-         'printer'            => __("Printer"),
-         'monitor'            => __("Monitor"),
-         'software'           => __("Software"),
-         'ticket'             => __("Ticket"),
-         'user'               => __("User"),
-         'cartridgeitem'      => __("Cartridge"),
-         'contact'            => __("Contact"),
-         'supplier'           => __("Supplier"),
-         'contract'           => __("Contract"),
-         'document'           => __("Document"),
-         'state'              => __("State"),
-         'consumableitem'     => __("Consumable"),
-         'phone'              => __("Phone"),
-         'profile'            => __("Profile"),
-         'group'              => __("Group"),
-         'entity'             => __("Entity")
+         'central'          => __("Home"),
+         'computer'         => __("Computer"),
+         'networkequipment' => __("Network"),
+         'printer'          => __("Printer"),
+         'monitor'          => __("Monitor"),
+         'software'         => __("Software"),
+         'ticket'           => __("Ticket"),
+         'user'             => __("User"),
+         'cartridgeitem'    => __("Cartridge"),
+         'contact'          => __("Contact"),
+         'supplier'         => __("Supplier"),
+         'contract'         => __("Contract"),
+         'document'         => __("Document"),
+         'state'            => __("State"),
+         'consumableitem'   => __("Consumable"),
+         'phone'            => __("Phone"),
+         'profile'          => __("Profile"),
+         'group'            => __("Group"),
+         'entity'           => __("Entity")
       );
 
       asort($types);
@@ -149,10 +142,10 @@ class PluginCustomTab extends CommonDBTM
       echo "</select>";
 
       $params=array(
-         'itemtype'  => '__VALUE__',
-         'myname'    => 'tabstab',
-         'value'     => $this->fields['tab'],
-         'id'     => $this->fields['id']
+         'itemtype' => '__VALUE__',
+         'myname'   => 'tabstab',
+         'value'    => $this->fields['tab'],
+         'id'       => $this->fields['id']
       );
 
       Ajax::updateItemOnSelectEvent('tabsitemtype', 'tabstab', $CFG_GLPI["root_doc"].
@@ -167,10 +160,10 @@ class PluginCustomTab extends CommonDBTM
 
       if ($this->fields['id'] > 0) {
          $params=array(
-            'itemtype'  => $this->fields['itemtype'],
-            'myname'    => 'tabstab',
-            'value'     => $this->fields['tab'],
-            'id'     => $this->fields['id']
+            'itemtype' => $this->fields['itemtype'],
+            'myname'   => 'tabstab',
+            'value'    => $this->fields['tab'],
+            'id'       => $this->fields['id']
          );
 
          Ajax::updateItem('tabstab', $CFG_GLPI["root_doc"].
@@ -191,5 +184,3 @@ class PluginCustomTab extends CommonDBTM
       return $name;
    }
 }
-
-?>

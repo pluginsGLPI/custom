@@ -50,5 +50,3 @@ foreach ($tabs as $key => $value) {
 echo "</select>";
 
 Html::ajaxFooter();
-
-?>

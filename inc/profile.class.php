@@ -6,9 +6,7 @@ if (!defined('GLPI_ROOT')) {
 class PluginCustomProfile extends CommonDBTM {
 
    static function getTypeName($nb=0) {
-      global $LANG;
-
-      return $LANG['plugin_custom']['name'];
+      return __('Custom', 'custom');
    }
 
    static function canCreate() {
@@ -86,8 +84,6 @@ class PluginCustomProfile extends CommonDBTM {
 
    //profiles modification
    function showForm($ID, $options=array()) {
-      global $LANG;
-
       $target = $this->getFormURL();
       if (isset($options['target'])) {
          $target = $options['target'];
@@ -107,29 +103,29 @@ class PluginCustomProfile extends CommonDBTM {
 
       echo "<tr class='tab_bg_2'>";
 
-      echo "<td>".$LANG['plugin_custom']['profile'][1] ." : </td><td>";
+      echo "<td>".__('Edit colors of tabs', 'custom') ." : </td><td>";
       if ($prof->fields['interface'] != 'helpdesk') {
          Dropdown::showYesNo("add_tabs",$this->fields["add_tabs"]);
       } else {
-         echo $LANG['profiles'][12]; // No access;
+         echo __('No access'); // No access;
       }
       echo "</td>";
       echo "</tr>";
 
       echo "<tr class='tab_bg_2'>";
-      echo "<td>".$LANG['plugin_custom']['profile'][2] ." : </td><td>";
+      echo "<td>".__('Define default tabs', 'custom') ." : </td><td>";
       if ($prof->fields['interface'] != 'helpdesk') {
          Dropdown::showYesNo("add_defaulttabs",$this->fields["add_defaulttabs"]);
       } else {
-         echo $LANG['profiles'][12]; // No access;
+         echo __('No access'); // No access;
       }
       echo "</td>";
 
-      echo "<td>".$LANG['plugin_custom']['profile'][3] ." : </td><td>";
+      echo "<td>".__('Customise GLPI', 'custom') ." : </td><td>";
       if ($prof->fields['interface'] != 'helpdesk') {
          Dropdown::showYesNo("edit_style",$this->fields["edit_style"]);
       } else {
-         echo $LANG['profiles'][12]; // No access;
+         echo __('No access'); // No access;
       }
       echo "</td>";
       echo "</tr>";
@@ -140,5 +136,3 @@ class PluginCustomProfile extends CommonDBTM {
       $this->showFormButtons($options);
    }
 }
-
-?>

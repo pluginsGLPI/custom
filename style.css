@@ -4,7 +4,7 @@
    margin: 0 auto;
    padding: 4px;
    border: 1px solid silver;
-   -moz-border-radius: 5px; 
+   -moz-border-radius: 5px;
    -webkit-border-radius:5px;
    border-radius: 5px;
 }
@@ -12,7 +12,7 @@ ul.custom_config li {
    cursor:pointer;
    float:left;
    width:20%;
-   -moz-border-radius: 5px; 
+   -moz-border-radius: 5px;
    -webkit-border-radius:5px;
    border-radius: 5px;
    margin:0 1% 10px 1%;
@@ -53,24 +53,24 @@ div.custom_clear {
 .custom_headings-white, .inner-colored-white .custom_headings {color:black !important}
 
 .custom_headings .x-tab-strip-top  .x-tab-right {
-background-color:transparent !important;
-background-repeat:no-repeat !important;
-background-position:0 -51px !important;
-background-attachment:scroll !important;
+   background-color:transparent !important;
+   background-repeat:no-repeat !important;
+   background-position:0 -51px !important;
+   background-attachment:scroll !important;
 }
 
 .custom_headings .x-tab-strip-top  .x-tab-left {
-background-color:transparent !important;
-background-repeat:no-repeat !important;
-background-position:100% -351px !important;
-background-attachment:scroll !important;
+   background-color:transparent !important;
+   background-repeat:no-repeat !important;
+   background-position:100% -351px !important;
+   background-attachment:scroll !important;
 }
 
 .custom_headings .x-tab-strip-top .x-tab-strip-inner {
-background-color:transparent !important;
-background-repeat:repeat-x !important;
-background-position:0 -201px !important;
-background-attachment:scroll !important;
+   background-color:transparent !important;
+   background-repeat:repeat-x !important;
+   background-position:0 -201px !important;
+   background-attachment:scroll !important;
 }
 
 .red .x-tab-left                             {background: url("pics/red.gif") no-repeat scroll right -351px transparent !important;}

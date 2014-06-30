@@ -38,7 +38,7 @@ if ($plugin->isInstalled("custom") && $plugin->isActivated("custom")) {
                echo "Ext.select('#'+tabpanel.id+'__".$tab."').remove();";
             }
          }
-      //}     
+      //}
 
 
       /*** Default Tabs ***/
@@ -54,10 +54,10 @@ if ($plugin->isInstalled("custom") && $plugin->isActivated("custom")) {
 
       echo "}";
 
-      
+
       $path = dirname(dirname(dirname($_SERVER['REQUEST_URI'])));
       $login_locale = __("Login");
-      
+
       $JS = <<<JAVASCRIPT
       //add a star to user group vip
       Ext.select('span.x-hidden').each(function(el){
@@ -76,14 +76,14 @@ if ($plugin->isInstalled("custom") && $plugin->isActivated("custom")) {
                if (el.dom.innerHTML.indexOf('VIP') > 0
                   && el.dom.innerHTML.indexOf('$login_locale') > 0
                   && el.dom.parentNode.innerHTML.indexOf('vip.png') == -1) {
-                     
+
                   el.insertHtml(
                      'beforeBegin',
                      "<img src='$path/plugins/custom/pics/vip.png' alt='VIP' title='VIP' />"
                   );
                }
             });
-         }, 300);      
+         }, 300);
       });
 
 
@@ -112,7 +112,7 @@ if ($plugin->isInstalled("custom") && $plugin->isActivated("custom")) {
          } else {
             sel_img.elements[0].src = '$path/pics/deplier_down.png';
          }
-         
+
          return false;
       });
 
@@ -123,5 +123,3 @@ if ($plugin->isInstalled("custom") && $plugin->isActivated("custom")) {
 JAVASCRIPT;
 echo $JS;
 }
-
-?>

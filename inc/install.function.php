@@ -22,7 +22,7 @@ function plugin_custom_install() {
          PRIMARY KEY (`id`)
       ) ENGINE = MYISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;";
       $DB->query($query);
-   }   
+   }
 
    if (!TableExists('glpi_plugin_custom_defaulttabs')) {
       $query = "CREATE TABLE `glpi_plugin_custom_defaulttabs` (
@@ -57,7 +57,7 @@ function plugin_custom_install() {
          `menu_item_link` VARCHAR(7) NOT NULL DEFAULT '#000000',
          `menu_item_border` VARCHAR(7) NOT NULL DEFAULT '#CC9900',
          `menu_item_bg_hover` VARCHAR(7) NOT NULL DEFAULT '#d0d99d',
-         `table_bg_color` VARCHAR(7) NOT NULL DEFAULT '#F2F2F2', 
+         `table_bg_color` VARCHAR(7) NOT NULL DEFAULT '#F2F2F2',
          `th` VARCHAR(7) NOT NULL DEFAULT '#e1cc7b',
          `th_text_color` VARCHAR(7) NOT NULL DEFAULT '#000000',
          `tab_bg_1` VARCHAR(7) NOT NULL DEFAULT '#f2f2f2',
@@ -107,7 +107,7 @@ function plugin_custom_install() {
       $query = "ALTER TABLE `glpi_plugin_custom_styles` ADD COLUMN `text_color` VARCHAR(7) NOT NULL DEFAULT '#000000'";
       $DB->query($query);
    }
-   
+
    if (!FieldExists('glpi_plugin_custom_styles', 'th_text_color')) {
       $query = "ALTER TABLE `glpi_plugin_custom_styles` ADD COLUMN `th_text_color` VARCHAR(7) NOT NULL DEFAULT '#000000'";
       $DB->query($query);
@@ -115,7 +115,7 @@ function plugin_custom_install() {
       $query = "ALTER TABLE `glpi_plugin_custom_styles` ADD COLUMN `table_bg_color` VARCHAR(7) NOT NULL DEFAULT '#F2F2F2'";
       $DB->query($query);
    }
-   
+
    if (!FieldExists('glpi_plugin_custom_styles', 'link_topright')) {
       $query = "ALTER TABLE `glpi_plugin_custom_styles` ADD COLUMN `link_topright` VARCHAR(7) NOT NULL DEFAULT '#000000'";
       $DB->query($query);
@@ -134,10 +134,10 @@ function plugin_custom_install() {
 
       $query = "ALTER TABLE `glpi_plugin_custom_styles` ADD COLUMN `button_bg_color_hover` VARCHAR(7) NOT NULL DEFAULT '#FFFFFF'";
       $DB->query($query);
-  
+
       $query = "ALTER TABLE `glpi_plugin_custom_styles` ADD COLUMN `button_border_hover` VARCHAR(7) NOT NULL DEFAULT '#8B8468'";
       $DB->query($query);
-  
+
       $query = "ALTER TABLE `glpi_plugin_custom_styles` ADD COLUMN `button_color_hover` VARCHAR(7) NOT NULL DEFAULT '#000000'";
       $DB->query($query);
    }
@@ -173,8 +173,8 @@ function plugin_custom_install() {
    }
 
    if (!FieldExists('glpi_plugin_custom_styles', 'text_color')) {
-      $migration->addField('glpi_plugin_custom_styles', 'text_color',  
-                           "VARCHAR(7) NOT NULL DEFAULT '#000000'", 
+      $migration->addField('glpi_plugin_custom_styles', 'text_color',
+                           "VARCHAR(7) NOT NULL DEFAULT '#000000'",
                            array('after' => 'body'));
       $migration->migrationOneTable('glpi_plugin_custom_styles');
    }
@@ -202,5 +202,3 @@ function plugin_custom_uninstall() {
 
    return true;
 }
-
-?>

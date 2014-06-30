@@ -1,11 +1,9 @@
 <?php
 
 function plugin_get_headings_custom($item,$withtemplate) {
-   global $LANG;
-
    if (get_class($item) == 'Profile') {
       if ($item->getField('id') && $item->getField('interface')!='helpdesk') {
-         return array(1 => $LANG['plugin_custom']['name']);
+         return array(1 => __('Custom', 'custom'));
       }
 
    }
@@ -41,6 +39,3 @@ function plugin_headings_custom($item,$withtemplate=0) {
    }
 
 }
-
-
-?>

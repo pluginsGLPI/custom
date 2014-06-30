@@ -25,12 +25,12 @@ if (isset($_POST['itemtype']) && isset($_POST['tab']) && isset($_POST['color'])
    $tabs += $plug_tabs;*/
 
    //construct name field
-   $tabs = $tabs[$_POST['tab']];
-   $types = PluginCustomTab::getTypes();
-   $itemtype = $types[$_POST['itemtype']];
+   $tabs          = $tabs[$_POST['tab']];
+   $types         = PluginCustomTab::getTypes();
+   $itemtype      = $types[$_POST['itemtype']];
    $_POST['name'] = $itemtype
-      ."-".$tabs
-      ."-".ucfirst($LANG['plugin_custom']['color'][$_POST['color']]);
+      . "-" . $tabs
+      . "-" . ucfirst(__($_POST['color'], 'custom'));
 }
 
 $tabs = new PluginCustomTab;
@@ -57,7 +57,7 @@ if (isset($_POST["add"])) {
    Html::back();
 
 } else {
-   Html::header($LANG['plugin_custom']["name"],
+   Html::header(__('Custom', 'custom'),
       $_SERVER['PHP_SELF'],
       "plugins",
       "custom",
@@ -66,6 +66,3 @@ if (isset($_POST["add"])) {
    $tabs->showForm($_GET["id"]);
    Html::footer();
 }
-
-
-?>
