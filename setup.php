@@ -2,6 +2,7 @@
 //
 include_once (GLPI_ROOT . "/plugins/custom/inc/install.function.php");
 define("CUSTOM_FILES_DIR", GLPI_ROOT."/files/_plugins/custom/");
+define("CUSTOM_CSS_PATH", CUSTOM_FILES_DIR."glpi_style.css");
 
 // Init the hooks of the plugins -Needed
 function plugin_init_custom() {
@@ -44,9 +45,9 @@ function plugin_init_custom() {
    $PLUGIN_HOOKS['add_javascript']['custom'][]    = 'lib/colortools/ext.ux.color3.js';
 
    $PLUGIN_HOOKS['add_css']['custom'][]           = 'lib/colortools/ext.ux.color3.css';
-   if (file_exists(CUSTOM_FILES_DIR."glpi_style.css")
+   if (file_exists(CUSTOM_CSS_PATH)
       || file_exists(GLPI_DOC_DIR."/_plugins/custom/glpi_style.css")) {
-      $PLUGIN_HOOKS['add_css']['custom'][]        = '../../files/_plugins/custom/glpi_style.css';
+      $PLUGIN_HOOKS['add_css']['custom'][]        = 'custom_style.css.php';
    }
    $PLUGIN_HOOKS['add_css']['custom'][]           = 'style.css';
 
