@@ -395,6 +395,8 @@ JAVASCRIPT;
       ), 'vertical');
       $gradient->save_image($image, GLPI_ROOT."/files/_plugins/custom/fn_nav.png", "png");
 
+      Toolbox::logDebug($this->fields['cadre_central_bg2']);
+
       //generate css
       $CSS = "
       body {
@@ -435,7 +437,7 @@ JAVASCRIPT;
       }
 
       ul#menu ul.ssmenu {
-         background-image:none !important;
+         background:none !important;
          background-color:{$this->fields['menu_item_bg']} !important;
          border: 1px solid {$this->fields['menu_item_border']} !important;
       }
@@ -449,12 +451,12 @@ JAVASCRIPT;
       }
 
       ul#menu ul li a:hover {
-         background-image:none !important;
+         background:none !important;
          background-color:{$this->fields['menu_item_bg_hover']} !important;
       }
 
       div#c_ssmenu1 {
-         background-image:none !important;
+         background:none !important;
       }
 
       div#c_ssmenu1 ul li a {
@@ -462,7 +464,7 @@ JAVASCRIPT;
       }
 
       div#c_ssmenu2 {
-         background-image:none !important;
+         background:none !important;
       }
 
       div#c_ssmenu2 ul li a {
@@ -471,7 +473,7 @@ JAVASCRIPT;
 
       div#show_all_menu {
          border: 1px solid {$this->fields['menu_item_border']} !important;
-         background-image:none !important;
+         background:none !important;
          background-color:{$this->fields['menu_item_bg']} !important;
       }
 
@@ -523,6 +525,10 @@ JAVASCRIPT;
       }
 
       .tab_cadre_central {
+         background: {$this->fields['cadre_central_bg1']}; /* Old browsers */
+         filter: progid:DXImageTransform.Microsoft.gradient(
+            startColorstr='{$this->fields['cadre_central_bg1']}', 
+            endColorstr='{$this->fields['cadre_central_bg2']}',GradientType=0 ) !important;
          background:-webkit-linear-gradient(top, 
             {$this->fields['cadre_central_bg1']}, {$this->fields['cadre_central_bg2']});
          background:-moz-linear-gradient(top, 
@@ -622,8 +628,8 @@ JAVASCRIPT;
 
       /*** TABS ***/
 
-      .custom_heading_none .x-tab-strip span.x-tab-strip-text {
-         color:{$this->fields['tabs_title_color']}
+      .custom_heading_none .x-tab-strip-text {
+         color:{$this->fields['tabs_title_color']} !important
       }
 
       .custom_heading_none .x-tab-left {
