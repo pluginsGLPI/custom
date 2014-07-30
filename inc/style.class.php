@@ -395,8 +395,6 @@ JAVASCRIPT;
       ), 'vertical');
       $gradient->save_image($image, GLPI_ROOT."/files/_plugins/custom/fn_nav.png", "png");
 
-      Toolbox::logDebug($this->fields['cadre_central_bg2']);
-
       //generate css
       $CSS = "
       body {
