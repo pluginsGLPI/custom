@@ -7,7 +7,7 @@ define("CUSTOM_FILES_DIR", GLPI_ROOT."/files/_plugins/custom/");
 function plugin_init_custom() {
    global $PLUGIN_HOOKS, $CFG_GLPI;
 
-   $PLUGIN_HOOKS['config_entry']['custom']  = "front/config.php";
+   $PLUGIN_HOOKS['config_page']['custom']  = "front/config.php";
 
    $PLUGIN_HOOKS['submenu_entry']['custom']['options']['tab'] = array(
       'title' => __('Colored Tabs', 'custom'),
