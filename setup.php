@@ -7,16 +7,7 @@ define("CUSTOM_FILES_DIR", GLPI_ROOT."/files/_plugins/custom/");
 function plugin_init_custom() {
    global $PLUGIN_HOOKS, $CFG_GLPI;
 
-   $menu_entry   = "front/config.php";
-   if ((!isset($_SESSION['glpiactiveprofile']['config'])
-      || $_SESSION['glpiactiveprofile']['config'] != "w")
-      || !plugin_custom_haveRight("add_tabs", "w")
-      && !plugin_custom_haveRight("add_defaulttabs", 1)
-      && !plugin_custom_haveRight("edit_style", 1)
-   ) $menu_entry  = false;
-
-   $PLUGIN_HOOKS['menu_entry']['custom']  = $menu_entry;
-   $PLUGIN_HOOKS['config_page']['custom'] = $menu_entry;
+   $PLUGIN_HOOKS['config_entry']['custom']  = "front/config.php";
 
    $PLUGIN_HOOKS['submenu_entry']['custom']['options']['tab'] = array(
       'title' => __('Colored Tabs', 'custom'),
@@ -41,23 +32,14 @@ function plugin_init_custom() {
    ));
 
    $PLUGIN_HOOKS['add_javascript']['custom'][]    = 'selector.js.php';
-   $PLUGIN_HOOKS['add_javascript']['custom'][]    = 'lib/colortools/ext.ux.color3.js';
 
-   $PLUGIN_HOOKS['add_css']['custom'][]           = 'lib/colortools/ext.ux.color3.css';
    if (file_exists(CUSTOM_FILES_DIR."glpi_style.css")
       || file_exists(GLPI_DOC_DIR."/_plugins/custom/glpi_style.css")) {
       $PLUGIN_HOOKS['add_css']['custom'][]        = '../../files/_plugins/custom/glpi_style.css';
    }
    $PLUGIN_HOOKS['add_css']['custom'][]           = 'style.css';
 
-
-   $PLUGIN_HOOKS['change_profile']['custom']      = array('PluginCustomProfile','changeProfile');
-
-   $PLUGIN_HOOKS['headings']['custom']            = 'plugin_get_headings_custom';
-   $PLUGIN_HOOKS['headings_action']['custom']     = 'plugin_headings_actions_custom';
-
    $PLUGIN_HOOKS['csrf_compliant']['custom']      = true;
-
 }
 
 
