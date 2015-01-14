@@ -1,27 +1,14 @@
 <?php
 
-class PluginCustomDefaulttab extends CommonDBTM
-{
+class PluginCustomDefaulttab extends CommonDBTM {
+   static $rightname = 'config';
+   
    static function getTypeName($nb = 0) {
       return __('default Tab', 'custom');
    }
 
-   static function canCreate() {
-      return plugin_custom_haveRight("add_defaulttabs", 1);
-   }
-
-   static function canView() {
-      return plugin_custom_haveRight("add_defaulttabs", 1);
-   }
-
    public function showForm($ID, $options = array()) {
-      if ($ID > 0) {
-         $this->check($ID,'r');
-      } else {
-         // Create item
-         $this->check(-1,'w');
-      }
-
+      $this>initForm($ID, $options);
       $this->showFormHeader($options);
 
       echo "<tr class='tab_bg_1'>";

@@ -1,16 +1,9 @@
 <?php
-class PluginCustomTab extends CommonDBTM
-{
+class PluginCustomTab extends CommonDBTM {
+   static $rightname = 'config';
+
    static function getTypeName($nb=0) {
       return __('colored tab', 'custom');
-   }
-
-   static function canCreate() {
-      return plugin_custom_haveRight('add_tabs', 1);
-   }
-
-   static function canView() {
-      return plugin_custom_haveRight('add_tabs', 1);
    }
 
    function defineTabs($options=array()) {
@@ -23,14 +16,7 @@ class PluginCustomTab extends CommonDBTM
    }
 
    public function showForm($ID, $options=array()) {
-      if ($ID > 0) {
-         $this->check($ID,'r');
-      } else {
-         // Create item
-         $this->check(-1,'w');
-      }
-
-      $this->showTabs($options);
+      $this->initForm($ID, $options);
       $this->showFormHeader($options);
 
       echo "<tr class='tab_bg_1'>";
@@ -53,7 +39,6 @@ class PluginCustomTab extends CommonDBTM
       echo "</td></tr>\n";
 
       $this->showFormButtons($options);
-      $this->addDivForTabs();
 
       return true;
    }

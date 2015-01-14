@@ -1,16 +1,9 @@
 <?php
-class PluginCustomTabProfile extends CommonDBTM
-{
+class PluginCustomTabProfile extends CommonDBTM {
+   static $rightname = 'config';
+
    static function getTypeName($nb=0) {
       return __('colored tab', 'custom');
-   }
-
-   static function canCreate() {
-      return plugin_custom_haveRight('add_tabs', 1);
-   }
-
-   static function canView() {
-      return plugin_custom_haveRight('add_tabs', 1);
    }
 
    function getTabNameForItem(CommonGLPI $item, $withtemplate=0) {
