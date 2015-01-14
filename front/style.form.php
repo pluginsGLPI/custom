@@ -14,9 +14,12 @@ if (isset($_POST['add'])) {
    $style->update($_POST);
    Html::back();
 
-} elseif(isset($_POST['delete'])) {
+} elseif(isset($_POST['purge'])) {
    $style->delete($_POST);
-   unlink(GLPI_ROOT."/files/_plugins/custom/glpi_style.css");
+   $css_file = GLPI_ROOT."/files/_plugins/custom/glpi_style.css";
+   if (file_exists($css_file)) {
+      unlink($css_file);
+   }
    Html::back();
 
 }
