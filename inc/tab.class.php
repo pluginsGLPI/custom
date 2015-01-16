@@ -10,6 +10,7 @@ class PluginCustomTab extends CommonDBTM {
       global $CFG_GLPI;
 
       $ong = array();
+      $this->addDefaultFormTab($ong);
       $this->addStandardTab('PluginCustomTabProfile', $ong, $options);
 
       return $ong;
@@ -61,24 +62,19 @@ class PluginCustomTab extends CommonDBTM {
    }
 
    public function getTab($color) {
+      $out = "";
       if ($color != "deleted") {
-         $out = "<ul class='x-tab-strip x-tab-strip-top'>";
-         $out .= "<li class='custom_heading $color'>";
-            $out .= "<a class='x-tab-strip-close'></a>";
-            $out .= "<a class='x-tab-right right-colored-$color' href='#'>";
-            $out .= "<em class='x-tab-left left-colored-$color'>";
-               $out .= "<span class='x-tab-strip-inner inner-colored-$color'>";
-                  $out .= "<span class='x-tab-strip-text'>";
-                     $out .= "<span class='nm_headings custom_headings-$color'>".
-                        __('Tab', 'custom')."</span>";
-                  $out .= "</span>";
-               $out .= "</span>";
-            $out .= "</em>";
+         $out .= "<div class='ui-tabs'>";
+         $out .= "<ul class='ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all'>";
+         $out .= "<li class='ui-state-default ui-corner-top $color'>";
+            $out .= "<a href='#' class='ui-tabs-anchor'>";
+               $out .= __('Tab', 'custom');
             $out .= "</a>";
          $out .= "</li>";
          $out .= "</ul>";
+         $out .= "</div>";
       } else {
-         $out = "<img src='../pics/deleted.png' alt='".__('deleted', 'custom')
+         $out.= "<img src='../pics/deleted.png' alt='".__('deleted', 'custom')
             ."' title='".__('deleted', 'custom')."' class='picto_del' />&nbsp;";
          $out.= __('deleted', 'custom');
       }

@@ -8,7 +8,7 @@ class PluginCustomDefaulttab extends CommonDBTM {
    }
 
    public function showForm($ID, $options = array()) {
-      $this>initForm($ID, $options);
+      $this->initForm($ID, $options);
       $this->showFormHeader($options);
 
       echo "<tr class='tab_bg_1'>";
@@ -16,7 +16,7 @@ class PluginCustomDefaulttab extends CommonDBTM {
       echo "<td>";
       $this->itemtypeDropdown();
       echo "</td>";
-      echo "<td>" . __('colored tab', 'custom') . "&nbsp;:</td>";
+      echo "<td>" . __('tab', 'custom') . "&nbsp;:</td>";
       echo "<td>";
       $this->tabDropdown();
       echo "</td></tr>\n";

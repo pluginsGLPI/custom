@@ -58,6 +58,6 @@ if (isset($_POST["add"])) {
       "custom",
       "tab"
    );
-   $tabs->display();
+   $tabs->display(array('id' => $_GET["id"]));
    Html::footer();
 }

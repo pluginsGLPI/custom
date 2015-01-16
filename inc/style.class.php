@@ -361,23 +361,23 @@ class PluginCustomStyle extends CommonDBTM {
       //generate css
       $CSS = "
       body {
-         background-color: {$this->fields['body']} !important;
+         background-color: {$this->fields['body']};
          color: {$this->fields['text_color']}
       }
 
       .submit {
-         background: none !important;
-         background-color: {$this->fields['button_bg_color']} !important;
-         color: {$this->fields['button_color']} !important;
-         border: 1px solid {$this->fields['button_border']} !important;
-         padding: 3px 15px !important;
+         background: none;
+         background-color: {$this->fields['button_bg_color']};
+         color: {$this->fields['button_color']};
+         border: 1px solid {$this->fields['button_border']};
+         padding: 3px 15px;
       }
 
       .submit:hover {
-         background:none !important;
-         background-color: {$this->fields['button_bg_color_hover']} !important;
-         color: {$this->fields['button_color_hover']} !important;
-          border: 1px solid {$this->fields['button_border_hover']} !important;
+         background:none;
+         background-color: {$this->fields['button_bg_color_hover']};
+         color: {$this->fields['button_color_hover']};
+          border: 1px solid {$this->fields['button_border_hover']};
       }
 
       div#header div#c_logo {
@@ -385,104 +385,104 @@ class PluginCustomStyle extends CommonDBTM {
       }
 
       a, a:link {
-         color: {$this->fields['link_color']} !important;
+         color: {$this->fields['link_color']};
       }
 
       a:hover {
-        color: {$this->fields['link_hover_color']} !important;
+        color: {$this->fields['link_hover_color']};
       }
 
       ul#menu a.itemP, ul#menu a.itemP1 {
-         color: {$this->fields['menu_link']} !important;
-         border-right: 1px solid {$this->fields['menu_border']} !important;
+         color: {$this->fields['menu_link']};
+         border-right: 1px solid {$this->fields['menu_border']};
       }
 
       ul#menu ul.ssmenu {
-         background-image:none !important;
-         background-color:{$this->fields['menu_item_bg']} !important;
-         border: 1px solid {$this->fields['menu_item_border']} !important;
+         background-image:none;
+         background-color:{$this->fields['menu_item_bg']};
+         border: 1px solid {$this->fields['menu_item_border']};
       }
 
       ul#menu ul li {
-         border-bottom: 1px solid {$this->fields['menu_item_border']} !important;
+         border-bottom: 1px solid {$this->fields['menu_item_border']};
       }
 
       ul#menu ul li a {
-         color: {$this->fields['menu_item_link']} !important;
+         color: {$this->fields['menu_item_link']};
       }
 
       ul#menu ul li a:hover {
-         background-image:none !important;
-         background-color:{$this->fields['menu_item_bg_hover']} !important;
+         background-image:none;
+         background-color:{$this->fields['menu_item_bg_hover']};
       }
 
       div#c_ssmenu1 {
-         background-image:none !important;
+         background-image:none;
       }
 
       div#c_ssmenu1 ul li a {
-         color:{$this->fields['ssmenu1_link']} !important;
+         color:{$this->fields['ssmenu1_link']};
       }
 
       div#c_ssmenu2 {
-         background-image:none !important;
+         background-image:none;
       }
 
       div#c_ssmenu2 ul li a {
-         color:{$this->fields['ssmenu2_link']} !important;
+         color:{$this->fields['ssmenu2_link']};
       }
 
       div#show_all_menu {
-         border: 1px solid {$this->fields['menu_item_border']} !important;
-         background-image:none !important;
-         background-color:{$this->fields['menu_item_bg']} !important;
+         border: 1px solid {$this->fields['menu_item_border']};
+         background-image:none;
+         background-color:{$this->fields['menu_item_bg']};
       }
 
       div#c_preference ,
       div#c_preference a {
-         color: {$this->fields['link_topright']} !important;
+         color: {$this->fields['link_topright']};
       }
 
       #debug-float a {
-         color:red !important;
+         color:red;
       }
 
       .tab_cadre_fixe, .tab_cadre_fixehov {
-         background: {$this->fields['table_bg_color']} !important;
+         background: {$this->fields['table_bg_color']};
       }
 
       .tab_cadre th, .tab_cadre_fixe th, .tab_cadre_fixehov th,
       .tab_cadrehov th, .tab_cadrehov_pointer th, .tab_cadre_report th {
-         background-color:{$this->fields['th']} !important;
-         color:{$this->fields['th_text_color']} !important;
+         background-color:{$this->fields['th']};
+         color:{$this->fields['th_text_color']};
       }
 
       .tab_bg_1 {
-         background-color: {$this->fields['tab_bg_1']} !important;
+         background-color: {$this->fields['tab_bg_1']};
       }
 
       .tab_bg_1_2 {
-         background-color: {$this->fields['tab_bg_1_2']} !important;
+         background-color: {$this->fields['tab_bg_1_2']};
       }
 
       .tab_bg_2 {
-         background-color: {$this->fields['tab_bg_2']} !important;
+         background-color: {$this->fields['tab_bg_2']};
       }
 
       .tab_bg_2_2 {
-         background-color: {$this->fields['tab_bg_2_2']} !important;
+         background-color: {$this->fields['tab_bg_2_2']};
       }
 
       .tab_bg_3 {
-         background-color: {$this->fields['tab_bg_3']} !important;
+         background-color: {$this->fields['tab_bg_3']};
       }
 
       .tab_bg_4 {
-         background-color: {$this->fields['tab_bg_4']} !important;
+         background-color: {$this->fields['tab_bg_4']};
       }
 
       .tab_bg_5 {
-         background-color: {$this->fields['tab_bg_5']} !important;
+         background-color: {$this->fields['tab_bg_5']};
       }
 
       .tab_cadre_central {
@@ -575,31 +575,31 @@ class PluginCustomStyle extends CommonDBTM {
             {$this->fields['footer_bg1']}, {$this->fields['footer_bg2']});
          filter: progid:DXImageTransform.Microsoft.gradient(
             startColorstr='{$this->fields['footer_bg1']}',
-            endColorstr='{$this->fields['footer_bg2']}',GradientType=0 ) !important;
+            endColorstr='{$this->fields['footer_bg2']}',GradientType=0 );
       }
 
       #debug h2, #debugajax h2 {
-         border-left: 4px solid {$this->fields['menu_item_border']} !important;
-         border-bottom: 2px solid {$this->fields['menu_item_border']} !important;
+         border-left: 4px solid {$this->fields['menu_item_border']};
+         border-bottom: 2px solid {$this->fields['menu_item_border']};
       }
 
       /*** TABS ***/
 
       .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
          border: 1px solid {$this->fields['tabs_border']};  
-         background: {$this->fields['tabs_bg2']} !important;
+         background: {$this->fields['tabs_bg2']};
          color: {$this->fields['tabs_title_color']};
       }
 
       .ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active {
          border: 1px solid {$this->fields['tabs_border']};
-         background: {$this->fields['tabs_bg1']} !important;
+         background: {$this->fields['tabs_bg1']};
          color: {$this->fields['tabs_title_color']};
       }
 
       .ui-widget-header {
          border: 1px solid {$this->fields['tabs_border']};  
-         background: {$this->fields['tabs_bg3']} !important;
+         background: {$this->fields['tabs_bg3']};
          color: {$this->fields['tabs_title_color']};
       }
       ";

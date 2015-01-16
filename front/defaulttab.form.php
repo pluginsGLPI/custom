@@ -5,7 +5,6 @@ if (empty($_GET["id"])) {
    $_GET["id"] = "";
 }
 
-
 if (isset($_POST['itemtype']) && isset($_POST['tab'])
    && (isset($_POST["add"]) || isset($_POST["update"]))) {
    $itemtype = $_POST['itemtype'];
