@@ -56,12 +56,15 @@ if ($plugin->isInstalled("custom") && $plugin->isActivated("custom")) {
          });
       }
 
+      var is_defaulttab_activated = false;
+
       // on tab panel load event
       $('#tabspanel + div.ui-tabs').on("tabsload", function( event, ui ) {
          starVIP();
 
          var default_tab = "{$default_tab}";
-         if (default_tab) {
+         if (default_tab && !is_defaulttab_activated) {
+            is_defaulttab_activated = true;
             default_tab = $('li[role=tab]:has(a[href*=$default_tab])');
             var defaul_tab_index = default_tab.attr('aria-controls').replace('ui-tabs-', '') - 1;
             console.log("{$default_tab}",  default_tab.attr('aria-controls'));
