@@ -19,7 +19,7 @@ class PluginCustomGradientgd {
     public function generate_gradient($width, $height, $colors, $direction='vertical', $invert=false) {
         //Crear imagen
         $image = imagecreatetruecolor($width, $height);
-        //Comprobar colores      
+        //Comprobar colores
         $positions = array_keys($colors);
         if (!isset($colors[0]))//Usar el primer color
             $colors[0] = $colors[reset($positions)];

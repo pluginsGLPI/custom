@@ -1,18 +1,9 @@
 <?php
-class PluginCustomTabProfile extends CommonDBTM
-{
+class PluginCustomTabProfile extends CommonDBTM {
+   static $rightname = 'config';
+
    static function getTypeName($nb=0) {
-      global $LANG;
-
-      return $LANG['plugin_custom']['type'][0];
-   }
-
-   static function canCreate() {
-      return plugin_custom_haveRight('add_tabs', 1);
-   }
-
-   static function canView() {
-      return plugin_custom_haveRight('add_tabs', 1);
+      return __('colored tab', 'custom');
    }
 
    function getTabNameForItem(CommonGLPI $item, $withtemplate=0) {
@@ -44,7 +35,7 @@ class PluginCustomTabProfile extends CommonDBTM
          Dropdown::showYesNo("tab_profile[$profiles_id]", 0);
          echo "</td>";
          if (($odd % 2) === 1) echo "</tr>";
-         
+
          $odd++;
       }
       if (($odd % 2) === 0) echo "</tr>";
@@ -52,7 +43,7 @@ class PluginCustomTabProfile extends CommonDBTM
       echo "<input type='submit' name='update' value=\""._sx('button','Post')."\" class='submit'>";
       echo "</div></td></tr>";
       echo "</table>";
-      
+
       Html::closeForm();
 
       return true;

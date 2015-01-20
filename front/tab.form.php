@@ -25,47 +25,39 @@ if (isset($_POST['itemtype']) && isset($_POST['tab']) && isset($_POST['color'])
    $tabs += $plug_tabs;*/
 
    //construct name field
-   $tabs = $tabs[$_POST['tab']];
-   $types = PluginCustomTab::getTypes();
-   $itemtype = $types[$_POST['itemtype']];
+   $tabs          = $tabs[$_POST['tab']];
+   $types         = PluginCustomTab::getTypes();
+   $itemtype      = $types[$_POST['itemtype']];
    $_POST['name'] = $itemtype
-      ."-".$tabs
-      ."-".ucfirst($LANG['plugin_custom']['color'][$_POST['color']]);
+      . "-" . $tabs
+      . "-" . ucfirst(__($_POST['color'], 'custom'));
 }
 
 $tabs = new PluginCustomTab;
 
 if (isset($_POST["add"])) {
-
-   $tabs->check(-1,'w',$_POST);
    $newID = $tabs->add($_POST);
    Html::redirect($CFG_GLPI["root_doc"]."/plugins/custom/front/tab.form.php");
 
 } elseif (isset($_POST["delete"])) {
-   $tabs->check($_POST['id'],'d');
    $ok = $tabs->delete($_POST);
    Html::redirect($CFG_GLPI["root_doc"]."/plugins/custom/front/tab.php");
 
 } elseif (isset($_REQUEST["purge"])) {
-   $tabs->check($_REQUEST['id'],'d');
    $tabs->delete($_REQUEST,1);
    Html::redirect($CFG_GLPI["root_doc"]."/plugins/custom/front/tab.php");
 
 } elseif (isset($_POST["update"])) {
-   $tabs->check($_POST['id'],'w');
    $tabs->update($_POST);
    Html::back();
 
 } else {
-   Html::header($LANG['plugin_custom']["name"],
+   Html::header(__('Custom', 'custom'),
       $_SERVER['PHP_SELF'],
-      "plugins",
-      "custom",
+      "config",
+      "PluginCustomConfig",
       "tab"
    );
-   $tabs->showForm($_GET["id"]);
+   $tabs->display(array('id' => $_GET["id"]));
    Html::footer();
 }
-
-
-?>

@@ -1,39 +1,22 @@
 <?php
 
-class PluginCustomDefaulttab extends CommonDBTM
-{
-   static function getTypeName($nb=0) {
-      global $LANG;
-
-      return $LANG['plugin_custom']['type'][1];
+class PluginCustomDefaulttab extends CommonDBTM {
+   static $rightname = 'config';
+   
+   static function getTypeName($nb = 0) {
+      return __('default Tab', 'custom');
    }
 
-   static function canCreate() {
-      return plugin_custom_haveRight("add_defaulttabs", 1);
-   }
-
-   static function canView() {
-      return plugin_custom_haveRight("add_defaulttabs", 1);
-   }
-
-   public function showForm($ID, $options=array()) {
-      global $LANG;
-
-      if ($ID > 0) {
-         $this->check($ID,'r');
-      } else {
-         // Create item
-         $this->check(-1,'w');
-      }
-
+   public function showForm($ID, $options = array()) {
+      $this->initForm($ID, $options);
       $this->showFormHeader($options);
-      
+
       echo "<tr class='tab_bg_1'>";
-      echo "<td>"._n("Item", "Items", 2)."&nbsp;:</td>";
+      echo "<td>" . _n("Item", "Items", 2) . "&nbsp;:</td>";
       echo "<td>";
       $this->itemtypeDropdown();
       echo "</td>";
-      echo "<td>".$LANG['plugin_custom']['form'][0]."&nbsp;:</td>";
+      echo "<td>" . __('tab', 'custom') . "&nbsp;:</td>";
       echo "<td>";
       $this->tabDropdown();
       echo "</td></tr>\n";
@@ -50,7 +33,7 @@ class PluginCustomDefaulttab extends CommonDBTM
       $itemtypes = PluginCustomTab::getTypes();
 
       echo "<select name='itemtype' id='tabsitemtype'>";
-      echo "<option value='0'>".Dropdown::EMPTY_VALUE."</option>\n";
+      echo "<option value='0'>" . Dropdown::EMPTY_VALUE . "</option>\n";
       foreach ($itemtypes as $key => $value) {
          if ($this->fields['id'] > 0 && $this->fields['itemtype'] == $key)
             echo "<option value='$key' selected='selected'>$value</option>";
@@ -59,13 +42,13 @@ class PluginCustomDefaulttab extends CommonDBTM
       echo "</select>";
 
       $params=array(
-         'itemtype'  => '__VALUE__',
-         'myname'    => 'tabstab',
-         'value'     => $this->fields['tab'],
-         'id'     => $this->fields['id']
+         'itemtype' => '__VALUE__',
+         'myname'   => 'tabstab',
+         'value'    => $this->fields['tab'],
+         'id'       => $this->fields['id']
       );
 
-      Ajax::updateItemOnSelectEvent('tabsitemtype', 'tabstab', $CFG_GLPI["root_doc"].
+      Ajax::updateItemOnSelectEvent('tabsitemtype', 'tabstab', $CFG_GLPI["root_doc"] .
                                   "/plugins/custom/ajax/dropdowntab.php", $params);
 
    }
@@ -77,17 +60,15 @@ class PluginCustomDefaulttab extends CommonDBTM
 
       if ($this->fields['id'] > 0) {
          $params=array(
-            'itemtype'  => $this->fields['itemtype'],
-            'myname'    => 'tabstab',
-            'value'     => $this->fields['tab'],
-            'id'     => $this->fields['id']
+            'itemtype' => $this->fields['itemtype'],
+            'myname'   => 'tabstab',
+            'value'    => $this->fields['tab'],
+            'id'       => $this->fields['id']
          );
 
-         Ajax::updateItem('tabstab', $CFG_GLPI["root_doc"].
+         Ajax::updateItem('tabstab', $CFG_GLPI["root_doc"] .
                                      "/plugins/custom/ajax/dropdowntab.php", $params);
       }
    }
 
 }
-
-?>

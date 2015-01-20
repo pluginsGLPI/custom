@@ -2,7 +2,7 @@
 
 include ("../../../inc/includes.php");
 
-Html::header($LANG['plugin_custom']["name"], $_SERVER['PHP_SELF'] ,"plugins", "custom", "style");
+Html::header(__('Custom', 'custom'), $_SERVER['PHP_SELF'] ,"config", "PluginCustomConfig", "style");
 
 $style = new PluginCustomStyle;
 
@@ -14,9 +14,12 @@ if (isset($_POST['add'])) {
    $style->update($_POST);
    Html::back();
 
-} elseif(isset($_POST['delete'])) {
+} elseif(isset($_POST['purge'])) {
    $style->delete($_POST);
-   unlink(GLPI_ROOT."/files/_plugins/custom/glpi_style.css");
+   $css_file = GLPI_ROOT."/files/_plugins/custom/glpi_style.css";
+   if (file_exists($css_file)) {
+      unlink($css_file);
+   }
    Html::back();
 
 }
@@ -26,4 +29,3 @@ $ID = isset($_POST['id'])?$_POST['id']:PluginCustomStyle::getSingle();
 $style->showForm($ID);
 
 Html::footer();
-?>
