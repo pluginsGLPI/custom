@@ -54,8 +54,8 @@ if (isset($_POST["add"])) {
 } else {
    Html::header(__('Custom', 'custom'),
       $_SERVER['PHP_SELF'],
-      "plugins",
-      "custom",
+      "config",
+      "PluginCustomConfig",
       "tab"
    );
    $tabs->display(array('id' => $_GET["id"]));

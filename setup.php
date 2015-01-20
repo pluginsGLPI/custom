@@ -40,6 +40,8 @@ function plugin_init_custom() {
    $PLUGIN_HOOKS['add_css']['custom'][]           = 'style.css';
 
    $PLUGIN_HOOKS['csrf_compliant']['custom']      = true;
+
+   $PLUGIN_HOOKS['menu_toadd']['custom'] = array('config' => 'PluginCustomConfig');
 }
 
 

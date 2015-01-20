@@ -2,7 +2,7 @@
 
 include ("../../../inc/includes.php");
 
-Html::header(__('Custom', 'custom'), $_SERVER['PHP_SELF'] ,"plugins", "custom", "style");
+Html::header(__('Custom', 'custom'), $_SERVER['PHP_SELF'] ,"config", "PluginCustomConfig", "style");
 
 $style = new PluginCustomStyle;
 

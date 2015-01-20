@@ -43,7 +43,7 @@ if (isset($_POST["add"])) {
    Html::back();
 
 } else {
-   Html::header(__('Custom', 'custom'), $_SERVER['PHP_SELF'], "plugins", "custom",
+   Html::header(__('Custom', 'custom'), $_SERVER['PHP_SELF'], "config", "PluginCustomConfig",
       "defaulttab"
    );
    $tabs->showForm($_GET["id"]);
