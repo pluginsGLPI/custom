@@ -67,7 +67,6 @@ if ($plugin->isInstalled("custom") && $plugin->isActivated("custom")) {
             is_defaulttab_activated = true;
             default_tab = $('li[role=tab]:has(a[href*=$default_tab])');
             var defaul_tab_index = default_tab.attr('aria-controls').replace('ui-tabs-', '') - 1;
-            console.log("{$default_tab}",  default_tab.attr('aria-controls'));
             $('#tabspanel + div.ui-tabs').tabs( "option", "active", defaul_tab_index );
          }
       });
