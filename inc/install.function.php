@@ -142,9 +142,6 @@ function plugin_custom_install() {
       $DB->query($query);
    }
 
-   include_once (GLPI_ROOT."/plugins/custom/inc/profile.class.php");
-   PluginCustomProfile::createFirstAccess($_SESSION['glpiactiveprofile']['id']);
-
    //create plugin file dir
    if (!is_dir(CUSTOM_FILES_DIR))
       mkdir(CUSTOM_FILES_DIR);
