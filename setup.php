@@ -9,29 +9,6 @@ function plugin_init_custom() {
    global $PLUGIN_HOOKS, $CFG_GLPI;
 
    $PLUGIN_HOOKS['config_page']['custom']  = "front/config.php";
-
-   $PLUGIN_HOOKS['submenu_entry']['custom']['options']['tab'] = array(
-      'title' => __('Colored Tabs', 'custom'),
-      'page'  =>'/plugins/custom/front/tab.php',
-      'links' => array(
-         'search' => '/plugins/custom/front/tab.php',
-         'add'    =>'/plugins/custom/front/tab.form.php'
-   ));
-   $PLUGIN_HOOKS['submenu_entry']['custom']['options']['defaulttab'] = array(
-      'title' => __('Default Tabs', 'custom'),
-      'page'  =>'/plugins/custom/front/defaulttab.php',
-      'links' => array(
-         'search' => '/plugins/custom/front/defaulttab.php',
-         'add'    =>'/plugins/custom/front/defaulttab.form.php'
-   ));
-   $PLUGIN_HOOKS['submenu_entry']['custom']['options']['style'] = array(
-      'title' => __('GLPI Style', 'custom'),
-      'page'  =>'/plugins/custom/front/style.form.php',
-      'links' => array(
-         'search' => '/plugins/custom/front/style.form.php',
-         'add'    =>'/plugins/custom/front/style.form.php'
-   ));
-
    $PLUGIN_HOOKS['add_javascript']['custom'][]    = 'selector.js.php';
 
    if (file_exists(CUSTOM_FILES_DIR."glpi_style.css")
