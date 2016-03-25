@@ -24,9 +24,6 @@ class PluginCustomConfig extends CommonGLPI {
          $menu['options']['defaulttab']['links']['search'] = PluginCustomDefaulttab::getSearchURL(false);
       }
 
-      $menu['options']['style']['page']                    = "/plugins/custom/front/style.form.php";
-      $menu['options']['style']['title']                   = __("Customise GLPI style", 'custom');
-
       return $menu;
    }
 
@@ -38,9 +35,6 @@ class PluginCustomConfig extends CommonGLPI {
       echo "<li onclick='location.href=\"defaulttab.php\"'>
          <img src='../pics/tab_default.png' />
          <p><a>".__('Default Tabs', 'custom')."</a></p></li>";
-      echo "<li onclick='location.href=\"style.form.php\"'>
-         <img src='../pics/palette.png' />
-         <p><a>".__('Customise GLPI style', 'custom')."</a></p></li>";
       echo "</ul><div class='custom_clear'></div></div>";
    }
 

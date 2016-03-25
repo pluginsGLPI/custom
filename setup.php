@@ -11,10 +11,6 @@ function plugin_init_custom() {
    $PLUGIN_HOOKS['config_page']['custom']  = "front/config.php";
    $PLUGIN_HOOKS['add_javascript']['custom'][]    = 'selector.js.php';
 
-   if (file_exists(CUSTOM_FILES_DIR."glpi_style.css")
-      || file_exists(GLPI_DOC_DIR."/_plugins/custom/glpi_style.css")) {
-      $PLUGIN_HOOKS['add_css']['custom'][]        = 'custom_style.css.php';
-   }
    $PLUGIN_HOOKS['add_css']['custom'][]           = 'style.css';
 
    $PLUGIN_HOOKS['csrf_compliant']['custom']      = true;
@@ -22,23 +18,29 @@ function plugin_init_custom() {
    if (Session::haveRight('config', UPDATE)) {
       $PLUGIN_HOOKS['menu_toadd']['custom'] = array('config' => 'PluginCustomConfig');
    }
+
+   // exclude some pages from splitted layout
+   if (isset($CFG_GLPI['layout_excluded_pages'])) {
+      array_push($CFG_GLPI['layout_excluded_pages'], "tab.form.php",
+                                                     "defaulttab.form.php");
+   }
 }
 
 
 // Get the name and the version of the plugin - Needed
 function plugin_version_custom() {
    return array('name'           => "Custom",
-                'version'        => "0.85-1.2",
+                'version'        => "0.90-1.0",
                 'author'         => "<a href='mailto:adelaunay@teclib.com'>Alexandre DELAUNAY</a> ".
                   "- <a href='http://www.teclib.com'>Teclib'</a>",
-                'homepage'       => "http://www.teclib.com/glpi/plugins/color",
-                'minGlpiVersion' => "0.85");
+                'homepage'       => "http://www.teclib.com/",
+                'minGlpiVersion' => "0.90");
 }
 
 // Optional : check prerequisites before install : may print errors or add to message after redirect
 function plugin_custom_check_prerequisites() {
-   if (version_compare(GLPI_VERSION,'0.85','lt') || version_compare(GLPI_VERSION,'0.86','ge')) {
-      echo "This plugin requires GLPI 0.85";
+   if (version_compare(GLPI_VERSION,'0.90','lt')) {
+      echo "This plugin requires GLPI >= 0.90";
       return false;
    } elseif (!extension_loaded("gd")) {
       echo "php-gd is required";

@@ -46,6 +46,6 @@ if (isset($_POST["add"])) {
    Html::header(__('Custom', 'custom'), $_SERVER['PHP_SELF'], "config", "PluginCustomConfig",
       "defaulttab"
    );
-   $tabs->showForm($_GET["id"]);
+   $tabs->display(array('id' => $_GET["id"]));
    Html::footer();
 }
